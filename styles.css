@@ -4,6 +4,7 @@
   --secondary: #90AB8B;
   --accent: #5A7863;
   --text: #3B4953;
+
 }
 
 *, *::before, *::after {
@@ -16,8 +17,18 @@ body {
   color: var(--text);
   display: flex;
   align-items: center;
-  height: 100dvh;
-  border-top: 50px solid #FFF;
-  border-bottom: 50px solid #FFF;
+  min-height: 100dvh;
+  border-top: 40px solid #FFF;
+  border-bottom: 40px solid #FFF;
   margin: 0;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+.card h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
 }

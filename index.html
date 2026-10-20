@@ -14,7 +14,7 @@
 </head>
 <body>
 
-  <div class="external-box container px-5">
+  <div class="external-box container">
 
     <div class="row">
 
@@ -36,7 +36,42 @@
         
         <p>If you answered "yes" at least once, you are in good place now! We have great solution especially for You! With our application your finances will be completely under control, and you will be able to enjoy your savings that allow you to do more! Don't waste your time - try our app right now, completely <strong>free of charge!</strong></p>
 
-        <img src="./assets/images/printablue-piggy-bank-10016128_1920.jpg" class="img-fluid col-8 col-lg-6" alt="">
+        <div class="d-flex justify-content-between">
+
+          <img src="./assets/images/printablue-piggy-bank-10016128_1920.jpg" class="img-fluid col-8 col-lg-6" alt="">
+
+          <section class="card col-4" aria-label="Sign in">
+
+            <h2>Do you already have an account?</h2>
+
+            <form action="signin" method="post" novalidate>
+
+            <div class="field">
+              <label for="login" class="visually-hidden">Username</label>
+              <input id="login" type="text" name="username" placeholder="username"
+                    autocomplete="given-username" required aria-describedby="username-error">
+              <p id="username" class="error" aria-live="polite"></p>
+            </div>
+
+            <div class="field">
+              <label for="password" class="visually-hidden">Password</label>
+              <input id="password" type="password" name="password" placeholder="password"
+                    autocomplete="current-password" required aria-describedby="password-error">
+              <p id="password-error" class="error" aria-live="polite"></p>
+            </div>
+
+            <button type="submit" class="btn btn-lg btn-primary">Sign in</button>
+
+          </form>
+
+          <h2>Do you want to start controlling your budget?</h2>
+
+          <a href="#" class="btn btn-lg btn-secondary">Sign up</a>
+
+         </section>
+
+         </div>
+
 
       </main>
     </div>
