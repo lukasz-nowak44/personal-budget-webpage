@@ -1,11 +1,18 @@
 :root {
   --primary: #EBF4DD;
+  --lighter-primary: #F2F8E8;
   --secondary: #90AB8B;
   --accent: #5A7863;
   --text: #3B4953;
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body {
-  background-color: var(--primary);
+  background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 50%, var(--lighter-primary) 70%);
+  font-size: 1rem;
+  color: var(--text);
 }
 
