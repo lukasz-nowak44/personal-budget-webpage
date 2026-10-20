@@ -27,8 +27,13 @@ h1 {
   font-weight: 600;
 }
 
+ul li::marker {
+  content: "👉 ";
+}
+
 .card {
   border-radius: 10px;
+  box-shadow: 1px 3px 4px 0px var(--text);
 }
 
 .card h2 {
@@ -46,6 +51,11 @@ input {
 
 .btn-primary {
   background-color: var(--accent);
-  border: none;
+  border: var(--primary);
   width: 100%;
+}
+
+.btn:hover {
+  background-color: var(--secondary);
+  color: var(--text);
 }
