@@ -4,7 +4,6 @@
   --secondary: #90AB8B;
   --accent: #5A7863;
   --text: #3B4953;
-
 }
 
 *, *::before, *::after {
@@ -28,7 +27,25 @@ h1 {
   font-weight: 600;
 }
 
+.card {
+  border-radius: 10px;
+}
+
 .card h2 {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 600;
+}
+
+input {
+  padding: 0.6rem;
+  border-radius: 5px;
+  border: 1px solid var(--accent);
+  width: 100%;
+  caret-color: var(--text);
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  border: none;
+  width: 100%;
 }
