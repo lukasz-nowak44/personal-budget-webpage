@@ -35,11 +35,19 @@ nav {
 
 .nav-link {
   text-decoration: none;
-  color: var(--lighter-primary);
+  color: var(--lighter-primary) !important;
+  margin-left: 1rem;
+}
+
+.nav-link:focus, .nav-link:active {
+  background-color: var(--button);
+  border-radius: 5px;
+  width: fit-content;
 }
 
 .logo {
   width: 4rem;
+  margin-left: 0.75rem;
 }
 
 h1 {
