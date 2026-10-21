@@ -63,3 +63,11 @@ main {
   grid-template-rows: repeat(3,1fr);
   gap: 2rem;
 }
+
+footer {
+  display: flex;
+  justify-content: center;
+  background-color: var(--accent);
+  color: var(--lighter-primary);
+  padding: 0.5rem;
+}
