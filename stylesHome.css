@@ -16,23 +16,50 @@ input, button, textarea, select {
   font: inherit; 
 }
 
-a {
-  text-decoration: none;
-  color: var(--lighter-primary);
-}
-
 body {
   background-color: var(--primary);
+  color: var(--text);
   font-size: 1rem;
   font-family: "Quicksand", sans-serif;
+  font-weight: 600;
   margin: 0;
 }
 
 nav {
   background-color: var(--accent);
+}
+
+.nav-link {
+  text-decoration: none;
   color: var(--lighter-primary);
 }
 
 .logo {
   width: 4rem;
+}
+
+h1 {
+  font-size: clamp(2rem, 1.2rem + 4vw, 3rem);
+  font-weight: 800;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr auto;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  padding: 5%;
+}
+
+.photo {
+  grid-row: span 2;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3,1fr);
+  gap: 2rem;
 }
