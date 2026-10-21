@@ -4,6 +4,8 @@
   --secondary: #90AB8B;
   --accent: #5A7863;
   --text: #3B4953;
+  --button: #C87A53;
+  --shadow-button: inset 0px -1px 9px -2px #5A7863;
 }
 
 *, *::before, *::after {
@@ -73,13 +75,17 @@ input {
   caret-color: var(--text);
 }
 
+.btn {
+  box-shadow: var(--shadow-button);
+}
+
 .btn-primary {
-  background-color: var(--accent);
-  border: var(--primary);
+  background-color: var(--button);
+  border: var(--text); 
   width: 100%;
 }
 
 .btn:hover {
-  background-color: var(--secondary);
-  color: var(--text);
+  background-color: var(--text);
+  color: var(--lighter-primary);
 }
