@@ -10,6 +10,14 @@
   box-sizing: border-box;
 }
 
+input, button, textarea, select { 
+  font: inherit; 
+}
+
+a {
+  text-decoration: none;
+}
+
 body {
   background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 50%, var(--lighter-primary) 70%);
   font-size: 1rem;
