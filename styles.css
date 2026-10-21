@@ -13,6 +13,7 @@
 body {
   background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 50%, var(--lighter-primary) 70%);
   font-size: 1rem;
+  font-weight: 500;
   color: var(--text);
   display: flex;
   align-items: center;
@@ -22,8 +23,15 @@ body {
   margin: 0;
 }
 
+.logo {
+  float: left;
+  padding-right: 1.5rem;
+  padding-bottom: 1rem;
+  height: calc(5rem + 4vw);
+}
+
 h1 {
-  font-size: 3rem;
+  font-size: clamp(2rem, 1.2rem + 4vw, 3rem);
   font-weight: 600;
 }
 
@@ -37,7 +45,7 @@ ul li::marker {
 }
 
 .card h2 {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 600;
 }
 
