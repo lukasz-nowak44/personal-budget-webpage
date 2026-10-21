@@ -24,6 +24,7 @@ body {
   background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 50%, var(--lighter-primary) 70%);
   font-size: 1rem;
   font-weight: 500;
+  font-family: "Quicksand", sans-serif;
   color: var(--text);
   display: flex;
   align-items: center;
@@ -46,7 +47,7 @@ header {
 
 h1 {
   font-size: clamp(2rem, 1.2rem + 4vw, 3rem);
-  font-weight: 700;
+  font-weight: 800;
 }
 
 h1.registration {
@@ -64,7 +65,7 @@ ul li::marker {
 
 .card h2 {
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 900;
 }
 
 input {
