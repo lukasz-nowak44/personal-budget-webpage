@@ -64,73 +64,80 @@
     </nav>
   </header>
 
-  <main class="income">
+  <main>
 
-    <header>
-      <h1>Add new income:</h1>
-    </header>
+    <div class="container">
 
-    <form action="income" id="income" method="post" novalidate>
+      <div class="row">
 
-      <div class="field">
-        <label for="amount">Amount:</label>
-        <input id="amount" type="number" name="amount" placeholder="amount" required aria-describedby="amount-error">
-        <p id="amount" class="error" aria-live="polite"></p>
-      </div>
+        <header>
+          <h1>Add new income:</h1>
+        </header>
 
-      <div class="field">
-        <label for="date">Date:</label>
-        <input id="date" type="date" name="date" value=""
-           required aria-describedby="date-error">
-        <p id="date" class="error" aria-live="polite"></p>
-      </div>
+        <form action="income" id="income" method="post" novalidate>
 
-      <div class="field">
+          <div class="field-income">
+            <label for="amount">Amount:</label>
+            <input id="amount" type="number" name="amount" required aria-describedby="amount-error">
+            <p id="amount" class="error" aria-live="polite"></p>
+          </div>
+
+          <div class="field-income">
+            <label for="date">Date:</label>
+            <input id="date" type="date" name="date" value=""
+              required aria-describedby="date-error">
+            <p id="date" class="error" aria-live="polite"></p>
+          </div>
+
+          <div class="field-income">
+            
+            <fieldset form="income">
+
+              <legend>Category:</legend>
+
+              <label><input id="category" type="radio" name="category" checked>Salary</label>
+
+              <label><input id="category" type="radio" name="category">Bank interest</label>
+              
+              <label><input id="category" type="radio" name="category">Selling on Allegro</label>
         
-        <fieldset form="income">
+              <label><input id="category" type="radio" name="category">Other</label>
 
-          <legend>Category</legend>
+            </fieldset>
 
-          <label><input id="category" type="radio" name="category" checked>Salary</label>
+          </div>
 
-          <label><input id="category" type="radio" name="category">Bank interest</label>
-          
-          <label><input id="category" type="radio" name="category">Selling on Allegro</label>
-    
-          <label><input id="category" type="radio" name="category">Other</label>
+          <div class="field-income d-flex align-items-start">
+            <label for="comment" class="pe-2">Add comment:</label>
+            <textarea id="comment" type="textarea" name="comment" rows="2" cols="30" maxlength="60">
+            </textarea>
+          </div>
 
-        </fieldset>
+          <div class="d-grid gap-2 d-md-block">
+            <button class="btn btn-primary add" type="submit">Add</button>
+            <button class="btn btn-primary cancel" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button">Cancel</button>
+          </div>
 
-      </div>
-
-      <div class="field">
-        <label for="comment">Add comment</label>
-        <textarea id="comment" type="textarea" name="comment" rows="2" cols="40" maxlength="60">
-        </textarea>
-      </div>
-
-      <div class="d-grid gap-2 d-md-block">
-        <button class="btn btn-primary" type="submit">Add</button>
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button">Cancel</button>
-      </div>
-
-      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Are you sure that you want to cancel this income? You will lose all data.</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <a type="button" href="home.html">Yes</a>
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>   
+          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Are you sure that you want to cancel this income? You will lose all data.</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <a type="button" href="home.html" class="btn btn-primary cancel">Yes</a>
+                  <button type="button" class="btn btn-secondary add" data-bs-dismiss="modal">No</button>   
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+
+        </form>
+
       </div>
 
-    </form>
-
+    </div>
 
   </main>
 

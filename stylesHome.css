@@ -95,9 +95,28 @@ h1 {
   content: "➥ ";;
 }
 
-fieldset {
-  border: 2px solid var(--text);
-  width: fit-content;
+.field-income {
+  margin: calc(1rem + 2dvh) 0;
+}
+
+label:has(input[id="category"]) {
+  margin-right: 1rem;
+}
+
+input[id="category"] {
+  margin-right: 0.2rem;
+}
+
+.add {
+  background-color: var(--accent);
+  border: none;
+  min-width: 7rem;
+}
+
+.cancel {
+  background-color: var(--button);
+  border: none;
+  min-width: 7rem;
 }
 
 footer {
