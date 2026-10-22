@@ -68,82 +68,82 @@
 
     <div class="container">
 
-      <div class="row">
+      <div class="row d-flex flex-column flex-md-row justify-content-between align-items-center">
 
-        <main class="main-income col-md-7 col-lg-6 col-xl-5">
+        <main class="main-income col-12 col-md-7 col-lg-6 col-xl-5 my-5">
 
-        <header>
-          <h1 class="text-center text-md-start">Add new income:</h1>
-        </header>
+          <header>
+            <h1 class="text-center text-md-start">Add new income:</h1>
+          </header>
 
-        <form action="income" id="income" method="post" novalidate>
+          <form action="income" id="income" method="post" novalidate>
 
-          <div class="field-income">
-            <label for="amount">Amount:</label>
-            <input id="amount" type="number" name="amount" required aria-describedby="amount-error">
-            <p id="amount" class="error" aria-live="polite"></p>
-          </div>
+            <div class="field-income">
+              <label for="amount">Amount:</label>
+              <input id="amount" type="number" name="amount" required aria-describedby="amount-error">
+              <p id="amount" class="error" aria-live="polite"></p>
+            </div>
 
-          <div class="field-income">
-            <label for="date">Date:</label>
-            <input id="date" type="date" name="date" value=""
-              required aria-describedby="date-error">
-            <p id="date" class="error" aria-live="polite"></p>
-          </div>
+            <div class="field-income">
+              <label for="date">Date:</label>
+              <input id="date" type="date" name="date" value=""
+                required aria-describedby="date-error">
+              <p id="date" class="error" aria-live="polite"></p>
+            </div>
 
-          <div class="field-income">
-            
-            <fieldset form="income">
-
-              <legend>Category:</legend>
-
-              <label><input id="category" type="radio" name="category" checked>Salary</label>
-
-              <label><input id="category" type="radio" name="category">Bank interest</label>
+            <div class="field-income">
               
-              <label><input id="category" type="radio" name="category">Selling on Allegro</label>
-        
-              <label><input id="category" type="radio" name="category">Other</label>
+              <fieldset form="income">
 
-            </fieldset>
+                <legend>Category:</legend>
 
-          </div>
+                <label><input id="category" type="radio" name="category" checked>Salary</label>
 
-          <div class="field-income d-flex align-items-start">
-            <label for="comment" class="pe-2">Add comment:</label>
-            <textarea id="comment" type="textarea" name="comment" rows="2" cols="30" maxlength="60">
-            </textarea>
-          </div>
+                <label><input id="category" type="radio" name="category">Bank interest</label>
+                
+                <label><input id="category" type="radio" name="category">Selling on Allegro</label>
+          
+                <label><input id="category" type="radio" name="category">Other</label>
 
-          <div class="d-grid gap-2 d-md-block">
-            <button class="btn btn-primary add" type="submit">Add</button>
-            <button class="btn btn-primary cancel" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button">Cancel</button>
-          </div>
+              </fieldset>
 
-          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Are you sure that you want to cancel this income? You will lose all data.</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body d-flex justify-content-between">
-                  <a type="button" href="home.html" class="btn btn-primary cancel">Yes</a>
-                  <button type="button" class="btn btn-secondary add" data-bs-dismiss="modal">No</button>   
+            </div>
+
+            <div class="field-income d-flex align-items-start">
+              <label for="comment" class="pe-2">Add comment:</label>
+              <textarea id="comment" type="textarea" name="comment" rows="2" cols="30" maxlength="45">
+              </textarea>
+            </div>
+
+            <div class="d-grid gap-2 d-md-block">
+              <button class="btn btn-primary add" type="submit">Add</button>
+              <button class="btn btn-primary cancel" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button">Cancel</button>
+            </div>
+
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="staticBackdropLabel">Are you sure that you want to cancel this income? You will lose all data.</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body d-flex justify-content-between">
+                    <a type="button" href="home.html" class="btn btn-primary cancel">Yes</a>
+                    <button type="button" class="btn btn-secondary add" data-bs-dismiss="modal">No</button>   
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-        </form>
+          </form>
 
         </main>
+
+        <img src="assets/images/openclipart-vectors-chart-line-148256_1280.png" class="img-fluid illustration col-12 col-md-5 my-5"  alt="">
 
       </div>
 
     </div>
-
-  
 
   <footer>
     <small>® Personal Budget 2026. All rights reserved.</small>
