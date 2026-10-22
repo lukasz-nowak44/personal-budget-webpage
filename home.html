@@ -95,13 +95,35 @@
             </div>
           </a>
 
-          <a class="card" href="#">
+          <button class="card px-0" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
             <img src="./assets/icons/scale.png" class="card-img-top" alt="...">
             <div class="card-body">
               <p class="card-text">Balance from another period</p>
             </div>
-          </a>
+          </button>
 
+          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                   <h5 class="modal-title" id="staticBackdropLabel">For which period would you like to see the balance?</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <ul class="periods">
+                    <li><a class="dropdown-item" aria-label="Current month" href="#">Current month</a></li>
+                    <li><a class="dropdown-item" aria-label="Previous month" href="#">Previous month</a></li>
+                    <li><a class="dropdown-item" aria-label="Current year" href="#">Current year</a></li>
+                    <li><a class="dropdown-item" aria-label="non-standard" href="#">non-standard</a></li>
+                  </ul>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
           <a class="card" href="#">
             <img src="./assets/icons/settings-cog.png" class="card-img-top" alt="...">
             <div class="card-body">
