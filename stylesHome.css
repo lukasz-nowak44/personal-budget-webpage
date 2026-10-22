@@ -138,7 +138,7 @@ footer {
 
 @media (max-width: 61.9375rem) {
 
-  main {
+  .home {
     grid-template-columns: 1fr;
     place-items: center;
   }
