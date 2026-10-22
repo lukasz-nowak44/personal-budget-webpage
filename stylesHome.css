@@ -107,16 +107,19 @@ input[id="category"] {
   margin-right: 0.2rem;
 }
 
-.add {
-  background-color: var(--accent);
-  border: none;
+.add, .cancel {
   min-width: 10rem;
 }
 
-.cancel {
+.add, .save {
+  background-color: var(--accent);
+  border: none;  
+}
+
+.cancel, .close  {
   background-color: var(--button);
   border: none;
-  min-width: 10rem;
+  
 }
 
 .main-income {
