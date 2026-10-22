@@ -119,6 +119,12 @@ input[id="category"] {
   min-width: 10rem;
 }
 
+.main-income {
+  background-color: var(--lighter-primary);
+  padding: 2rem;
+  border: 2px dotted var(--text);
+}
+
 footer {
   display: flex;
   justify-content: center;
