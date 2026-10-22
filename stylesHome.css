@@ -110,13 +110,13 @@ input[id="category"] {
 .add {
   background-color: var(--accent);
   border: none;
-  min-width: 7rem;
+  min-width: 10rem;
 }
 
 .cancel {
   background-color: var(--button);
   border: none;
-  min-width: 7rem;
+  min-width: 10rem;
 }
 
 footer {
