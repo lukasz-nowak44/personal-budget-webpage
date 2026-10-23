@@ -21,7 +21,7 @@ new Chart("expensesChart", {
     labels: xValues,
     datasets: [{
       backgroundColor: barColors,
-      data: yValues
+      data: yValues,
     }]
   },
   options: {
@@ -31,7 +31,6 @@ new Chart("expensesChart", {
     }
   }
 });
-
 
 let periods = document.querySelector("#periods");
 
