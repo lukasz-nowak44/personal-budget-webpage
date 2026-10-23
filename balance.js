@@ -15,3 +15,13 @@ periods.addEventListener("change", function (event) {
  
 });
 
+let balanceResult = document.querySelector(".result").innerHTML;
+
+if (balanceResult >= 0) {
+
+  document.querySelector(".deficit").classList.add("visually-hidden");
+
+} else {
+
+  document.querySelector(".surplus").classList.add("visually-hidden");
+}
