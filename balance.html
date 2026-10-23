@@ -68,373 +68,390 @@
 
   <main>
 
-    <header>
-      <h1>Check balance</h1>
-    </header>
+    <div class="container">
 
-    <section>
+      <div class="row">
 
-      <form action="balance" id="balance" method="post" novalidate>
+        <header>
 
-        <div class="field-balance">
-          <label for="periods">For which period would you like to see the balance:</label>
-          <select id="periods">
+          <h1>Check balance</h1>
 
-            <option>Current month</option>
-            <option>Previous month</option>
-            <option>Current year</option>
-            <option>non-standard</option>
+          <form action="balance" id="balance" method="post" novalidate>
 
-          </select>
+            <div class="field-balance">
+              <label for="periods">For which period would you like to see the balance:</label>
+              <select id="periods">
 
-          <div class="modal" id="modalWithDates" tabindex="-1">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Select Period:</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-              <div class="modal-body">
+                <option>Current month</option>
+                <option>Previous month</option>
+                <option>Current year</option>
+                <option>non-standard</option>
 
-                  <div class="date d-flex flex-column">
-                    <label for="start-date">Start date:</label>
-                      <input class="mb-3" id="start-date" type="date" name="start-date" value="">
-                    <label for="end-date">End date:</label>
-                      <input id="end-date" type="date" name="start-date" value="">
+              </select>
+
+              <div class="modal" id="modalWithDates" tabindex="-1">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Select Period:</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                  <div class="modal-body">
+
+                      <div class="date d-flex flex-column">
+                        <label for="start-date">Start date:</label>
+                          <input class="mb-3" id="start-date" type="date" name="start-date" value="">
+                        <label for="end-date">End date:</label>
+                          <input id="end-date" type="date" name="start-date" value="">
+                      </div>
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary save">Save changes</button>
+                    </div>
                   </div>
-
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary save">Save changes</button>
                 </div>
               </div>
+
             </div>
+
+          </form>
+
+        </header>
+
+        <article>
+
+          <div class="container">
+
+            <div class="row">
+
+              <h2>It's summary for <strong class="selected-period">Current month</strong>:</h2>
+
+              <section class="col-6 tables">
+
+                <table>
+
+                  <h3>The summary of your incomes:</h3>
+
+                  <thead>
+
+                    <tr>
+
+                      <th>nr</th>
+                      <th>category</th>
+                      <th>amount [PLN]</th>
+                      <th>percent [%]</th>
+                      <th>comment</th>
+
+                    </tr>
+
+                  </thead>
+
+                  <tbody>
+
+                    <tr>
+
+                      <td>1</td>
+                      <td>Salary</td>
+                      <td>5000</td>
+                      <td>70</td>
+                      <td></td>
+
+                    </tr>
+
+                    <tr>
+
+                      <td>2</td>
+                      <td>Selling on Allegro</td>
+                      <td>500</td>
+                      <td>7</td>
+                      <td></td>
+
+                    </tr>
+
+                    <tr>
+
+                      <td>3</td>
+                      <td>Interest savings</td>
+                      <td>200</td>
+                      <td>3</td>
+                      <td></td>
+
+                    </tr>
+
+                    <tr>
+
+                      <td>4</td>
+                      <td>Other</td>
+                      <td>100</td>
+                      <td>1</td>
+                      <td>gift</td>
+
+                    </tr>
+
+                    <tr>
+
+                      <td>5</td>
+                      <td>Other</td>
+                      <td>10</td>
+                      <td>0.5</td>
+                      <td>tax refund</td>
+
+                    </tr>
+
+                  </tbody>
+
+                </table>
+
+                <table>
+
+                  <h3>The summary of your expenses:</h3>
+
+                  <thead>
+
+                    <tr>
+
+                      <th>nr</th>
+                      <th>category</th>
+                      <th>amount [PLN]</th>
+                      <th>percent [%]</th>
+                      <th>comment</th>
+
+                    </tr>
+
+                  </thead>
+
+                  <tbody>
+
+                    <tr>
+
+                      <td>1</td>
+                      <td class="category">Flat</td>
+                      <td>1000</td>
+                      <td class="percent">20</td>
+                      <td></td>
+
+                    </tr>
+
+                    <tr>
+
+                      <td>2</td>
+                      <td class="category">Foods</td>
+                      <td>900</td>
+                      <td class="percent">19</td>
+                      <td></td>
+
+                    </tr>
+
+                    <tr>
+
+                      <td>3</td>
+                      <td class="category">Transport</td>
+                      <td>200</td>
+                      <td class="percent">10</td>
+                      <td></td>
+
+                    </tr>
+
+                    <tr>
+
+                      <td>4</td>
+                      <td class="category">Telecommunication</td>
+                      <td>50</td>
+                      <td class="percent">5</td>
+                      <td></td>
+
+                    </tr>
+
+                    <tr>
+
+                      <td>5</td>
+                      <td class="category">Healthcare</td>
+                      <td>50</td>
+                      <td class="percent">5</td>
+                      <td></td>
+
+                    </tr>
+
+                    <tr>
+
+                      <td>6</td>
+                      <td class="category">Clothes</td>
+                      <td>50</td>
+                      <td class="percent">5</td>
+                      <td></td>
+                      
+                    </tr>
+
+                    <tr>
+
+                      <td>7</td>
+                      <td class="category">Healthcare</td>
+                      <td>50</td>
+                      <td class="percent">5</td>
+                      <td></td>
+                      
+                    </tr>
+
+                    <tr>
+
+                      <td>8</td>
+                      <td class="category">Hygiene</td>
+                      <td>50</td>
+                      <td class="percent">5</td>
+                      <td></td>
+                      
+                    </tr>
+
+                    <tr>
+
+                      <td>9</td>
+                      <td class="category">Children</td>
+                      <td>50</td>
+                      <td class="percent">5</td>
+                      <td></td>
+                      
+                    </tr>
+
+                    <tr>
+
+                      <td>10</td>
+                      <td class="category">Hygiene</td>
+                      <td>50</td>
+                      <td class="percent">5</td>
+                      <td></td>
+                      
+                    </tr>
+
+                    <tr>
+
+                      <td>11</td>
+                      <td class="category">Entertanment</td>
+                      <td>50</td>
+                      <td class="percent">5</td>
+                      <td></td>
+                      
+                    </tr>
+
+                    <tr>
+
+                      <td>11</td>
+                      <td class="category">Journey</td>
+                      <td>50</td>
+                      <td class="percent">5</td>
+                      <td></td>
+                      
+                    </tr>
+
+                    <tr>
+
+                      <td>12</td>
+                      <td class="category">Training</td>
+                      <td>50</td>
+                      <td class="percent">5</td>
+                      <td></td>
+                      
+                    </tr>
+
+                    <tr>
+
+                      <td>13</td>
+                      <td class="category">Books</td>
+                      <td>50</td>
+                      <td class="percent">5</td>
+                      <td></td>
+                      
+                    </tr>
+
+                    <tr>
+
+                      <td>14</td>
+                      <td class="category">Savings</td>
+                      <td>50</td>
+                      <td class="percent">5</td>
+                      <td></td>
+                      
+                    </tr>
+
+                    <tr>
+
+                      <td>15</td>
+                      <td class="category">Pension</td>
+                      <td>50</td>
+                      <td class="percent">5</td>
+                      <td></td>
+                      
+                    </tr>
+                    <tr>
+
+                      <td>16</td>
+                      <td class="category">Repayment of debts</td>
+                      <td>50</td>
+                      <td class="percent">5</td>
+                      <td></td>
+                      
+                    </tr>
+
+                    <tr>
+
+                      <td>17</td>
+                      <td class="category">Pension</td>
+                      <td>50</td>
+                      <td class="percent">5</td>
+                      <td></td>
+                      
+                    </tr>
+
+                    <tr>
+
+                      <td>18</td>
+                      <td class="category">Donation</td>
+                      <td>50</td>
+                      <td class="percent">5</td>
+                      <td></td>
+                      
+                    </tr>
+
+                    <tr>
+
+                      <td>19</td>
+                      <td class="category">Other</td>
+                      <td>50</td>
+                      <td class="percent">5</td>
+                      <td>car repair</td>
+                      
+                    </tr>
+
+                  </tbody>
+
+                </table>
+
+              </section>
+
+              <div class="col-6">
+
+                <section>
+
+                  <h3>Your balance is equal: <strong class="result">-1</strong> PLN.</h3>
+                  <p class="surplus">Congratulations. You manage your finances brilliantly!</p>
+                  <p class="deficit">Watch out—you’re falling into debt!</p>
+
+                </section>
+
+                <canvas  id="expensesChart"></canvas>
+
+              </div>
+
+            </div>
+
           </div>
 
-        </div>
+        </article>
 
-      </form>
+      </div>
 
-    </section>
-
-    <article>
-
-      <h2>It's summary for <strong class="selected-period">Current month</strong>:</h2>
-
-      <table>
-
-        <h3>The summary of your incomes:</h3>
-
-        <thead>
-
-          <tr>
-
-            <th>nr</th>
-            <th>category</th>
-            <th>amount [PLN]</th>
-            <th>percent [%]</th>
-            <th>comment</th>
-
-          </tr>
-
-        </thead>
-
-        <tbody>
-
-          <tr>
-
-            <td>1</td>
-            <td>Salary</td>
-            <td>5000</td>
-            <td>70</td>
-            <td></td>
-
-          </tr>
-
-          <tr>
-
-            <td>2</td>
-            <td>Selling on Allegro</td>
-            <td>500</td>
-            <td>7</td>
-            <td></td>
-
-          </tr>
-
-          <tr>
-
-            <td>3</td>
-            <td>Interest savings</td>
-            <td>200</td>
-            <td>3</td>
-            <td></td>
-
-          </tr>
-
-          <tr>
-
-            <td>4</td>
-            <td>Other</td>
-            <td>100</td>
-            <td>1</td>
-            <td>gift</td>
-
-          </tr>
-
-          <tr>
-
-            <td>5</td>
-            <td>Other</td>
-            <td>10</td>
-            <td>0.5</td>
-            <td>tax refund</td>
-
-          </tr>
-
-        </tbody>
-
-      </table>
-
-            <table>
-
-        <h3>The summary of your expenses:</h3>
-
-        <thead>
-
-          <tr>
-
-            <th>nr</th>
-            <th>category</th>
-            <th>amount [PLN]</th>
-            <th>percent [%]</th>
-            <th>comment</th>
-
-          </tr>
-
-        </thead>
-
-        <tbody>
-
-          <tr>
-
-            <td>1</td>
-            <td class="category">Flat</td>
-            <td>1000</td>
-            <td class="percent">20</td>
-            <td></td>
-
-          </tr>
-
-          <tr>
-
-            <td>2</td>
-            <td class="category">Foods</td>
-            <td>900</td>
-            <td class="percent">19</td>
-            <td></td>
-
-          </tr>
-
-          <tr>
-
-            <td>3</td>
-            <td class="category">Transport</td>
-            <td>200</td>
-            <td class="percent">10</td>
-            <td></td>
-
-          </tr>
-
-          <tr>
-
-            <td>4</td>
-            <td class="category">Telecommunication</td>
-            <td>50</td>
-            <td class="percent">5</td>
-            <td></td>
-
-          </tr>
-
-          <tr>
-
-            <td>5</td>
-            <td class="category">Healthcare</td>
-            <td>50</td>
-            <td class="percent">5</td>
-            <td></td>
-
-          </tr>
-
-          <tr>
-
-            <td>6</td>
-            <td class="category">Clothes</td>
-            <td>50</td>
-            <td class="percent">5</td>
-            <td></td>
-            
-          </tr>
-
-          <tr>
-
-            <td>7</td>
-            <td class="category">Healthcare</td>
-            <td>50</td>
-            <td class="percent">5</td>
-            <td></td>
-            
-          </tr>
-
-          <tr>
-
-            <td>8</td>
-            <td class="category">Hygiene</td>
-            <td>50</td>
-            <td class="percent">5</td>
-            <td></td>
-            
-          </tr>
-
-          <tr>
-
-            <td>9</td>
-            <td class="category">Children</td>
-            <td>50</td>
-            <td class="percent">5</td>
-            <td></td>
-            
-          </tr>
-
-          <tr>
-
-            <td>10</td>
-            <td class="category">Hygiene</td>
-            <td>50</td>
-            <td class="percent">5</td>
-            <td></td>
-            
-          </tr>
-
-          <tr>
-
-            <td>11</td>
-            <td class="category">Entertanment</td>
-            <td>50</td>
-            <td class="percent">5</td>
-            <td></td>
-            
-          </tr>
-
-          <tr>
-
-            <td>11</td>
-            <td class="category">Journey</td>
-            <td>50</td>
-            <td class="percent">5</td>
-            <td></td>
-            
-          </tr>
-
-          <tr>
-
-            <td>12</td>
-            <td class="category">Training</td>
-            <td>50</td>
-            <td class="percent">5</td>
-            <td></td>
-            
-          </tr>
-
-          <tr>
-
-            <td>13</td>
-            <td class="category">Books</td>
-            <td>50</td>
-            <td class="percent">5</td>
-            <td></td>
-            
-          </tr>
-
-          <tr>
-
-            <td>14</td>
-            <td class="category">Savings</td>
-            <td>50</td>
-            <td class="percent">5</td>
-            <td></td>
-            
-          </tr>
-
-          <tr>
-
-            <td>15</td>
-            <td class="category">Pension</td>
-            <td>50</td>
-            <td class="percent">5</td>
-            <td></td>
-            
-          </tr>
-           <tr>
-
-            <td>16</td>
-            <td class="category">Repayment of debts</td>
-            <td>50</td>
-            <td class="percent">5</td>
-            <td></td>
-            
-          </tr>
-
-           <tr>
-
-            <td>17</td>
-            <td class="category">Pension</td>
-            <td>50</td>
-            <td class="percent">5</td>
-            <td></td>
-            
-          </tr>
-
-           <tr>
-
-            <td>18</td>
-            <td class="category">Donation</td>
-            <td>50</td>
-            <td class="percent">5</td>
-            <td></td>
-            
-          </tr>
-
-          <tr>
-
-            <td>19</td>
-            <td class="category">Other</td>
-            <td>50</td>
-            <td class="percent">5</td>
-            <td>car repair</td>
-            
-          </tr>
-
-        </tbody>
-
-      </table>
-
-      <section>
-
-        <h3>Your balance is equal: <strong class="result">-1</strong> PLN.</h3>
-        <p class="surplus">Congratulations. You manage your finances brilliantly!</p>
-        <p class="deficit">Watch out—you’re falling into debt!</p>
-
-      </section>
-
-      <canvas id="expensesChart"></canvas>
-
-
-
-    </article>
-
-
-
+    </div>
 
   </main>
 
