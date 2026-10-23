@@ -4,6 +4,8 @@ const modalWithDates = new bootstrap.Modal(document.getElementById ("modalWithDa
 
 let periods = document.querySelector("#periods");
 
+let balanceResult = document.querySelector(".result").innerHTML;
+
 periods.addEventListener("change", function (event) {
 
   let selectedPeriod = event.target.value;
@@ -20,16 +22,20 @@ periods.addEventListener("change", function (event) {
  
 });
 
-let balanceResult = document.querySelector(".result").innerHTML;
+
 
 if (balanceResult >= 0) {
 
   document.querySelector(".deficit").classList.add("visually-hidden");
+  document.querySelector(".deficit").setAttribute("aria-hidden", "true");
 
 } else {
 
   document.querySelector(".surplus").classList.add("visually-hidden");
+  document.querySelector(".surplus").setAttribute("aria-hidden", "true");
 }
+
+
 
 function printRangeOfDates() {
 
