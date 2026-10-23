@@ -8,6 +8,7 @@
   --shadow-button: inset 0px -1px 9px -2px #5A7863;
   --shadow-cards: 0px -1px 9px -2px #5A7863;
   --gaps: 2rem;
+  --border-form: 2px dotted var(--text);
 }
 
 *, *::before, *::after {
@@ -119,22 +120,17 @@ input[id="category"] {
 .cancel, .close  {
   background-color: var(--button);
   border: none;
-  
 }
 
 .main-income {
   background-color: var(--lighter-primary);
   padding: 2rem;
-  border: 2px dotted var(--text);
+  border: var(--border-form);
 }
 
 .table-title {
   font-size: 1.2rem;
-  font-weight: 700;
-}
-
-table {
-  margin-bottom: 2rem;
+  font-weight: 900;
 }
 
 table th, td{
@@ -167,8 +163,19 @@ footer {
   box-shadow: var(--shadow-button);
 }
 
-.verdict * {
+.verdict > * {
   margin-bottom: 0;
+}
+
+.summary {
+  background-color: var(--lighter-primary);
+  border: var(--border-form);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+#expensesChart {
+  border: px ridge var(--text);
 }
 
 @media (max-width: 61.9375rem) {

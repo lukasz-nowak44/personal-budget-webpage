@@ -4,7 +4,7 @@ const modalWithDates = new bootstrap.Modal(document.getElementById ("modalWithDa
 
 const xValues = [];
 const yValues = [];
-const barColors = ["red", "green","blue","orange","brown", "yellow", "black", "white", "purple", "pink", "violet", "beige", "lime", "gold", "gray", "lightblue", "firebrick", "khaki", "lavender", "steelblue"];
+const barColors = ["red", "green","blue","orange","brown", "yellow", "black", "purple", "pink", "violet", "beige", "lime", "gold", "gray", "lightblue", "firebrick", "khaki", "lavender", "steelblue"];
 
 const numberOfElement = document.querySelectorAll(".category").length;
 
