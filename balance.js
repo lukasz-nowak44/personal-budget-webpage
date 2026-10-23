@@ -2,6 +2,37 @@ const modalWithDates = new bootstrap.Modal(document.getElementById ("modalWithDa
   keyboard: false
 });
 
+const xValues = [];
+const yValues = [];
+const barColors = ["red", "green","blue","orange","brown", "yellow", "black", "white", "purple", "pink", "violet", "beige", "lime", "gold", "gray", "lightblue", "firebrick", "khaki", "lavender", "steelblue"];
+
+const numberOfElement = document.querySelectorAll(".category").length;
+
+for (let i=0; i < numberOfElement; i++){
+
+  xValues.push(document.querySelectorAll(".category")[i].innerHTML);
+  yValues.push(document.querySelectorAll(".percent")[i].innerHTML);
+
+}
+
+new Chart("expensesChart", {
+  type: "pie",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "My Expenses"
+    }
+  }
+});
+
+
 let periods = document.querySelector("#periods");
 
 let balanceResult = document.querySelector(".result").innerHTML;
@@ -22,8 +53,6 @@ periods.addEventListener("change", function (event) {
  
 });
 
-
-
 if (balanceResult >= 0) {
 
   document.querySelector(".deficit").classList.add("visually-hidden");
@@ -34,8 +63,6 @@ if (balanceResult >= 0) {
   document.querySelector(".surplus").classList.add("visually-hidden");
   document.querySelector(".surplus").setAttribute("aria-hidden", "true");
 }
-
-
 
 function printRangeOfDates() {
 
