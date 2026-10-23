@@ -57,11 +57,13 @@ if (balanceResult >= 0) {
 
   document.querySelector(".deficit").classList.add("visually-hidden");
   document.querySelector(".deficit").setAttribute("aria-hidden", "true");
+  document.querySelector(".verdict").style.backgroundColor = "var(--accent)";
 
 } else {
 
   document.querySelector(".surplus").classList.add("visually-hidden");
   document.querySelector(".surplus").setAttribute("aria-hidden", "true");
+  document.querySelector(".verdict").style.backgroundColor = "var(--button)";
 }
 
 function printRangeOfDates() {
