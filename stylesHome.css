@@ -141,6 +141,18 @@ td {
   font-weight: 400;
 }
 
+.category-income, .category, tr:last-child {
+  word-break: break-all;
+}
+
+.category-income + td,.category-income + td + td {
+  text-align: right;
+}
+
+.category + td,.category + td + td {
+  text-align: right;
+}
+
 footer {
   display: flex;
   justify-content: center;
@@ -173,10 +185,6 @@ footer {
   border: var(--border-form);
   padding: 1.5rem;
   margin-bottom: 2rem;
-}
-
-#expensesChart {
-  border: px ridge var(--text);
 }
 
 @media (max-width: 61.9375rem) {

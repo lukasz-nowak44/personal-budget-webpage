@@ -21,8 +21,9 @@ new Chart("expensesChart", {
     labels: xValues,
     datasets: [{
       backgroundColor: barColors,
-      data: yValues,
+      data: yValues
     }]
+    
   },
   options: {
     title: {
