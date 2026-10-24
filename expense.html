@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Budget app</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="stylesHome.css"> 
+  
+</head>
+<body>
+
+  <header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark py-0">
+
+      <a class="navbar-brand" href="home.html"><img src="./assets/images/logo.png" class="logo" alt=""></a>
+
+      <button class="navbar-toggler me-3" type="button"        data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+        <span class="navbar-toggler-icon"></span>
+
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <ul class="navbar-nav mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="income.html">Add income</a>
+        </li> 
+        <li class="nav-item">
+          <a class="nav-link" href="#">Add expense</a>
+        </li> 
+        <li class="nav-item dropdown">
+
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Display balance
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="balance.html">Current month</a></li>
+            <li><a class="dropdown-item" href="balance.html">Previous month</a></li>
+            <li><a class="dropdown-item" href="balance.html">Current year</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="balance.html">non-standard</a></li>
+          </ul>
+
+        </li> 
+        <li class="nav-item">
+          <a class="nav-link" href="#">Settings</a>
+        </li> 
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Logout</a>
+        </li>
+      </ul>
+
+      </div>
+      
+    </nav>
+
+  </header>
+
+    <div class="container">
+
+      <div class="row d-flex flex-column flex-md-row justify-content-between align-items-center">
+
+        <main class="main-expense col-12 col-md-7 col-lg-6 col-xl-5 my-5">
+
+          <header>
+            <h1 class="text-center text-md-start">Add new expense:</h1>
+          </header>
+
+          <form action="expense" id="expense" method="post" novalidate>
+
+            <div class="field-expense">
+              <label for="amount">Amount:</label>
+              <input id="amount" type="number" name="amount" required aria-describedby="amount-error">
+              <p id="amount" class="error" aria-live="polite"></p>
+            </div>
+
+            <div class="field-expense">
+              <label for="date">Date:</label>
+              <input id="date" type="date" name="date" value=""
+                required aria-describedby="date-error">
+              <p id="date" class="error" aria-live="polite"></p>
+            </div>
+
+            <div class="field-expense">
+              
+              <fieldset form="expense">
+
+                <legend>Category:</legend>
+
+                <label><input id="category" type="radio" name="category" checked>Flat</label>
+
+                <label><input id="category" type="radio" name="category">Foods</label>
+                
+                <label><input id="category" type="radio" name="category">Transport</label>
+          
+                <label><input id="category" type="radio" name="category">Telecommunication</label>
+
+                <label><input id="category" type="radio" name="category">Healthcare</label>
+
+                <label><input id="category" type="radio" name="category">Clothes</label>
+          
+                <label><input id="category" type="radio" name="category">Hygiene</label>
+
+                <label><input id="category" type="radio" name="category">Children</label>
+
+                <label><input id="category" type="radio" name="category">Enterteiment</label>
+                
+                <label><input id="category" type="radio" name="category">Journey</label>
+          
+                <label><input id="category" type="radio" name="category">Training</label>
+
+                <label><input id="category" type="radio" name="category">Books</label>
+
+                <label><input id="category" type="radio" name="category">Savings</label>
+          
+                <label><input id="category" type="radio" name="category">Pension</label>
+
+                <label><input id="category" type="radio" name="category">Repayment of debts</label>
+
+                <label><input id="category" type="radio" name="category">Donation</label>
+          
+                <label><input id="category" type="radio" name="category">Other</label>
+
+              </fieldset>
+
+            </div>
+
+            <div class="field-expense d-flex flex-sm-row flex-column align-items-start">
+              <label for="comment" class="pe-md-2">Add comment:</label>
+              <textarea id="comment" type="textarea" name="comment" rows="2" cols="30" maxlength="45">
+              </textarea>
+            </div>
+
+            <div class="d-grid gap-2 d-md-block">
+              <button class="btn btn-primary add" type="submit">Add</button>
+              <button class="btn btn-primary cancel" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button">Cancel</button>
+            </div>
+
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="staticBackdropLabel">Are you sure that you want to cancel this expense? You will lose all data.</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body d-flex justify-content-between">
+                    <a type="button" href="home.html" class="btn btn-primary cancel">Yes</a>
+                    <button type="button" class="btn btn-secondary add" data-bs-dismiss="modal">No</button>   
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </form>
+
+        </main>
+
+        <img src="assets/images/expense.jpg.png" class="img-fluid illustration col-12 col-md-5 my-5"  alt="">
+
+      </div>
+
+    </div>
+
+  <footer>
+    <small>® Personal Budget 2026. All rights reserved.</small>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+</body>
+</html>

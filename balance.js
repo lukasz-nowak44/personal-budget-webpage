@@ -10,7 +10,16 @@ const numberOfElement = document.querySelectorAll(".category").length;
 
 for (let i=0; i < numberOfElement; i++){
 
-  xValues.push(document.querySelectorAll(".category")[i].innerHTML);
+  // if (numberOfElement >= 13) {
+
+  //   let xTruncated = document.querySelectorAll(".category")[i].innerHTML.slice(0, 5);
+  //   xValues.push(xTruncated);
+
+  // } else {
+
+    xValues.push(document.querySelectorAll(".category")[i].innerHTML);
+  // }
+
   yValues.push(document.querySelectorAll(".percent")[i].innerHTML);
 
 }
@@ -26,6 +35,18 @@ new Chart("expensesChart", {
     
   },
   options: {
+    
+    plugins: {
+      legend: {
+        position: "bottom",
+        labels: {
+          font: {
+            size: 10
+          } 
+        }
+      }
+    },
+
     title: {
       display: true,
       text: "My Expenses"
