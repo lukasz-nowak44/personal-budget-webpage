@@ -1,34 +1,22 @@
-document.querySelectorAll(".dropdown-menu .dropdown-item")[0].addEventListener("click", function() {
+const periodsCollection = document.querySelectorAll(".dropdown-menu .dropdown-item");
+
+const selectorsCollection = ["option.current-month", "option.previous-month", "option.current-year", "option.non-standard"];
+
+for (let i=0; i < periodsCollection.length; i++) {
+
+  periodsCollection[i].addEventListener("click", function() {
+
+    let nameOfPeriod = periodsCollection[i].innerHTML;
     
-
-    localStorage.setItem("handleForSelectedAttribute", "option.current-month");
-    localStorage.setItem('selectedPeriod', 'obecny miesiac');
+    localStorage.setItem("handleForSelectedAttribute", selectorsCollection[i]);
+    localStorage.setItem('selectedPeriod', nameOfPeriod);
     
-});
+  });
 
-document.querySelectorAll(".dropdown-menu .dropdown-item")[1].addEventListener("click", function() {
-    
-
-    localStorage.setItem("handleForSelectedAttribute", "option.previous-month");
-    localStorage.setItem('selectedPeriod', 'poprzedni miesiac');
-  
-});
-
-
-document.querySelectorAll(".dropdown-menu .dropdown-item")[2].addEventListener("click", function() {
-
-    localStorage.setItem("handleForSelectedAttribute", "option.current-year");
-    localStorage.setItem('selectedPeriod', 'obecny rok');
-
-});
-
-document.querySelectorAll(".dropdown-menu .dropdown-item")[3].addEventListener("click", function() {
-   
-    localStorage.setItem("handleForSelectedAttribute", "option.non-standard");
-    localStorage.setItem('selectedPeriod', 'non-standard');
-
-});
+}
 
 if (!(document.getElementById('date') === null)) {
+
   document.getElementById('date').valueAsDate = new Date();
+
 }

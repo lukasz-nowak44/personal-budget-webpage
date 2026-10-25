@@ -1,37 +1,23 @@
+const periodsCollectionForModal = document.querySelectorAll(".periods .dropdown-item");
+
+for (let i=0; i < periodsCollectionForModal.length; i++) {
+
+  periodsCollectionForModal[i].addEventListener("click", function() {
+
+    let nameOfPeriod = periodsCollectionForModal[i].innerHTML;
+    
+    localStorage.setItem("handleForSelectedAttribute", selectorsCollection[i]);
+    localStorage.setItem('selectedPeriod', nameOfPeriod);
+    
+  });
+
+}
+
 document.querySelector(".card.current-month").addEventListener("click", function() {
     
-    localStorage.setItem("handleForSelectedAttribute", "option.current-month");
-    localStorage.setItem('selectedPeriod', 'obecny miesiac');
+    let nameOfPeriod = periodsCollectionForModal[0].innerHTML;
+
+    localStorage.setItem("handleForSelectedAttribute", selectorsCollection[0]);
+    localStorage.setItem('selectedPeriod', nameOfPeriod);
     
-});
-
-document.querySelectorAll(".periods .dropdown-item")[0].addEventListener("click", function() {
-    
-
-    localStorage.setItem("handleForSelectedAttribute", "option.current-month");
-    localStorage.setItem('selectedPeriod', 'obecny miesiac');
-    
-});
-
-document.querySelectorAll(".periods .dropdown-item")[1].addEventListener("click", function() {
-    
-
-    localStorage.setItem("handleForSelectedAttribute", "option.previous-month");
-    localStorage.setItem('selectedPeriod', 'poprzedni miesiac');
-  
-});
-
-
-document.querySelectorAll(".periods .dropdown-item")[2].addEventListener("click", function() {
-
-    localStorage.setItem("handleForSelectedAttribute", "option.current-year");
-    localStorage.setItem('selectedPeriod', 'obecny rok');
-
-});
-
-document.querySelectorAll(".periods .dropdown-item")[3].addEventListener("click", function() {
-   
-    localStorage.setItem("handleForSelectedAttribute", "option.non-standard");
-    localStorage.setItem('selectedPeriod', 'non-standard');
-
 });
