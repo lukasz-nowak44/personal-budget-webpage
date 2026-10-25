@@ -1,12 +1,5 @@
-// window.addEventListener('click', function (event) {
-//   const targetLink = event.target.closest('.dropdown-item');
-//   if (targetLink) {
-//     event.preventDefault();  
-//     event.stopPropagation(); 
-//     alert("ALERT NA SAMEJ GÓRZE PLIKU!");
-//   }
-// }, true);
 const period = localStorage.getItem('selectedPeriod');
+
 if (period) {
     document.querySelector('.selected-period').innerHTML = period;
     
@@ -101,21 +94,6 @@ function printRangeOfDates() {
 
 }
 
-// Nasłuchujemy na obiekcie window – to złapie absolutnie każde kliknięcie na stronie
-// window.addEventListener('click', function (event) {
-  
-//   // Sprawdzamy, czy kliknięty element (lub jego rodzic) ma klasę dropdown-item
-//   const targetLink = event.target.closest('.dropdown-item');
-  
-//   // Jeśli to nasz element, natychmiast przejmujemy kontrolę
-//   if (targetLink) {
-//     event.preventDefault();  // STOP przeładowaniu strony
-//     event.stopPropagation(); // STOP dla Bootstrapa
-    
-//     alert("GLOBALNE ELO! W końcu działa!");
-//   }
-// }, true); 
-
 const modalWithDates = new bootstrap.Modal(document.getElementById ("modalWithDates"), {
   keyboard: false
 });
@@ -149,62 +127,3 @@ new Chart("expensesChart", {
     }
   }
 });
-
-// const dropdownItems = document.querySelectorAll(".dropdown-menu .dropdown-item")
-
-// dropdownItems.forEach(item => {
-//   item.addEventListener("click", function(e) {
-//     alert("elo!");
-//   })
-// })
-
-
-
-// window.addEventListener("pageshow", function () {
-
-//     document.querySelector(".selected-period").innerHTML = "poprzedni miesiac";
-  
-//     document.querySelector("option.previous-month").toggleAttribute("selected");
-
-
-// });
-
-// document.querySelector("a.previous-month").addEventListener("click", function () {
-
-//  alert("hello");
-
-
-
-
-// })
-
-// window.addEventListener("pageshow", (event) => {
-
-
-  
-//     document.querySelector("option.previous-month").toggleAttribute("selected");
-
-//    console.log(event);
-
-
-//   //  sprawdzić dół
-
-//     for (let i=0; i < numberOfElement; i++){
-
-//     if (event.currentTarget.innerWidth <= 1000) {
-
-//       let xTruncated = document.querySelectorAll(".category")[i].innerHTML.slice(0, 5);
-//       xValues.push(xTruncated);
-//       fontLegend = 8;
-
-//     } else {
-
-//       xValues.push(document.querySelectorAll(".category")[i].innerHTML);
-//     }
-
-//     yValues.push(document.querySelectorAll(".percent")[i].innerHTML);
-//     fontLegend = 12;
-//   }
-
-
-// });
