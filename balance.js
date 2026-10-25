@@ -2,6 +2,7 @@ const modalWithDates = new bootstrap.Modal(document.getElementById ("modalWithDa
   keyboard: false
 });
 
+
 const period = localStorage.getItem("selectedPeriod");
 
 if (period) {
@@ -24,6 +25,10 @@ if (handle) {
   document.querySelector(handle).toggleAttribute("selected");
 
 }
+
+document.getElementById('start-date').value = "2000-01-01";
+document.getElementById('end-date').valueAsDate = new Date();
+
 
 const xValues = [];
 const yValues = [];

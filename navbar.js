@@ -28,3 +28,7 @@ document.querySelectorAll(".dropdown-menu .dropdown-item")[3].addEventListener("
     localStorage.setItem('selectedPeriod', 'non-standard');
 
 });
+
+if (!(document.getElementById('date') === null)) {
+  document.getElementById('date').valueAsDate = new Date();
+}
