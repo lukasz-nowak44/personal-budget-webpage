@@ -1,13 +1,26 @@
-const period = localStorage.getItem('selectedPeriod');
+const modalWithDates = new bootstrap.Modal(document.getElementById ("modalWithDates"), {
+  keyboard: false
+});
+
+const period = localStorage.getItem("selectedPeriod");
 
 if (period) {
-    document.querySelector('.selected-period').innerHTML = period;
+
+    document.querySelector(".selected-period").innerHTML = period;
+
+    if (period === "non-standard"){
+
+      modalWithDates.show();
+
+      printRangeOfDates();
+    }
     
 }
 
 const handle = localStorage.getItem("handleForSelectedAttribute");
 
 if (handle) {
+
   document.querySelector(handle).toggleAttribute("selected");
 
 }
@@ -60,7 +73,7 @@ periods.addEventListener("change", function (event) {
 
     modalWithDates.show();
 
-    printRangeOfDates()
+    printRangeOfDates();
   
   }
  
@@ -93,10 +106,6 @@ function printRangeOfDates() {
   });
 
 }
-
-const modalWithDates = new bootstrap.Modal(document.getElementById ("modalWithDates"), {
-  keyboard: false
-});
 
 new Chart("expensesChart", {
   type: "pie",

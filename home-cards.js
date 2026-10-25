@@ -32,6 +32,6 @@ document.querySelectorAll(".periods .dropdown-item")[2].addEventListener("click"
 document.querySelectorAll(".periods .dropdown-item")[3].addEventListener("click", function() {
    
     localStorage.setItem("handleForSelectedAttribute", "option.non-standard");
-    localStorage.setItem('selectedPeriod', 'niestandardowy');
+    localStorage.setItem('selectedPeriod', 'non-standard');
 
 });

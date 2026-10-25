@@ -25,6 +25,6 @@ document.querySelectorAll(".dropdown-menu .dropdown-item")[2].addEventListener("
 document.querySelectorAll(".dropdown-menu .dropdown-item")[3].addEventListener("click", function() {
    
     localStorage.setItem("handleForSelectedAttribute", "option.non-standard");
-    localStorage.setItem('selectedPeriod', 'niestandardowy');
+    localStorage.setItem('selectedPeriod', 'non-standard');
 
 });
