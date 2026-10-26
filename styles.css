@@ -6,6 +6,7 @@
   --text: #3B4953;
   --button: #C87A53;
   --shadow-button: inset 0px -1px 9px -2px #5A7863;
+  --border-radius: 5px;
 }
 
 *, *::before, *::after {
@@ -69,25 +70,33 @@ ul li::marker {
 
 input {
   padding: 0.6rem;
-  border-radius: 5px;
-  border: 1px solid var(--accent);
+  border-radius: 0 5px 5px 0;
+  border: none;
   width: 100%;
   caret-color: var(--text);
 }
 
-.btn {
-  box-shadow: var(--shadow-button);
+input::placeholder {
+  font-weight: 400;
+  color: var(--text);
 }
 
-.btn-primary {
-  background-color: var(--button);
-  border: var(--text); 
-  width: 100%;
+.field {
+  display: flex;
+  margin-bottom: 1.1rem;
+  border: 1px solid var(--text);
+  border-radius: var(--border-radius);
 }
 
-.btn:hover {
-  background-color: var(--text);
-  color: var(--lighter-primary);
+.field img {
+  border-right: 1px solid var(--text);
+  border-radius: var(--border-radius);
+  padding: 0 0.5rem;
+  background-color: var(--lighter-primary);
+}
+
+.field:has(input[aria-invalid="true"]){
+  margin-bottom: 0.2rem;
 }
 
 input[aria-invalid="true"] {
@@ -102,13 +111,29 @@ input[aria-invalid="true"] {
   font-style: italic;
   font-weight: 600;
   text-align: right;
-  margin-top: 0.3rem;
+}
+
+.btn {
+  box-shadow: var(--shadow-button);
+  font-weight: 700;
+  letter-spacing: 0.05rem;
+}
+
+.btn-primary {
+  background-color: var(--button);
+  border: var(--text); 
+  width: 100%;
+}
+
+.btn:hover {
+  background-color: var(--text);
+  color: var(--lighter-primary);
 }
 
 footer {
   margin-top: auto;
   background-color: white;
-  color: var(--bu);
+  color: var(--accent);
   padding: 1rem;
   display: flex;
   justify-content: center;
