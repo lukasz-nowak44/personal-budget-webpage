@@ -23,5 +23,6 @@ form.addEventListener("submit", (e) => {
   if (results.includes(false)) {
     e.preventDefault();
     inputs[results.indexOf(false)].focus();
-  }
+  } 
+  
 });

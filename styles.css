@@ -143,7 +143,7 @@ input[aria-invalid="true"].form-check-input {
   outline-offset: 3px;
 }
 
-footer {
+footer, footer a {
   margin-top: auto;
   background-color: white;
   color: var(--accent);
@@ -153,3 +153,8 @@ footer {
   width: 100%;
 }
 
+/* "footer a" dodane na czas testów wersji z samym Frontend'em  */
+
+footer a {
+  padding: 0;
+}
