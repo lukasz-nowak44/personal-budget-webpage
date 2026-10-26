@@ -33,37 +33,37 @@
             <label for="login" class="visually-hidden">Username</label>
             <img src="assets/icons/user.svg" alt="" />
             <input id="login" type="text" name="username" placeholder="username"
-              autocomplete="given-username" required aria-describedby="username-error">
-            <p id="username" class="error" aria-live="polite"></p>
+              autocomplete="given-username" required aria-describedby="username-error">            
           </div>
+          <p id="username-error" class="error" aria-live="polite"></p>
 
           <div class="field">
             <label for="email" class="visually-hidden">Email</label>
             <img src="assets/icons/at.svg" alt="" />
             <input id="email" type="email" name="email" placeholder="email"
-              autocomplete="email" required aria-describedby="email-error">
-            <p id="email-error" class="error" aria-live="polite"></p>
+              autocomplete="email" required aria-describedby="email-error">            
           </div>
+          <p id="email-error" class="error" aria-live="polite"></p>
 
           <div class="field">
             <label for="password" class="visually-hidden">Password</label>
             <img src="assets/icons/lock-password.svg" alt="" />
-            <input id="password" type="password" name="password" placeholder="password" required aria-describedby="password-error">
-            <p id="password-error" class="error" aria-live="polite"></p>
+            <input id="password" type="password" name="password" placeholder="password" required aria-describedby="password-error">            
           </div>
+          <p id="password-error" class="error" aria-live="polite"></p>
 
           <div class="field">
             <label for="repeat-password" class="visually-hidden">Repeat Password</label>
             <img src="assets/icons/lock-plus.svg" alt="" />
-            <input id="repeat-password" type="password" name="password" placeholder="repeat password" required aria-describedby="repeat-password-error">
-            <p id="repeat-password-error" class="error" aria-live="polite"></p>
+            <input id="repeat-password" type="password" name="password" placeholder="repeat password" required aria-describedby="repeat-password-error">           
           </div>
+          <p id="repeat-password-error" class="error" aria-live="polite"></p>
 
           <div class="form-check">
-            <label class="form-check-label pb-3" for="agreement"><input class="form-check-input me-2" type="checkbox" name="agreement" id="agreement"aria-label="agreement to the terms and conditions" required>
-              <small>If you want to use our application you need to approve our <a href="#">terms and conditions</a></small>
+            <label class="form-check-label pb-3" for="agreement"><input class="form-check-input me-2" type="checkbox" name="agreement" id="agreement"aria-label="agreement to the terms and conditions" aria-describedby="agreement-error" required>
+              <small>If you want to use our application you need to approve our <a href="./terms.html">terms and conditions</a></small>
             </label>
-          </div>
+          </div><p id="agreement-error" class="agreement-error" aria-live="polite"></p>
 
           <button type="submit" class="btn btn-lg btn-primary">Sign up</button>
 
@@ -80,6 +80,8 @@
   <footer>
     <small>® Personal Budget 2026. All rights reserved.</small>
   </footer>
+
+  <script src="registration.js"></script>
 
 </body>
 </html>

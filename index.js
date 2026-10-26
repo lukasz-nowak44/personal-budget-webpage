@@ -12,10 +12,8 @@ function validate(input) {
   }
 
   document.getElementById(input.getAttribute('aria-describedby')).textContent = message;
-
   input.setAttribute('aria-invalid', message ? 'true' : 'false');
   return message === '';
-
 }
 
 form.addEventListener('submit', (e) => {
@@ -27,4 +25,3 @@ form.addEventListener('submit', (e) => {
     inputs[results.indexOf(false)].focus();
   }
 });
-
