@@ -38,7 +38,7 @@ nav {
 
 .nav-link {
   text-decoration: none;
-  
+  color: var(--lighter-primary) !important;
   margin-left: 1rem;
 }
 
@@ -49,6 +49,11 @@ nav {
 
 .nav-link:hover{
   color: var(--button) !important;
+}
+
+.nav-link.active {
+  background-color: var(--button);
+  border-radius: 5px;
 }
 
 .logo {
