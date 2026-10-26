@@ -1,27 +1,27 @@
-const form = document.querySelector('form');
+const form = document.querySelector("form");
 const EMAIL_RE = /^[^\s@]+@[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}$/i;
 
 function validate(input) {
   const value = input.value.trim();
-  let message = '';
+  let message = "";
   let checkedTerms = document.querySelector(".form-check-input").checked;
 
-  if (value === '') {
-    message = `${input.labels[0].textContent} cannot be empty`;
-  } else if (input.type === 'email' && !EMAIL_RE.test(value)) {
-    message = 'Looks like this is not an email';
+  if (value === "") {
+    message = "${input.labels[0].textContent} cannot be empty";
+  } else if (input.type === "email" && !EMAIL_RE.test(value)) {
+    message = "Looks like this is not an email";
   } else if (input.type === "checkbox" && (!checkedTerms)) {
-    message = 'You must check this field to continue';
+    message = "You must check this field to continue";
   }
  
-  document.getElementById(input.getAttribute('aria-describedby')).textContent = message;
+  document.getElementById(input.getAttribute("aria-describedby")).textContent = message;
 
-  input.setAttribute('aria-invalid', message ? 'true' : 'false');
-  return message === '';
+  input.setAttribute("aria-invalid", message ? "true" : "false");
+  return message === "";
 }
 
-form.addEventListener('submit', (e) => {
-  const inputs = [...form.querySelectorAll('input')];
+form.addEventListener("submit", (e) => {
+  const inputs = [...form.querySelectorAll("input")];
   const results = inputs.map(validate);
 
   if (results.includes(false)) {

@@ -30,8 +30,8 @@ if (handle) {
 
 }
 
-document.getElementById('start-date').value = "2000-01-01";
-document.getElementById('end-date').valueAsDate = new Date();
+document.getElementById("start-date").value = "2000-01-01";
+document.getElementById("end-date").valueAsDate = new Date();
 
 for (let i=0; i < numberOfElement; i++){
 
@@ -40,7 +40,7 @@ for (let i=0; i < numberOfElement; i++){
 
   if (numberOfElement >= 13) {
 
-    fontLegend = 8;
+    fontLegend = 10;
 
   }
 
@@ -68,20 +68,18 @@ periods.addEventListener("change", function (event) {
 if (balanceResult >= 0) {
 
   document.querySelector(".deficit").classList.add("visually-hidden");
-  document.querySelector(".deficit").setAttribute("aria-hidden", "true");
   document.querySelector(".verdict").style.backgroundColor = "var(--accent)";
 
 } else {
 
   document.querySelector(".surplus").classList.add("visually-hidden");
-  document.querySelector(".surplus").setAttribute("aria-hidden", "true");
   document.querySelector(".verdict").style.backgroundColor = "var(--button)";
   
 }
 
 function printRangeOfDates() {
 
-  let myModalEl = document.getElementById('modalWithDates');
+  let myModalEl = document.getElementById("modalWithDates");
 
   myModalEl.addEventListener("hide.bs.modal", function (event) {
 

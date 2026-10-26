@@ -15,8 +15,8 @@ for (let i=0; i < periodsCollection.length; i++) {
 
 }
 
-if (!(document.getElementById('date') === null)) {
+if (!(document.getElementById("date") === null)) {
 
-  document.getElementById('date').valueAsDate = new Date();
+  document.getElementById("date").valueAsDate = new Date();
 
 }
