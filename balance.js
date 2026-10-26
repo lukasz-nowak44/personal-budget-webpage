@@ -36,29 +36,29 @@ const barColors = ["red", "green","blue","orange","brown", "yellow", "black", "p
 
 const numberOfElement = document.querySelectorAll(".category").length;
 
-let fontLegend = 8;
+let fontLegend = 12;
 
-for (let i=0; i < numberOfElement; i++){
-
-  xValues.push(document.querySelectorAll(".category")[i].innerHTML);
-  yValues.push(document.querySelectorAll(".percent")[i].innerHTML);
-
-}
 // for (let i=0; i < numberOfElement; i++){
 
-//   // if (numberOfElement >= 13) {
-
-//   //   let xTruncated = document.querySelectorAll(".category")[i].innerHTML.slice(0, 5);
-//   //   xValues.push(xTruncated);
-
-//   // } else {
-
-//     xValues.push(document.querySelectorAll(".category")[i].innerHTML);
-//   // }
-
+//   xValues.push(document.querySelectorAll(".category")[i].innerHTML);
 //   yValues.push(document.querySelectorAll(".percent")[i].innerHTML);
 
 // }
+for (let i=0; i < numberOfElement; i++){
+
+  xValues.push(document.querySelectorAll(".category")[i].innerHTML);
+
+  yValues.push(document.querySelectorAll(".percent")[i].innerHTML);
+
+  if (numberOfElement >= 13) {
+
+    // let xTruncated = document.querySelectorAll(".category")[i].innerHTML.slice(0, 5);
+    // xValues.push(xTruncated);
+
+    fontLegend = 8;
+  }
+
+}
 
 
 

@@ -142,6 +142,10 @@ table th, td{
   border: 1px solid var(--text);
 }
 
+th, tr > td:first-child {
+  text-align: center;
+}
+
 td {
   font-weight: 400;
 }
