@@ -133,9 +133,14 @@ input[aria-invalid="true"].form-check-input {
   width: 100%;
 }
 
-.btn:hover {
+.btn:hover, .btn:focus-visible {
   background-color: var(--text);
-  color: var(--lighter-primary);
+  color: var(--primary);
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--text);
+  outline-offset: 3px;
 }
 
 footer {
