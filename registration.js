@@ -7,7 +7,7 @@ function validate(input) {
   let checkedTerms = document.querySelector(".form-check-input").checked;
 
   if (value === "") {
-    message = "${input.labels[0].textContent} cannot be empty";
+    message = `${input.labels[0].textContent} cannot be empty`;
   } else if (input.type === "email" && !EMAIL_RE.test(value)) {
     message = "Looks like this is not an email";
   } else if (input.type === "checkbox" && (!checkedTerms)) {
