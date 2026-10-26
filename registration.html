@@ -14,7 +14,7 @@
 </head>
 <body>
 
-  <div class="container p-4">
+  <div class="container external-box p-4">
 
     <div class="row">
 
@@ -31,6 +31,7 @@
 
           <div class="field">
             <label for="login" class="visually-hidden">Username</label>
+            <img src="assets/icons/user.svg" alt="" />
             <input id="login" type="text" name="username" placeholder="username"
               autocomplete="given-username" required aria-describedby="username-error">
             <p id="username" class="error" aria-live="polite"></p>
@@ -38,6 +39,7 @@
 
           <div class="field">
             <label for="email" class="visually-hidden">Email</label>
+            <img src="assets/icons/at.svg" alt="" />
             <input id="email" type="email" name="email" placeholder="email"
               autocomplete="email" required aria-describedby="email-error">
             <p id="email-error" class="error" aria-live="polite"></p>
@@ -45,12 +47,14 @@
 
           <div class="field">
             <label for="password" class="visually-hidden">Password</label>
+            <img src="assets/icons/lock-password.svg" alt="" />
             <input id="password" type="password" name="password" placeholder="password" required aria-describedby="password-error">
             <p id="password-error" class="error" aria-live="polite"></p>
           </div>
 
           <div class="field">
             <label for="repeat-password" class="visually-hidden">Repeat Password</label>
+            <img src="assets/icons/lock-plus.svg" alt="" />
             <input id="repeat-password" type="password" name="password" placeholder="repeat password" required aria-describedby="repeat-password-error">
             <p id="repeat-password-error" class="error" aria-live="polite"></p>
           </div>
@@ -67,14 +71,15 @@
 
         <a href="index.html" aria-label="return to main page">⤆ Return  for signing in</a>
 
+      </main>
 
-    </main>
-
+    </div>
 
   </div>
 
-</div>
-
+  <footer>
+    <small>® Personal Budget 2026. All rights reserved.</small>
+  </footer>
 
 </body>
 </html>
