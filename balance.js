@@ -2,8 +2,14 @@ const modalWithDates = new bootstrap.Modal(document.getElementById ("modalWithDa
   keyboard: false
 });
 
-
 const period = localStorage.getItem("selectedPeriod");
+const handle = localStorage.getItem("handleForSelectedAttribute");
+const xValues = [];
+const yValues = [];
+const barColors = ["red", "green","blue","orange","brown", "yellow", "black", "purple", "pink", "violet", "beige", "lime", "gold", "gray", "lightblue", "firebrick", "khaki", "lavender", "steelblue"];
+
+const numberOfElement = document.querySelectorAll(".category").length;
+let fontLegend = 12;
 
 if (period) {
 
@@ -18,8 +24,6 @@ if (period) {
     
 }
 
-const handle = localStorage.getItem("handleForSelectedAttribute");
-
 if (handle) {
 
   document.querySelector(handle).toggleAttribute("selected");
@@ -29,44 +33,21 @@ if (handle) {
 document.getElementById('start-date').value = "2000-01-01";
 document.getElementById('end-date').valueAsDate = new Date();
 
-
-const xValues = [];
-const yValues = [];
-const barColors = ["red", "green","blue","orange","brown", "yellow", "black", "purple", "pink", "violet", "beige", "lime", "gold", "gray", "lightblue", "firebrick", "khaki", "lavender", "steelblue"];
-
-const numberOfElement = document.querySelectorAll(".category").length;
-
-let fontLegend = 12;
-
-// for (let i=0; i < numberOfElement; i++){
-
-//   xValues.push(document.querySelectorAll(".category")[i].innerHTML);
-//   yValues.push(document.querySelectorAll(".percent")[i].innerHTML);
-
-// }
 for (let i=0; i < numberOfElement; i++){
 
   xValues.push(document.querySelectorAll(".category")[i].innerHTML);
-
   yValues.push(document.querySelectorAll(".percent")[i].innerHTML);
 
   if (numberOfElement >= 13) {
 
-    // let xTruncated = document.querySelectorAll(".category")[i].innerHTML.slice(0, 5);
-    // xValues.push(xTruncated);
-
     fontLegend = 8;
+
   }
 
 }
 
-
-
 let periods = document.querySelector("#periods");
-
 let balanceResult = document.querySelector(".result").innerHTML;
-
-
 
 periods.addEventListener("change", function (event) {
 
@@ -95,6 +76,7 @@ if (balanceResult >= 0) {
   document.querySelector(".surplus").classList.add("visually-hidden");
   document.querySelector(".surplus").setAttribute("aria-hidden", "true");
   document.querySelector(".verdict").style.backgroundColor = "var(--button)";
+  
 }
 
 function printRangeOfDates() {
