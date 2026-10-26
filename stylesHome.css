@@ -6,7 +6,7 @@
   --text: #3B4953;
   --button: #C87A53;
   --shadow-button: inset 0px -1px 9px -2px #5A7863;
-  --shadow-cards: 0px -1px 9px -2px #5A7863;
+  --shadow-cards: 0px -1px 9px -2px #3B4953;
   --gaps: 2rem;
   --border-form: 2px dotted var(--text);
 }
@@ -86,6 +86,11 @@ h1 {
   font-weight: 800; 
   max-width: 10rem;
   box-shadow: var(--shadow-cards);
+  opacity: 0.9;
+}
+
+.card:hover {
+  opacity: 1;
 }
 
 .card-text {
