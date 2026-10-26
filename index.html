@@ -42,13 +42,13 @@
 
             <h2>Do you already have an account?</h2>
 
-            <form class="pb-3"  action="signin" method="post" novalidate>
+            <form class="pb-3" action="signin" method="post" novalidate>
 
               <div class="field">
                 <label for="login" class="visually-hidden">Username</label>
                 <input id="login" type="text" name="username" placeholder="username"
                       autocomplete="given-username" required aria-describedby="username-error">
-                <p id="username" class="error" aria-live="polite"></p>
+                <p id="username-error" class="error" aria-live="polite"></p>
               </div>
 
               <div class="field">
@@ -75,7 +75,7 @@
     </div>
   </div>
 
-  
+  <script src="/index.js"></script>
   
 </body>
 </html>

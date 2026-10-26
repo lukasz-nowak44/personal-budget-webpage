@@ -90,3 +90,19 @@ input {
   background-color: var(--text);
   color: var(--lighter-primary);
 }
+
+input[aria-invalid="true"] {
+  background: url(assets/icons/circle-x.svg) no-repeat right 0.5rem center;
+  border: 2px solid var(--button);
+  padding-right: 3.5rem;
+}
+
+.error {
+  color: var(--button);
+  font-size: 0.6rem;
+  font-style: italic;
+  font-weight: 600;
+  text-align: right;
+  margin-top: 0.3rem;
+}
+
