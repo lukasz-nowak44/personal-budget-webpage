@@ -38,7 +38,7 @@ nav {
 
 .nav-link {
   text-decoration: none;
-  color: var(--lighter-primary) !important;
+  
   margin-left: 1rem;
 }
 
