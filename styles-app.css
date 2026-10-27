@@ -176,10 +176,12 @@ td .btn {
 
 .category-income + td,.category-income + td + td {
   text-align: right;
+  padding-right: 0.2rem;
 }
 
 .category + td,.category + td + td {
   text-align: right;
+  padding-right: 0.2rem;
 }
 
 .details {
@@ -242,6 +244,11 @@ table .btn:hover, table .btn:focus-visible {
 table .btn:focus-visible {
   outline: 3px solid var(--text);
   outline-offset: 3px;
+}
+
+/* temporary */
+.construction {
+  max-height: 40rem;
 }
 
 @media (max-width: 61.9375rem) {
