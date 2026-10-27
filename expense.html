@@ -80,15 +80,13 @@
 
             <div class="field-expense">
               <label for="amount">Amount:</label>
-              <input id="amount" type="number" name="amount" required aria-describedby="amount-error">
-              <p id="amount" class="error" aria-live="polite"></p>
+              <input id="amount" type="number" name="amount" required>
             </div>
 
             <div class="field-expense">
               <label for="date">Date:</label>
               <input id="date" type="date" name="date" value=""
-                required aria-describedby="date-error">
-              <p id="date" class="error" aria-live="polite"></p>
+                required>
             </div>
 
             <div class="field-expense">
@@ -97,39 +95,39 @@
 
                 <legend>Category:</legend>
 
-                <label><input id="category" type="radio" name="category" checked>Flat</label>
+                <label><input type="radio" name="category" checked>Flat</label>
 
-                <label><input id="category" type="radio" name="category">Foods</label>
+                <label><input type="radio" name="category">Foods</label>
                 
-                <label><input id="category" type="radio" name="category">Transport</label>
+                <label><input type="radio" name="category">Transport</label>
           
-                <label><input id="category" type="radio" name="category">Telecommunication</label>
+                <label><input type="radio" name="category">Telecommunication</label>
 
-                <label><input id="category" type="radio" name="category">Healthcare</label>
+                <label><input type="radio" name="category">Healthcare</label>
 
-                <label><input id="category" type="radio" name="category">Clothes</label>
+                <label><input type="radio" name="category">Clothes</label>
           
-                <label><input id="category" type="radio" name="category">Hygiene</label>
+                <label><input type="radio" name="category">Hygiene</label>
 
-                <label><input id="category" type="radio" name="category">Children</label>
+                <label><input type="radio" name="category">Children</label>
 
-                <label><input id="category" type="radio" name="category">Enterteiment</label>
+                <label><input type="radio" name="category">Enterteiment</label>
                 
-                <label><input id="category" type="radio" name="category">Journey</label>
+                <label><input type="radio" name="category">Journey</label>
           
-                <label><input id="category" type="radio" name="category">Training</label>
+                <label><input type="radio" name="category">Training</label>
 
-                <label><input id="category" type="radio" name="category">Books</label>
+                <label><input type="radio" name="category">Books</label>
 
-                <label><input id="category" type="radio" name="category">Savings</label>
+                <label><input type="radio" name="category">Savings</label>
           
-                <label><input id="category" type="radio" name="category">Pension</label>
+                <label><input type="radio" name="category">Pension</label>
 
-                <label><input id="category" type="radio" name="category">Repayment of debts</label>
+                <label><input type="radio" name="category">Repayment of debts</label>
 
-                <label><input id="category" type="radio" name="category">Donation</label>
+                <label><input type="radio" name="category">Donation</label>
           
-                <label><input id="category" type="radio" name="category">Other</label>
+                <label><input type="radio" name="category">Other</label>
 
               </fieldset>
 
@@ -137,7 +135,7 @@
 
             <div class="field-expense d-flex flex-sm-row flex-column align-items-start">
               <label for="comment" class="pe-md-2">Add comment:</label>
-              <textarea id="comment" type="textarea" name="comment" rows="2" cols="30" maxlength="45">
+              <textarea id="comment" name="comment" rows="2" cols="30" maxlength="45">
               </textarea>
             </div>
 
@@ -146,15 +144,15 @@
               <button class="btn btn-primary add"  type="submit">Add</button>
             </div>
 
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                      <h5 class="modal-title" id="staticBackdropLabel">Are you sure that you want to cancel this expense? You will lose all data.</h5>
+                      <h2 class="modal-title">Are you sure that you want to cancel this expense? You will lose all data.</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body d-flex justify-content-between">
-                    <a type="button" href="home.html" class="btn btn-primary cancel">Yes</a>
+                    <a href="home.html" class="btn btn-primary cancel">Yes</a>
                     <button type="button" class="btn btn-secondary add" data-bs-dismiss="modal">No</button>   
                   </div>
                 </div>

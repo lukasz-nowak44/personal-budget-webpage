@@ -80,15 +80,13 @@
 
             <div class="field-income">
               <label for="amount">Amount:</label>
-              <input id="amount" type="number" name="amount" required aria-describedby="amount-error">
-              <p id="amount" class="error" aria-live="polite"></p>
+              <input id="amount" type="number" name="amount" required>
             </div>
 
             <div class="field-income">
               <label for="date">Date:</label>
               <input id="date" type="date" name="date" value=""
-                required aria-describedby="date-error">
-              <p id="date" class="error" aria-live="polite"></p>
+                required>
             </div>
 
             <div class="field-income">
@@ -97,13 +95,13 @@
 
                 <legend>Category:</legend>
 
-                <label><input id="category" type="radio" name="category" checked>Salary</label>
+                <label><input type="radio" name="category" checked>Salary</label>
 
-                <label><input id="category" type="radio" name="category">Interest savings</label>
+                <label><input type="radio" name="category">Interest savings</label>
                 
-                <label><input id="category" type="radio" name="category">Selling on Allegro</label>
+                <label><input type="radio" name="category">Selling on Allegro</label>
           
-                <label><input id="category" type="radio" name="category">Other</label>
+                <label><input type="radio" name="category">Other</label>
 
               </fieldset>
 
@@ -111,7 +109,7 @@
 
             <div class="field-income d-flex flex-sm-row flex-column align-items-start">
               <label for="comment" class="pe-md-2">Add comment:</label>
-              <textarea id="comment" type="textarea" name="comment" rows="2" cols="30" maxlength="45">
+              <textarea id="comment" name="comment" rows="2" cols="30" maxlength="45">
               </textarea>
             </div>
 
@@ -124,11 +122,11 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                      <h5 class="modal-title" id="staticBackdropLabel">Are you sure that you want to cancel this income? You will lose all data.</h5>
+                      <h2 class="modal-title" id="staticBackdropLabel">Are you sure that you want to cancel this income? You will lose all data.</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body d-flex justify-content-between">
-                    <a type="button" href="home.html" class="btn btn-primary cancel">Yes</a>
+                    <a href="home.html" class="btn btn-primary cancel">Yes</a>
                     <button type="button" class="btn btn-secondary add" data-bs-dismiss="modal">No</button>   
                   </div>
                 </div>

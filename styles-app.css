@@ -1,10 +1,9 @@
 :root {
   --primary: #EBF4DD;
   --lighter-primary: #F2F8E8;
-  --secondary: #90AB8B;
   --accent: #5A7863;
   --text: #3B4953;
-  --button: #C87A53;
+  --button: #A75B35;
   --shadow-button: inset 0px -1px 9px -2px #5A7863;
   --shadow-cards: 0px -1px 9px -2px #3B4953;
   --gaps: 2rem;
@@ -49,7 +48,7 @@ nav {
 }
 
 .nav-link:hover{
-  color: var(--button) !important;
+  color: var(--text) !important;
 }
 
 .nav-link.active {
@@ -122,11 +121,11 @@ h1 {
   margin: calc(1rem + 2dvh) 0;
 }
 
-label:has(input[id="category"]) {
+label:has(input[name="category"]) {
   margin-right: 1rem;
 }
 
-input[id="category"] {
+input[name="category"] {
   margin-right: 0.2rem;
 }
 
@@ -150,6 +149,10 @@ input[id="category"] {
   border: var(--border-form);
 }
 
+.modal-title {
+  font-size: 1.5rem;
+}
+
 .table-title {
   font-size: 1.2rem;
   font-weight: 900;
@@ -164,7 +167,7 @@ th, tr > td:first-child {
 }
 
 td {
-  font-weight: 400;
+  font-weight: 500;
 }
 
 td .btn {
