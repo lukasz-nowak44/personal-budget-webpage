@@ -57,6 +57,10 @@ nav {
   width: fit-content;
 }
 
+.nav-link.active:hover {
+  color: var(--lighter-primary) !important;
+}
+
 .logo {
   width: 4rem;
   margin-left: 0.75rem;
