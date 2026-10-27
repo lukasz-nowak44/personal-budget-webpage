@@ -92,6 +92,8 @@ function printRangeOfDates() {
 
 }
 
+let categoryName = document.querySelector("info")
+
 new Chart("expensesChart", {
   type: "pie",
   data: {

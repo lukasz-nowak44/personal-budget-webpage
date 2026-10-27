@@ -20,6 +20,7 @@ input, button, textarea, select {
 }
 
 body {
+  background-image: url(./assets/images/climpek.png);
   background-color: var(--primary);
   color: var(--text);
   font-size: 1rem;
@@ -166,6 +167,13 @@ td {
   font-weight: 400;
 }
 
+td .btn {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.2rem;
+}
+
 .category-income + td,.category-income + td + td {
   text-align: right;
 }
@@ -173,6 +181,15 @@ td {
 .category + td,.category + td + td {
   text-align: right;
 }
+
+.details {
+  width: 100%;
+  text-align: center;
+}
+
+.details .amount {
+  text-align: right;
+} 
 
 footer {
   display: flex;
@@ -214,6 +231,15 @@ footer {
 }
 
 .btn:focus-visible {
+  outline: 3px solid var(--text);
+  outline-offset: 3px;
+}
+
+table .btn:hover, table .btn:focus-visible {
+  background-color: var(--button);
+}
+
+table .btn:focus-visible {
   outline: 3px solid var(--text);
   outline-offset: 3px;
 }
