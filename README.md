@@ -10,7 +10,7 @@ At this moment there is only frontend side available. The development from backe
 
 ## Important Information - Temporary Solution
 
-For reviewing application in current state the anchor tag on the "sign in" subsite is added. It redirects directly to home page. Then you can navigate to other subsites. The look of "settings" subsite is also under construction.
+For reviewing application in current state the anchor tag on the "sign in" subsite is added. You can just click on the footer and then it redirects directly to home page. There you can navigate to other subsites. The look of "settings" subsite is also under construction.
 
 
 ## Author
