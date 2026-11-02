@@ -6,7 +6,7 @@ const period = localStorage.getItem("selectedPeriod");
 const handle = localStorage.getItem("handleForSelectedAttribute");
 const xValues = [];
 const yValues = [];
-const barColors = ["red", "green","blue","orange","brown", "yellow", "black", "purple", "pink", "violet", "beige", "lime", "gold", "gray", "lightblue", "firebrick", "khaki", "lavender", "steelblue"];
+const barColors = ["red", "green","blue","orange","brown", "yellow", "lavender"];
 
 const numberOfElement = document.querySelectorAll(".category").length;
 let fontLegend = 12;
@@ -33,16 +33,25 @@ if (handle) {
 document.getElementById("start-date").value = "2000-01-01";
 document.getElementById("end-date").valueAsDate = new Date();
 
-for (let i=0; i < numberOfElement; i++){
+for (let i=0; i < 6; i++){
 
   xValues.push(document.querySelectorAll(".category")[i].innerHTML);
   yValues.push(document.querySelectorAll(".percent")[i].innerHTML);
 
-  if (numberOfElement >= 13) {
+}
 
-    fontLegend = 10;
+if (numberOfElement > 6) {
+
+  let sumOfOther = 0;
+  xValues.push("other");
+
+  for (let i=6; i < numberOfElement; i++) {
+
+    sumOfOther += Number(document.querySelectorAll(".percent")[i].innerHTML);
 
   }
+
+  yValues.push(sumOfOther);
 
 }
 
