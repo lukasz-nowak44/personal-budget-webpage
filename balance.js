@@ -18,8 +18,8 @@ if (period) {
     if (period === "non-standard"){
 
       modalWithDates.show();
-
       printRangeOfDates();
+      
     }
     
 }
