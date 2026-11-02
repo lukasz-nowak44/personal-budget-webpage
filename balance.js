@@ -19,7 +19,7 @@ if (period) {
 
       modalWithDates.show();
       printRangeOfDates();
-      
+
     }
     
 }
@@ -115,11 +115,12 @@ new Chart("expensesChart", {
     
     plugins: {
       legend: {
-        position: "bottom",
+        position: "top",
         labels: {
           font: {
             size: fontLegend
-          } 
+          }
+          
         }
       }
     },
