@@ -1,6 +1,16 @@
 <?php 
 
   session_start();
+
+  $_SESSION['given_username'] = $_POST['username'];
+  $_SESSION['given_email'] = $_POST['email'];
+  $_SESSION['given_password'] = $_POST['password'];
+  $_SESSION['given_repeat_password'] = $_POST['repeat_password'];
+  if (isset($_POST['agreement'])) {
+
+    $_SESSION['agreement'] = true;
+
+  }
   
   $isEverythingGood = true;
 
@@ -61,7 +71,7 @@
         $isEverythingGood = false;
 
       }
-      
+
     }
 
   }
@@ -106,11 +116,9 @@
     $sql = 'INSERT INTO users (username, password, email) VALUES (:username, :password, :email)';
    
     $query = $db->prepare($sql);
-
     $query->bindValue(':username', $username, PDO::PARAM_STR);
     $query->bindValue(':password', $password_hashed, PDO::PARAM_STR);
     $query->bindValue(':email', $email, PDO::PARAM_STR);
-
     $query->execute();
 
   } else {

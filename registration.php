@@ -39,7 +39,7 @@
           <div class="field">
             <label for="login" class="visually-hidden">Username</label>
             <img src="assets/icons/user.svg" alt="">
-            <input id="login" type="text" name="username" placeholder="username"
+            <input id="login" type="text" name="username" <?= isset($_SESSION['given_username']) ? 'value="'.$_SESSION['given_username'] .'"' : '' ?> placeholder="username"
               autocomplete="username" required aria-describedby="username-error">            
           </div>
 
@@ -49,6 +49,8 @@
           if(isset($_SESSION['username_error'])){
             echo $_SESSION['username_error'];
             unset($_SESSION['username_error']);
+          } else if (isset($_SESSION['given_username'])) {
+            unset($_SESSION['given_username']);
           }
 ?>
 
@@ -56,7 +58,7 @@
           <div class="field">
             <label for="email" class="visually-hidden">Email</label>
             <img src="assets/icons/at.svg" alt="">
-            <input id="email" type="email" name="email" placeholder="email"
+            <input id="email" type="email" name="email" <?= isset($_SESSION['given_email']) ? 'value="'.$_SESSION['given_email'].'"' : '' ?> placeholder="email"
               autocomplete="email" required aria-describedby="email-error">            
           </div>
           <p id="email-error" class="error" aria-live="polite"></p>
@@ -65,13 +67,15 @@
           if(isset($_SESSION['email_error'])){
             echo $_SESSION['email_error'];
             unset($_SESSION['email_error']);
+          } else if (isset($_SESSION['given_email'])) {
+            unset($_SESSION['given_email']);
           }
 ?>
 
           <div class="field">
             <label for="password" class="visually-hidden">Password</label>
             <img src="assets/icons/lock-password.svg" alt="">
-            <input id="password" type="password" name="password" placeholder="password" required aria-describedby="password-error">            
+            <input id="password" type="password" name="password" <?= isset($_SESSION['given_password']) ? 'value="'.$_SESSION['given_password'].'"' : '' ?> placeholder="password" required aria-describedby="password-error">            
           </div>
           <p id="password-error" class="error" aria-live="polite"></p>
 
@@ -79,18 +83,25 @@
           if(isset($_SESSION['password_error'])){
             echo $_SESSION['password_error'];
             unset($_SESSION['password_error']);
+          } else if (isset($_SESSION['given_password'])) {
+            unset($_SESSION['given_password']);
           }
 ?>
 
           <div class="field">
             <label for="repeat-password" class="visually-hidden">Repeat Password</label>
             <img src="assets/icons/lock-plus.svg" alt="">
-            <input id="repeat_password" type="password" name="repeat_password" placeholder="repeat password" required aria-describedby="repeat-password-error">           
+            <input id="repeat_password" type="password" name="repeat_password" <?= isset($_SESSION['given_repeat_password']) ? 'value="'.$_SESSION['given_repeat_password'].'"' : '' ?> placeholder="repeat password" required aria-describedby="repeat-password-error">           
           </div>
           <p id="repeat-password-error" class="error" aria-live="polite"></p>
+<?php
+          if (isset($_SESSION['given_repeat_password'])) {
+            unset($_SESSION['given_repeat_password']);
+          }
 
+?>
           <div class="form-check">
-            <label class="form-check-label pb-3" for="agreement"><input class="form-check-input me-2" type="checkbox" name="agreement" id="agreement" aria-describedby="agreement-error" required>
+            <label class="form-check-label pb-3" for="agreement"><input class="form-check-input me-2" type="checkbox" name="agreement" <?= isset($_SESSION['agreement']) ? 'checked' : '' ?> id="agreement" aria-describedby="agreement-error" required>
               <small>If you want to use our application you need to approve our <a href="./terms.html">terms and conditions</a></small>
             </label>
           </div><p id="agreement-error" class="agreement-error" aria-live="polite"></p>
@@ -99,6 +110,8 @@
           if(isset($_SESSION['agreement_error'])){
             echo $_SESSION['agreement_error'];
             unset($_SESSION['agreement_error']);
+          } else if (isset($_SESSION['agreement'])) {
+            unset($_SESSION['agreement']);
           }
 ?>
 
