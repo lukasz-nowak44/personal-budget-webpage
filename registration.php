@@ -1,27 +1,4 @@
-<?php
 
-  session_start();
-
-  require_once "connect.php";
-
-  try {
-
-    $connection = new mysqli($host, $db_user, $db_password, $db_name);
-
-    if ($connection->connect_errno!=0) {
-
-      throw new Exception(mysqli_connect_errno());
-    }
-
-
-  } catch (Exception $e) {
-
-    echo '<p class="ms-5">Server error! We apologize for inconvenience and please register at another time!</p>';
-    echo '<p class="ms-5">Developer information: '.$e;
-  }
-  
-
-?>
 
 
 <!DOCTYPE html>
@@ -53,7 +30,7 @@
 
       <main class="col-md-8 col-lg-6">
 
-        <form class="pb-3"  action="signin" method="post" novalidate>
+        <form class="pb-3" action="sign-up.php" method="post" novalidate>
 
           <div class="field">
             <label for="login" class="visually-hidden">Username</label>
@@ -81,7 +58,7 @@
           <div class="field">
             <label for="repeat-password" class="visually-hidden">Repeat Password</label>
             <img src="assets/icons/lock-plus.svg" alt="">
-            <input id="repeat-password" type="password" name="password" placeholder="repeat password" required aria-describedby="repeat-password-error">           
+            <input id="repeat_password" type="password" name="repeat_password" placeholder="repeat password" required aria-describedby="repeat-password-error">           
           </div>
           <p id="repeat-password-error" class="error" aria-live="polite"></p>
 
@@ -95,7 +72,7 @@
 
         </form>
 
-        <a href="index.html">⤆ Return  for signing in</a>
+        <a href="index.php">⤆ Return  for signing in</a>
 
       </main>
 
