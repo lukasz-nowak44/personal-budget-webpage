@@ -51,8 +51,9 @@
   } else {
 
     $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+    $sanitized_email = filter_var($email, FILTER_SANITIZE_EMAIL);
 
-    if (!$email) {
+    if (!$email || ($email != $sanitized_email)) {
 
       $_SESSION['email_error'] = '<p class="error">E-mail has wrong format</p>';
 
