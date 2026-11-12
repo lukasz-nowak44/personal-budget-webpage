@@ -1,4 +1,8 @@
+<?php
 
+  session_start();
+
+?>
 
 
 <!DOCTYPE html>
@@ -38,7 +42,16 @@
             <input id="login" type="text" name="username" placeholder="username"
               autocomplete="username" required aria-describedby="username-error">            
           </div>
+
           <p id="username-error" class="error" aria-live="polite"></p>
+
+<?php
+          if(isset($_SESSION['username_error'])){
+            echo $_SESSION['username_error'];
+            unset($_SESSION['username_error']);
+          }
+?>
+
 
           <div class="field">
             <label for="email" class="visually-hidden">Email</label>
@@ -48,12 +61,26 @@
           </div>
           <p id="email-error" class="error" aria-live="polite"></p>
 
+<?php
+          if(isset($_SESSION['email_error'])){
+            echo $_SESSION['email_error'];
+            unset($_SESSION['email_error']);
+          }
+?>
+
           <div class="field">
             <label for="password" class="visually-hidden">Password</label>
             <img src="assets/icons/lock-password.svg" alt="">
             <input id="password" type="password" name="password" placeholder="password" required aria-describedby="password-error">            
           </div>
           <p id="password-error" class="error" aria-live="polite"></p>
+
+<?php
+          if(isset($_SESSION['password_error'])){
+            echo $_SESSION['password_error'];
+            unset($_SESSION['password_error']);
+          }
+?>
 
           <div class="field">
             <label for="repeat-password" class="visually-hidden">Repeat Password</label>
@@ -84,7 +111,8 @@
     <small>® Personal Budget 2026.</small>
   </footer>
 
-  <script src="registration.js"></script>
+  <!-- Na czas testów walidacji w PHP -->
+  <!-- <script src="registration.js"></script> -->
 
 </body>
 </html>

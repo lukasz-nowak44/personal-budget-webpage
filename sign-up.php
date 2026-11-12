@@ -2,18 +2,74 @@
 
   session_start();
   
-  $username = filter_input(INPUT_POST, 'username');
-  $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-  $password = filter_input(INPUT_POST, 'password');
-  $repeat_password = filter_input(INPUT_POST, 'repeat_password');
+  $isEverythingGood = true;
+
+  if (!isset($_POST['username'])){
+
+    $_SESSION['username_error'] = '<p class="error">Username cannot be empty!</p>';
+    $isEverythingGood = false;
+   
+  } else {
+
+    $username = $_POST['username'];
+
+    if ((strlen($username) < 5 ) || (strlen($username) > 50)) {
+
+      $_SESSION['username_error'] = '<p class="error">Username must have between 5 and 50 characters!</p>';
+      $isEverythingGood = false;
+    } 
+
+  } 
+
   
+  if (!isset($_POST['email'])) {
 
-  if (!$email) {
-
-    echo 'E-mail ma niepoprawny format';
-    exit();
+    $_SESSION['username_error'] = '<p class="error">Email cannot be empty!</p>';
+    $isEverythingGood = false;
 
   } else {
+
+    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+
+    if (!$email) {
+
+      $_SESSION['email_error'] = '<p class="error">E-mail has wrong format</p>';
+
+      $isEverythingGood = false;
+
+    }
+
+  }
+
+  if (!isset($_POST['password'])) {
+
+    $_SESSION['password_error'] = '<p class="error">Password cannot be empty!</p>';
+    $isEverythingGood = false;
+
+  } else {
+
+    $password = $_POST['password'];
+    $repeat_password = $_POST['repeat_password'];
+
+    if ($password != $repeat_password) {
+
+      $_SESSION['password_error'] = '<p class="error">Password and repeat password must be the same!</p>';
+      $isEverythingGood = false;
+
+    } else if ((strlen($password) < 5) || (strlen($password) > 50)){
+
+      $_SESSION['password_error'] = '<p class="error">Password must have between 5 and 50 characters!</p>';
+      $isEverythingGood = false;
+
+    } else {
+
+      $password_hashed = password_hash($password, PASSWORD_DEFAULT);
+
+    }
+
+  }
+  
+  if ($isEverythingGood){
 
     require_once 'database.php';
 
@@ -22,10 +78,15 @@
     $query = $db->prepare($sql);
 
     $query->bindValue(':username', $username, PDO::PARAM_STR);
-    $query->bindValue(':password', $password, PDO::PARAM_STR);
+    $query->bindValue(':password', $password_hashed, PDO::PARAM_STR);
     $query->bindValue(':email', $email, PDO::PARAM_STR);
 
     $query->execute();
+
+  } else {
+
+    header('location: registration.php');
+    exit();
 
   }
 
@@ -51,7 +112,7 @@
 
       <div class="row">
 
-        <main class="col-md-6">
+        <main class="col-lg-6">
 
           <img src="assets/images/logo.png" class="logo" alt="">
 
