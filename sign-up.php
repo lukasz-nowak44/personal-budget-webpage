@@ -18,7 +18,7 @@
 
   if (empty($_POST['username'])){
 
-    $_SESSION['username_error'] = '<p class="error">Username cannot be empty!</p>';
+    $_SESSION['username_error'] = '<p class="error login">Username cannot be empty!</p>';
     $isEverythingGood = false;
    
   } else {
@@ -31,12 +31,12 @@
     
     if ($query->rowCount() > 0) {
 
-      $_SESSION['username_error'] = '<p class="error">This username exists in our database! Please set another name.</p>';
+      $_SESSION['username_error'] = '<p class="error login">This username exists in our database! Please set another name.</p>';
       $isEverythingGood = false;
 
     } else if ((strlen($username) < 5 ) || (strlen($username) > 50)) {
 
-      $_SESSION['username_error'] = '<p class="error">Username must have between 5 and 50 characters!</p>';
+      $_SESSION['username_error'] = '<p class="error login">Username must have between 5 and 50 characters!</p>';
       $isEverythingGood = false;
     } 
 
@@ -45,7 +45,7 @@
   
   if (empty($_POST['email'])) {
 
-    $_SESSION['email_error'] = '<p class="error">Email cannot be empty!</p>';
+    $_SESSION['email_error'] = '<p class="error email">Email cannot be empty!</p>';
     $isEverythingGood = false;
 
   } else {
@@ -55,7 +55,7 @@
 
     if (!$email || ($email != $sanitized_email)) {
 
-      $_SESSION['email_error'] = '<p class="error">E-mail has wrong format</p>';
+      $_SESSION['email_error'] = '<p class="error email">E-mail has wrong format</p>';
 
       $isEverythingGood = false;
 
@@ -68,7 +68,7 @@
     
       if ($query->rowCount() > 0) {
 
-        $_SESSION['email_error'] = '<p class="error">The user with this e-mail address exists in our database! Please set another e-mail address.</p>';
+        $_SESSION['email_error'] = '<p class="error email">The user with this e-mail address exists in our database! Please set another e-mail address.</p>';
         $isEverythingGood = false;
 
       }
@@ -79,7 +79,12 @@
 
   if (empty($_POST['password'])) {
 
-    $_SESSION['password_error'] = '<p class="error">Password cannot be empty!</p>';
+    $_SESSION['password_error'] = '<p class="error password">Password cannot be empty!</p>';
+    $isEverythingGood = false;
+
+  } else if (empty($_POST['repeat_password'])) {
+
+    $_SESSION['repeat_password_error'] = '<p class="error repeat_password">Repeat password cannot be empty!</p>';
     $isEverythingGood = false;
 
   } else {
@@ -89,12 +94,13 @@
 
     if ($password != $repeat_password) {
 
-      $_SESSION['password_error'] = '<p class="error">Password and repeat password must be the same!</p>';
+      $_SESSION['password_error'] = '<p class="error password">Password and repeat password must be the same!</p>';
+      $_SESSION['repeat_password_error'] = '<p class="error repeat_password">Password and repeat password must be the same!</p>';
       $isEverythingGood = false;
 
     } else if ((strlen($password) < 5) || (strlen($password) > 50)){
 
-      $_SESSION['password_error'] = '<p class="error">Password must have between 5 and 50 characters!</p>';
+      $_SESSION['password_error'] = '<p class="error password">Password must have between 5 and 50 characters!</p>';
       $isEverythingGood = false;
 
     } else {
@@ -107,7 +113,7 @@
 
   if (!isset($_POST['agreement'])) {
 
-    $_SESSION['agreement_error'] = '<p class="error">You must check this field to continue!</p>';
+    $_SESSION['agreement_error'] = '<p class="error agreement">You must check this field to continue!</p>';
     $isEverythingGood = false;
 
   } 

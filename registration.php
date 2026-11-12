@@ -43,7 +43,7 @@
               autocomplete="username" required aria-describedby="username-error">            
           </div>
 
-          <p id="username-error" class="error" aria-live="polite"></p>
+          <!-- <p id="username-error" class="error" aria-live="polite"></p> -->
 
 <?php
           if(isset($_SESSION['username_error'])){
@@ -61,7 +61,7 @@
             <input id="email" type="email" name="email" <?= isset($_SESSION['given_email']) ? 'value="'.$_SESSION['given_email'].'"' : '' ?> placeholder="email"
               autocomplete="email" required aria-describedby="email-error">            
           </div>
-          <p id="email-error" class="error" aria-live="polite"></p>
+          <!-- <p id="email-error" class="error" aria-live="polite"></p> -->
 
 <?php
           if(isset($_SESSION['email_error'])){
@@ -77,7 +77,7 @@
             <img src="assets/icons/lock-password.svg" alt="">
             <input id="password" type="password" name="password" <?= isset($_SESSION['given_password']) ? 'value="'.$_SESSION['given_password'].'"' : '' ?> placeholder="password" required aria-describedby="password-error">            
           </div>
-          <p id="password-error" class="error" aria-live="polite"></p>
+          <!-- <p id="password-error" class="error" aria-live="polite"></p> -->
 
 <?php
           if(isset($_SESSION['password_error'])){
@@ -93,18 +93,23 @@
             <img src="assets/icons/lock-plus.svg" alt="">
             <input id="repeat_password" type="password" name="repeat_password" <?= isset($_SESSION['given_repeat_password']) ? 'value="'.$_SESSION['given_repeat_password'].'"' : '' ?> placeholder="repeat password" required aria-describedby="repeat-password-error">           
           </div>
-          <p id="repeat-password-error" class="error" aria-live="polite"></p>
-<?php
-          if (isset($_SESSION['given_repeat_password'])) {
-            unset($_SESSION['given_repeat_password']);
-          }
+          <!-- <p id="repeat-password-error" class="error" aria-live="polite"></p> -->
 
+<?php
+          if(isset($_SESSION['repeat_password_error'])){
+            echo $_SESSION['repeat_password_error'];
+            unset($_SESSION['repeat_password_error']);
+          } else if (isset($_SESSION['given_repeat_password'])) {
+            unset($_SESSION['given_repeat_password']);
+          } 
+          
 ?>
           <div class="form-check">
             <label class="form-check-label pb-3" for="agreement"><input class="form-check-input me-2" type="checkbox" name="agreement" <?= isset($_SESSION['agreement']) ? 'checked' : '' ?> id="agreement" aria-describedby="agreement-error" required>
               <small>If you want to use our application you need to approve our <a href="./terms.html">terms and conditions</a></small>
             </label>
-          </div><p id="agreement-error" class="agreement-error" aria-live="polite"></p>
+          </div>
+          <!-- <p id="agreement-error" class="agreement-error" aria-live="polite"></p> -->
 
 <?php
           if(isset($_SESSION['agreement_error'])){
@@ -131,8 +136,7 @@
     <small>® Personal Budget 2026.</small>
   </footer>
 
-  <!-- Na czas testów walidacji w PHP -->
-  <!-- <script src="registration.js"></script> -->
+  <script src="registration.js"></script>
 
 </body>
 </html>

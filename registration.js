@@ -1,32 +1,43 @@
-const form = document.querySelector("form");
-const EMAIL_RE = /^[^\s@]+@[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}$/i;
+// const form = document.querySelector("form");
+// const EMAIL_RE = /^[^\s@]+@[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}$/i;
 
-function validate(input) {
-  const value = input.value.trim();
-  let message = "";
-  let checkedTerms = document.querySelector(".form-check-input").checked;
+// function validate(input) {
+//   const value = input.value.trim();
+//   let message = "";
+//   let checkedTerms = document.querySelector(".form-check-input").checked;
 
-  if (value === "") {
-    message = `${input.labels[0].textContent} cannot be empty`;
-  } else if (input.type === "email" && !EMAIL_RE.test(value)) {
-    message = "Looks like this is not an email";
-  } else if (input.type === "checkbox" && (!checkedTerms)) {
-    message = "You must check this field to continue";
-  }
+//   if (value === "") {
+//     message = `${input.labels[0].textContent} cannot be empty`;
+//   } else if (input.type === "email" && !EMAIL_RE.test(value)) {
+//     message = "Looks like this is not an email";
+//   } else if (input.type === "checkbox" && (!checkedTerms)) {
+//     message = "You must check this field to continue";
+//   }
  
-  document.getElementById(input.getAttribute("aria-describedby")).textContent = message;
+//   document.getElementById(input.getAttribute("aria-describedby")).textContent = message;
 
-  input.setAttribute("aria-invalid", message ? "true" : "false");
-  return message === "";
+//   input.setAttribute("aria-invalid", message ? "true" : "false");
+//   return message === "";
+// }
+
+// form.addEventListener("submit", (e) => {
+//   const inputs = [...form.querySelectorAll("input")];
+//   const results = inputs.map(validate);
+
+//   if (results.includes(false)) {
+//     e.preventDefault();
+//     inputs[results.indexOf(false)].focus();
+//   }
+// });
+
+let errorsDescriptions = document.querySelectorAll("p.error");
+
+console.log(errorsDescriptions[0]);
+
+for (i=0; i<errorsDescriptions.length; i++) {
+
+  let nameOfId = errorsDescriptions[i].getAttribute("class").slice(6);
+
+  document.querySelector("input#"+nameOfId).setAttribute("aria-invalid","true");
+
 }
-
-form.addEventListener("submit", (e) => {
-  const inputs = [...form.querySelectorAll("input")];
-  const results = inputs.map(validate);
-
-  if (results.includes(false)) {
-    e.preventDefault();
-    inputs[results.indexOf(false)].focus();
-  }
-});
-
