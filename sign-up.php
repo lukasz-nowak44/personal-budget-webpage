@@ -4,6 +4,8 @@
   
   $isEverythingGood = true;
 
+  require_once 'database.php';
+
   if (empty($_POST['username'])){
 
     $_SESSION['username_error'] = '<p class="error">Username cannot be empty!</p>';
@@ -12,8 +14,17 @@
   } else {
 
     $username = $_POST['username'];
+    $sql = "SELECT username FROM users WHERE username=:username";
+    $query = $db->prepare($sql);
+    $query->bindValue(':username', $username, PDO::PARAM_STR);
+    $query->execute();
+    
+    if ($query->rowCount() > 0) {
 
-    if ((strlen($username) < 5 ) || (strlen($username) > 50)) {
+      $_SESSION['username_error'] = '<p class="error">This username exists in our database! Please set another name.</p>';
+      $isEverythingGood = false;
+
+    } else if ((strlen($username) < 5 ) || (strlen($username) > 50)) {
 
       $_SESSION['username_error'] = '<p class="error">Username must have between 5 and 50 characters!</p>';
       $isEverythingGood = false;
@@ -37,6 +48,20 @@
 
       $isEverythingGood = false;
 
+    } else {
+
+      $sql = "SELECT email FROM users WHERE email=:email";
+      $query = $db->prepare($sql);
+      $query->bindValue(':email', $email, PDO::PARAM_STR);
+      $query->execute();
+    
+      if ($query->rowCount() > 0) {
+
+        $_SESSION['email_error'] = '<p class="error">The user with this e-mail address exists in our database! Please set another e-mail address.</p>';
+        $isEverythingGood = false;
+
+      }
+      
     }
 
   }
@@ -77,8 +102,6 @@
   } 
   
   if ($isEverythingGood) {
-
-    require_once 'database.php';
 
     $sql = 'INSERT INTO users (username, password, email) VALUES (:username, :password, :email)';
    
