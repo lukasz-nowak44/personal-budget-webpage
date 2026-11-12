@@ -4,7 +4,7 @@
   
   $isEverythingGood = true;
 
-  if (!isset($_POST['username'])){
+  if (empty($_POST['username'])){
 
     $_SESSION['username_error'] = '<p class="error">Username cannot be empty!</p>';
     $isEverythingGood = false;
@@ -22,9 +22,9 @@
   } 
 
   
-  if (!isset($_POST['email'])) {
+  if (empty($_POST['email'])) {
 
-    $_SESSION['username_error'] = '<p class="error">Email cannot be empty!</p>';
+    $_SESSION['email_error'] = '<p class="error">Email cannot be empty!</p>';
     $isEverythingGood = false;
 
   } else {
@@ -41,7 +41,7 @@
 
   }
 
-  if (!isset($_POST['password'])) {
+  if (empty($_POST['password'])) {
 
     $_SESSION['password_error'] = '<p class="error">Password cannot be empty!</p>';
     $isEverythingGood = false;
@@ -68,8 +68,15 @@
     }
 
   }
+
+  if (!isset($_POST['agreement'])) {
+
+    $_SESSION['agreement_error'] = '<p class="error">You must check this field to continue!</p>';
+    $isEverythingGood = false;
+
+  } 
   
-  if ($isEverythingGood){
+  if ($isEverythingGood) {
 
     require_once 'database.php';
 

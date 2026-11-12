@@ -95,6 +95,13 @@
             </label>
           </div><p id="agreement-error" class="agreement-error" aria-live="polite"></p>
 
+<?php
+          if(isset($_SESSION['agreement_error'])){
+            echo $_SESSION['agreement_error'];
+            unset($_SESSION['agreement_error']);
+          }
+?>
+
           <button type="submit" class="btn btn-lg btn-primary">Sign up</button>
 
         </form>
