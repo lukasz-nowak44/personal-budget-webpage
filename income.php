@@ -5,36 +5,47 @@
   $user_id = $_SESSION['logged_user_id'];
   require_once 'database.php';
 
-  $sql_user_categories = "SELECT name FROM incomes_category_assigned_to_users WHERE user_id=:user_id";
+  $sql_user_categories = "SELECT id,name FROM incomes_category_assigned_to_users WHERE user_id=:user_id";
   $load_categories = $db->prepare($sql_user_categories);
   $load_categories->bindValue(":user_id", $user_id, PDO::PARAM_INT);
   $load_categories->execute();
 
-  $user_categories = $load_categories->fetchAll(PDO::FETCH_COLUMN, 0);
+  $user_categories = $load_categories->fetchAll();
 
   $isEverythingGood = true;
 
-  // if (empty($_POST['amount'])) {
+  if (empty($_POST['amount'])) {
 
-  //   $_SESSION['amount_error'] = 'This field cannot be empty';
-  //   $isEverythingGood = false;
-  //   exit();
+    $_SESSION['amount_error'] = 'This field cannot be empty';
+    $isEverythingGood = false;
 
-  // } else {
+  } else if (!(filter_var($_POST['amount'], FILTER_VALIDATE_FLOAT))) {
 
-  //   $amount = filter_var($_POST['amount'], FILTER_VALIDATE_FLOAT);
+      $_SESSION['amount_error'] = 'This field must be in correct format';
+      $isEverythingGood = false;
 
-  //   if (!$amount) {
+  }
 
-  //     $_SESSION['amount_error'] = 'This field must be in correct format';
-  //     $isEverythingGood = false;
-  //     exit();
 
-  //   }
+  if ($isEverythingGood) {
 
-  //   $amount = round($amount, 2);
+    $amount = round($_POST['amount'],2);
+    $date = $_POST['date'];
+    $id_category = $_POST['category'];
+    $comment = $_POST['comment'];
+    
+    $sql_add = "INSERT INTO incomes (user_id, income_category_assigned_to_user_id, amount, date_of_income, income_comment) VALUES (:user_id, :id_category, :amount, :date, :comment)";
+    $add_income = $db->prepare($sql_add);
+    $add_income->bindValue(":user_id", $user_id, PDO::PARAM_INT);
+    $add_income->bindValue(":id_category", $id_category, PDO::PARAM_INT);
+    $add_income->bindValue(":amount", $amount, PDO::PARAM_STR);
+    $add_income->bindValue(":date", $user_id, PDO::PARAM_STR);
+    $add_income->bindValue(":comment", $comment, PDO::PARAM_STR);
+    $add_income->execute();
 
-  // }
+    $_SESSION['income_added'] = true;
+
+  }
 
 ?>
 
@@ -116,7 +127,7 @@
             <h1 class="text-center text-md-start">Add new income:</h1>
           </header>
 
-          <form action="income" id="income" method="post" novalidate>
+          <form id="income" method="post" novalidate>
 
             <div class="field-income">
               <label for="amount">Amount:</label>
@@ -137,13 +148,17 @@
 
 <?php
 
-    for ($i=0; $i<count($user_categories); $i++) {
+    $isItFirstCategory = true;
 
-      if ($i === 0) {
-        echo '<label><input type="radio" name="category" checked>'.$user_categories[$i].'</label>';
-      } else {
-        echo '<label><input type="radio" name="category">'.$user_categories[$i].'</label>';
-      }
+    foreach ($user_categories as $category) {
+ 
+        if ($isItFirstCategory) {
+          echo '<label><input type="radio" name="category" value="'.$category['id'].'" checked>'.$category['name'].'</label>';
+          $isItFirstCategory = false;
+
+        } else {
+          echo '<label><input type="radio" name="category" value="'.$category['id'].'">'.$category['name'].'</label>';
+        }
 
     }
 
@@ -180,6 +195,16 @@
             </div>
 
           </form>
+
+<?php
+
+      if (isset($_SESSION['income_added'])) {
+
+        echo '<p class="username">Income added successfully!</p>';
+        unset($_SESSION['income_added']);
+      }
+
+?>
 
         </main>
 
