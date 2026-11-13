@@ -32,6 +32,7 @@
 
   }
 
+
 ?>
 
 <!DOCTYPE html>
@@ -77,7 +78,7 @@
 
             <h2>Do you already have an account?</h2>
 
-            <form class="pb-3" action="signin" method="post" novalidate>
+            <form class="pb-3" action="sign-in.php" method="post" novalidate>
 
             <div class="field">
               <label for="login" class="visually-hidden">Username</label>
@@ -85,7 +86,16 @@
               <input id="login" type="text" name="username" placeholder="username"
                       autocomplete="username" required aria-describedby="username-error">             
             </div>
-            <p id="username-error" class="error" aria-live="polite"></p>
+            <!-- <p id="username-error" class="error" aria-live="polite"></p> -->
+
+<?php
+          if(isset($_SESSION['username_signin_error'])){
+            echo $_SESSION['username_signin_error'];
+            unset($_SESSION['username_signin_error']);
+          } else if (isset($_SESSION['given_username'])) {
+            unset($_SESSION['given_username']);
+          }
+?>
 
             <div class="field">
               <label for="password" class="visually-hidden">Password</label>
@@ -93,7 +103,16 @@
                <input id="password" type="password" name="password" placeholder="password"
                       autocomplete="current-password" required aria-describedby="password-error">             
             </div>
-            <p id="password-error" class="error" aria-live="polite"></p>
+            <!-- <p id="password-error" class="error" aria-live="polite"></p> -->
+
+<?php
+          if(isset($_SESSION['password_signin_error'])){
+            echo $_SESSION['password_signin_error'];
+            unset($_SESSION['password_signin_error']);
+          } else if (isset($_SESSION['given_username'])) {
+            unset($_SESSION['given_username']);
+          }
+?>
 
             <button type="submit" class="btn btn-lg btn-primary mt-2">Sign in</button>
 
