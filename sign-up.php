@@ -6,6 +6,7 @@
   $_SESSION['given_email'] = $_POST['email'];
   $_SESSION['given_password'] = $_POST['password'];
   $_SESSION['given_repeat_password'] = $_POST['repeat_password'];
+
   if (isset($_POST['agreement'])) {
 
     $_SESSION['agreement'] = true;
@@ -103,11 +104,7 @@
       $_SESSION['password_error'] = '<p class="error password">Password must have between 5 and 50 characters!</p>';
       $isEverythingGood = false;
 
-    } else {
-
-      $password_hashed = password_hash($password, PASSWORD_DEFAULT);
-
-    }
+    } 
 
   }
 
@@ -119,6 +116,8 @@
   } 
   
   if ($isEverythingGood) {
+
+    $password_hashed = password_hash($password, PASSWORD_DEFAULT);
 
     $sql = 'INSERT INTO users (username, password, email) VALUES (:username, :password, :email)';
    

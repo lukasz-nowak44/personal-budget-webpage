@@ -1,3 +1,39 @@
+<?php
+
+  session_start();
+
+  if (isset($_POST['given_username'])) {
+
+    unset($_SESSION['given_username']);
+
+  }
+
+  if (isset($_POST['given_email'])) {
+
+    unset($_SESSION['given_email']);
+
+  }
+
+  if (isset($_POST['given_password'])) {
+
+    unset($_SESSION['given_password']);
+
+  }
+
+  if (isset($_POST['given_repeat_password'])) {
+
+    unset($_SESSION['given_repeat_password']);
+
+  }
+
+  if (isset($_POST['agreement'])) {
+
+    unset($_SESSION['agreement']);
+
+  }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
