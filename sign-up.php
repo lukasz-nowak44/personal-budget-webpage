@@ -135,7 +135,7 @@
 
     $sql_categories = "INSERT INTO incomes_category_assigned_to_users (name, user_id) SELECT incomes_category_default.name, :user_id FROM incomes_category_default";
     $copy_categories = $db->prepare($sql_categories);
-    $copy_categories->bindValue(":user_id", $user['id'], PDO::PARAM_STR);
+    $copy_categories->bindValue(":user_id", $user['id'], PDO::PARAM_INT);
     $copy_categories->execute();
 
   } else {

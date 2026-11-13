@@ -10,34 +10,31 @@
   $load_categories->bindValue(":user_id", $user_id, PDO::PARAM_INT);
   $load_categories->execute();
 
-  $user_categories = $load_categories->fetchColumn('name');
-
-
-
+  $user_categories = $load_categories->fetchAll(PDO::FETCH_COLUMN, 0);
 
   $isEverythingGood = true;
 
-  if (empty($_POST['amount'])) {
+  // if (empty($_POST['amount'])) {
 
-    $_SESSION['amount_error'] = 'This field cannot be empty';
-    $isEverythingGood = false;
-    exit();
+  //   $_SESSION['amount_error'] = 'This field cannot be empty';
+  //   $isEverythingGood = false;
+  //   exit();
 
-  } else {
+  // } else {
 
-    $amount = filter_var($_POST['amount'], FILTER_VALIDATE_FLOAT);
+  //   $amount = filter_var($_POST['amount'], FILTER_VALIDATE_FLOAT);
 
-    if (!$amount) {
+  //   if (!$amount) {
 
-      $_SESSION['amount_error'] = 'This field must be in correct format';
-      $isEverythingGood = false;
-      exit();
+  //     $_SESSION['amount_error'] = 'This field must be in correct format';
+  //     $isEverythingGood = false;
+  //     exit();
 
-    }
+  //   }
 
-    $amount = round($amount, 2);
+  //   $amount = round($amount, 2);
 
-  }
+  // }
 
 ?>
 
@@ -138,13 +135,19 @@
 
                 <legend>Category:</legend>
 
-                <label><input type="radio" name="category" checked>Salary</label>
+<?php
 
-                <label><input type="radio" name="category">Interest savings</label>
-                
-                <label><input type="radio" name="category">Selling on Allegro</label>
-          
-                <label><input type="radio" name="category">Other</label>
+    for ($i=0; $i<count($user_categories); $i++) {
+
+      if ($i === 0) {
+        echo '<label><input type="radio" name="category" checked>'.$user_categories[$i].'</label>';
+      } else {
+        echo '<label><input type="radio" name="category">'.$user_categories[$i].'</label>';
+      }
+
+    }
+
+?>
 
               </fieldset>
 

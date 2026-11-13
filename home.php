@@ -31,7 +31,7 @@ if (isset($_SESSION['given_signin_password'])) {
 
     <nav class="navbar navbar-expand-lg navbar-dark py-0">
 
-      <a class="navbar-brand" href="home.html"><img src="./assets/images/logo-light-removebg-preview.png" class="logo" alt=""></a>
+      <a class="navbar-brand" href="home.php"><img src="./assets/images/logo-light-removebg-preview.png" class="logo" alt=""></a>
 
       <button class="navbar-toggler me-3" type="button"        data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 
@@ -43,13 +43,13 @@ if (isset($_SESSION['given_signin_password'])) {
 
       <ul class="navbar-nav mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+          <a class="nav-link active" aria-current="page" href="home.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="income.html">Add income</a>
+          <a class="nav-link" href="income.php">Add income</a>
         </li> 
         <li class="nav-item">
-          <a class="nav-link" href="expense.html">Add expense</a>
+          <a class="nav-link" href="expense.php">Add expense</a>
         </li> 
         <li class="nav-item dropdown">
 
@@ -57,11 +57,11 @@ if (isset($_SESSION['given_signin_password'])) {
             Display balance
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="balance.html">Current month</a></li>
-            <li><a class="dropdown-item" href="balance.html">Previous month</a></li>
-            <li><a class="dropdown-item" href="balance.html">Current year</a></li>
+            <li><a class="dropdown-item" href="balance.php">Current month</a></li>
+            <li><a class="dropdown-item" href="balance.php">Previous month</a></li>
+            <li><a class="dropdown-item" href="balance.php">Current year</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="balance.html">non-standard</a></li>
+            <li><a class="dropdown-item" href="balance.php">non-standard</a></li>
           </ul>
 
         </li> 
@@ -92,21 +92,21 @@ if (isset($_SESSION['given_signin_password'])) {
 
       <section class="options">
 
-          <a class="card" href="income.html">
+          <a class="card" href="income.php">
             <img src="./assets/icons/moneybag-plus.png" class="card-img-top" alt="">
             <div class="card-body">
               <p class="card-text">Add income</p>
             </div>
           </a>
 
-          <a class="card" href="expense.html">
+          <a class="card" href="expense.php">
             <img src="./assets/icons/moneybag-minus.png" class="card-img-top" alt="">
             <div class="card-body">
               <p class="card-text">Add expense</p>
             </div>
           </a>
 
-          <a class="card current-month" href="balance.html">
+          <a class="card current-month" href="balance.php">
             <img src="./assets/icons/calendar-month.png" class="card-img-top" alt="">
             <div class="card-body">
               <p class="card-text">Balance from current month</p>
@@ -129,10 +129,10 @@ if (isset($_SESSION['given_signin_password'])) {
                 </div>
                 <div class="modal-body">
                   <ul class="periods">
-                    <li><a class="dropdown-item" href="balance.html">Current month</a></li>
-                    <li><a class="dropdown-item" href="balance.html">Previous month</a></li>
-                    <li><a class="dropdown-item" href="balance.html">Current year</a></li>
-                    <li><a class="dropdown-item" href="balance.html">non-standard</a></li>
+                    <li><a class="dropdown-item" href="balance.php">Current month</a></li>
+                    <li><a class="dropdown-item" href="balance.php">Previous month</a></li>
+                    <li><a class="dropdown-item" href="balance.php">Current year</a></li>
+                    <li><a class="dropdown-item" href="balance.php">non-standard</a></li>
                   </ul>
                 </div>
                 <div class="modal-footer">
@@ -149,7 +149,7 @@ if (isset($_SESSION['given_signin_password'])) {
             </div>
           </a>
 
-          <a class="card" href="index.html">
+          <a class="card" href="index.php">
             <img src="./assets/icons/logout.png" class="card-img-top" alt="">
             <div class="card-body">
               <p class="card-text">Logout</p>
