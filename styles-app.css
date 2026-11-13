@@ -1,6 +1,7 @@
 :root {
   --primary: #EBF4DD;
   --lighter-primary: #F2F8E8;
+  --secondary: #90AB8B;
   --accent: #5A7863;
   --text: #3B4953;
   --button: #A75B35;
@@ -59,6 +60,11 @@ nav {
 
 .nav-link.active:hover {
   color: var(--lighter-primary) !important;
+}
+
+/* nie działa */
+span.username {
+  color: var(--button);
 }
 
 .logo {

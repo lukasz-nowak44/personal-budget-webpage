@@ -1,3 +1,8 @@
+<?php
+
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,6 +63,9 @@
         <li class="nav-item">
           <a class="nav-link" href="index.php">Logout</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="">Logged as <?php  echo htmlspecialchars($_SESSION['logged_user_username']) ?></a>
+        </li>
       </ul>
 
       </div>
@@ -71,7 +79,7 @@
       <img src="assets/images/alexanderstein-house-167734_1920.jpg" class="img-fluid photo" alt="">
 
       <header>
-        <h1>Hello! What do we do?</h1>
+        <h1>Hello <?php echo '<span class="username" style="color: var(--button);">'.htmlspecialchars($_SESSION['logged_user_username']).'</span>' ?>! What do we do?</h1>
       </header>
 
       <section class="options">

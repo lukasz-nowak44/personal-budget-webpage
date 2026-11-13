@@ -8,7 +8,7 @@ $isEverythingGood = true;
 
 if (empty($_POST['username'])) {
 
-   $_SESSION['username_signin_error'] = '<p class="errorlogin">Username cannot be empty!</p>';
+   $_SESSION['username_signin_error'] = '<p class="error login">Username cannot be empty!</p>';
    $isEverythingGood = false;
    header('location: index.php');
    exit();
@@ -23,7 +23,7 @@ if (empty($_POST['username'])) {
 
    if($query->rowCount() === 0) {
 
-     $_SESSION['username_signin_error'] = '<p class="errorlogin">Username does not exist in database!</p>';
+     $_SESSION['username_signin_error'] = '<p class="error login">Username does not exist in database!</p>';
      $isEverythingGood = false;
      header('location: index.php');
      exit();
@@ -34,7 +34,7 @@ if (empty($_POST['username'])) {
 
  if (empty($_POST['password'])) {
 
-   $_SESSION['password_signin_error'] = '<p class="errorpassword">Password cannot be empty!</p>';
+   $_SESSION['password_signin_error'] = '<p class="error password">Password cannot be empty!</p>';
    $isEverythingGood = false;
    header('location: index.php');
    exit();
@@ -51,7 +51,7 @@ if (empty($_POST['username'])) {
 
   if(!(password_verify($password, $user['password']))) {
 
-    $_SESSION['password_signin_error'] = '<p class="errorpassword">Password is incorrect! Try again</p>';
+    $_SESSION['password_signin_error'] = '<p class="error password">Password is incorrect! Try again</p>';
     $isEverythingGood = false;
     header('location: index.php');
     exit();

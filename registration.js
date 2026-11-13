@@ -32,8 +32,6 @@
 
 let errorsDescriptions = document.querySelectorAll("p.error");
 
-console.log(errorsDescriptions[0]);
-
 for (i=0; i<errorsDescriptions.length; i++) {
 
   let nameOfId = errorsDescriptions[i].getAttribute("class").slice(6);
