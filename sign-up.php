@@ -127,6 +127,17 @@
     $query->bindValue(':email', $email, PDO::PARAM_STR);
     $query->execute();
 
+    $sql_what_id = "SELECT id FROM users WHERE username=:username";
+    $what_id = $db->prepare($sql_what_id);
+    $what_id->bindValue(":username", $username, PDO::PARAM_STR);
+    $what_id->execute();
+    $user = $what_id->fetch();
+
+    $sql_categories = "INSERT INTO incomes_category_assigned_to_users (name, user_id) SELECT incomes_category_default.name, :user_id FROM incomes_category_default";
+    $copy_categories = $db->prepare($sql_categories);
+    $copy_categories->bindValue(":user_id", $user['id'], PDO::PARAM_STR);
+    $copy_categories->execute();
+
   } else {
 
     header('location: registration.php');

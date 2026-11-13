@@ -1,3 +1,46 @@
+<?php
+
+  session_start();
+
+  $user_id = $_SESSION['logged_user_id'];
+  require_once 'database.php';
+
+  $sql_user_categories = "SELECT name FROM incomes_category_assigned_to_users WHERE user_id=:user_id";
+  $load_categories = $db->prepare($sql_user_categories);
+  $load_categories->bindValue(":user_id", $user_id, PDO::PARAM_INT);
+  $load_categories->execute();
+
+  $user_categories = $load_categories->fetchColumn('name');
+
+
+
+
+  $isEverythingGood = true;
+
+  if (empty($_POST['amount'])) {
+
+    $_SESSION['amount_error'] = 'This field cannot be empty';
+    $isEverythingGood = false;
+    exit();
+
+  } else {
+
+    $amount = filter_var($_POST['amount'], FILTER_VALIDATE_FLOAT);
+
+    if (!$amount) {
+
+      $_SESSION['amount_error'] = 'This field must be in correct format';
+      $isEverythingGood = false;
+      exit();
+
+    }
+
+    $amount = round($amount, 2);
+
+  }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
