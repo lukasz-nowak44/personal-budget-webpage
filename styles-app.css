@@ -63,7 +63,7 @@ nav {
 }
 
 /* nie działa */
-span.username {
+.username {
   color: var(--button);
 }
 

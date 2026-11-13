@@ -16,7 +16,7 @@
 
   if (empty($_POST['amount'])) {
 
-    $_SESSION['amount_error'] = 'This field cannot be empty';
+    $_SESSION['amount_error'] = 'The amount cannot be empty';
     $isEverythingGood = false;
 
   } else if (!(filter_var($_POST['amount'], FILTER_VALIDATE_FLOAT))) {
@@ -200,8 +200,14 @@
 
       if (isset($_SESSION['income_added'])) {
 
-        echo '<p class="username">Income added successfully!</p>';
+        echo '<p class="username mt-3" style="color: var(--accent);">Income added successfully!</p>';
         unset($_SESSION['income_added']);
+
+      } else if (isset($_SESSION['amount_error'])) {
+
+        echo '<p class="username mt-3" style="color: var(--button);">'.$_SESSION['amount_error'].'</p>';
+        unset($_SESSION['amount_error']);
+
       }
 
 ?>
@@ -220,7 +226,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
-  <script src="navbar.js"></script>
+  <script src="navbar.js" defer></script>
 
 </body>
 </html>
