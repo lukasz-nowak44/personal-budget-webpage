@@ -2,6 +2,9 @@
 
 session_start();
 
+$_SESSION['given_signin_username'] = $_POST['username'];
+$_SESSION['given_signin_password'] = $_POST['password'];
+
 require_once 'database.php';
 
 $isEverythingGood = true;

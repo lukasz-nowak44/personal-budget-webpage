@@ -136,7 +136,11 @@
     <small>® Personal Budget 2026.</small>
   </footer>
 
-  <script src="registration.js"></script>
+  <script src="./errors-display.js"></script>
+
+  <!-- Zastanowić się, czy potrzebna jest ta prewalidacja -->
+
+  <!-- <script src="registration.js"></script> -->
 
 </body>
 </html>

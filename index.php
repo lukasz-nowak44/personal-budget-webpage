@@ -2,34 +2,29 @@
 
   session_start();
 
-  if (isset($_POST['given_username'])) {
+  if (isset($_SESSION['logged_user_id'])) {
+    unset($_SESSION['logged_user_id']);
+    unset($_SESSION['logged_user_username']);
+  }
 
+  if (isset($_SESSION['given_username'])) {
     unset($_SESSION['given_username']);
-
   }
 
-  if (isset($_POST['given_email'])) {
-
+  if (isset($_SESSION['given_email'])) {
     unset($_SESSION['given_email']);
-
   }
 
-  if (isset($_POST['given_password'])) {
-
+  if (isset($_SESSION['given_password'])) {
     unset($_SESSION['given_password']);
-
   }
 
-  if (isset($_POST['given_repeat_password'])) {
-
+  if (isset($_SESSION['given_repeat_password'])) {
     unset($_SESSION['given_repeat_password']);
-
   }
 
-  if (isset($_POST['agreement'])) {
-
+  if (isset($_SESSION['agreement'])) {
     unset($_SESSION['agreement']);
-
   }
 
 
@@ -83,7 +78,7 @@
             <div class="field">
               <label for="login" class="visually-hidden">Username</label>
               <img src="assets/icons/user.svg" alt="">
-              <input id="login" type="text" name="username" placeholder="username"
+              <input id="login" type="text" name="username" <?= isset($_SESSION['given_signin_username']) ? 'value="'.$_SESSION['given_signin_username'].'"' : '' ?> placeholder="username"
                       autocomplete="username" required aria-describedby="username-error">             
             </div>
             <!-- <p id="username-error" class="error" aria-live="polite"></p> -->
@@ -92,15 +87,15 @@
           if(isset($_SESSION['username_signin_error'])){
             echo $_SESSION['username_signin_error'];
             unset($_SESSION['username_signin_error']);
-          } else if (isset($_SESSION['given_username'])) {
-            unset($_SESSION['given_username']);
+          } else if (isset($_SESSION['given_signin_username'])) {
+            unset($_SESSION['given_signin_username']);
           }
 ?>
 
             <div class="field">
               <label for="password" class="visually-hidden">Password</label>
               <img src="assets/icons/lock-password.svg" alt="">
-               <input id="password" type="password" name="password" placeholder="password"
+               <input id="password" type="password" name="password" <?= isset($_SESSION['given_signin_password']) ? 'value="'.$_SESSION['given_signin_password'].'"' : '' ?>  placeholder="password"
                       autocomplete="current-password" required aria-describedby="password-error">             
             </div>
             <!-- <p id="password-error" class="error" aria-live="polite"></p> -->
@@ -109,8 +104,8 @@
           if(isset($_SESSION['password_signin_error'])){
             echo $_SESSION['password_signin_error'];
             unset($_SESSION['password_signin_error']);
-          } else if (isset($_SESSION['given_username'])) {
-            unset($_SESSION['given_username']);
+          } else if (isset($_SESSION['given_signin_password'])) {
+            unset($_SESSION['given_signin_password']);
           }
 ?>
 
@@ -139,7 +134,10 @@
     <a href="./home.html"><small>® Personal Budget 2026.</small></a>
   </footer>
 
-  <script src="index.js"></script>
+  <script src="./errors-display.js"></script>
+
+  <!-- Zastanowić się, czy potrzebna jest ta prewalidacja -->
+  <!-- <script src="index.js"></script> -->
   
 </body>
 </html>

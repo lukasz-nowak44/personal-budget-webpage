@@ -2,6 +2,14 @@
 
 session_start();
 
+if (isset($_SESSION['given_signin_username'])) {
+    unset($_SESSION['given_signin_username']);
+  }
+
+if (isset($_SESSION['given_signin_password'])) {
+    unset($_SESSION['given_signin_password']);
+  }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
