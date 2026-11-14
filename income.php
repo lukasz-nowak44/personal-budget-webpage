@@ -39,7 +39,7 @@
     $add_income->bindValue(":user_id", $user_id, PDO::PARAM_INT);
     $add_income->bindValue(":id_category", $id_category, PDO::PARAM_INT);
     $add_income->bindValue(":amount", $amount, PDO::PARAM_STR);
-    $add_income->bindValue(":date", $user_id, PDO::PARAM_STR);
+    $add_income->bindValue(":date", $date, PDO::PARAM_STR);
     $add_income->bindValue(":comment", $comment, PDO::PARAM_STR);
     $add_income->execute();
 
