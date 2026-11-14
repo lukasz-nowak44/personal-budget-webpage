@@ -2,7 +2,7 @@
 
   session_start();
 
-  $_SESSION['transaction'] = 'expenses';
+  $_SESSION['transaction'] = 'expense';
 
   $user_id = $_SESSION['logged_user_id'];
   $types_of_options = ['expenses_category','payment_methods']; 
@@ -106,7 +106,7 @@
             <h1 class="text-center text-md-start">Add new expense:</h1>
           </header>
 
-          <form action="expense" id="expense" method="post" novalidate>
+          <form action="add-transaction.php" id="expense" method="post" novalidate>
 
             <div class="field-expense">
               <label for="amount">Amount:</label>

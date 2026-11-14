@@ -2,7 +2,7 @@
 
   session_start();
 
-  $_SESSION['transaction'] = 'incomes';
+  $_SESSION['transaction'] = 'income';
 
   $user_id = $_SESSION['logged_user_id'];
   require_once 'database.php';
@@ -94,7 +94,7 @@
             <h1 class="text-center text-md-start">Add new income:</h1>
           </header>
 
-          <form id="income" action="add-income.php" method="post" novalidate>
+          <form id="income" action="add-transaction.php" method="post" novalidate>
 
             <div class="field-income">
               <label for="amount">Amount:</label>
