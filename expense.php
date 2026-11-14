@@ -1,3 +1,33 @@
+<?php
+
+  session_start();
+
+  $_SESSION['transaction'] = 'expenses';
+
+  $user_id = $_SESSION['logged_user_id'];
+  $types_of_options = ['expenses_category','payment_methods']; 
+  $expenses_category = []; 
+  $payment_methods = [];
+  
+  require_once 'database.php';
+
+  foreach ($types_of_options as $type) {
+
+    $sql_user_categories = "SELECT id,name FROM ".$type."_assigned_to_users WHERE user_id=:user_id";
+    $load_categories = $db->prepare($sql_user_categories);
+    $load_categories->bindValue(":user_id", $user_id, PDO::PARAM_INT);
+    $load_categories->execute();
+
+    if ($type === 'expenses_category') {
+      $expenses_category = $load_categories->fetchAll();
+    } else {
+      $payment_methods = $load_categories->fetchAll();
+    }
+    
+  }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,49 +120,54 @@
             </div>
 
             <div class="field-expense">
-              
-              <fieldset form="expense">
 
-                <legend>Category:</legend>
+<?php
+   
+    foreach ($types_of_options as $type) {
 
-                <label><input type="radio" name="category" checked>Flat</label>
+      if ($type === 'expenses_category') {
+        echo '<fieldset form="expense"><legend>Category:</legend>';
+      } else {
+        echo '<fieldset form="payment" class="mt-4"><legend>Payment method:</legend>';
+      }
 
-                <label><input type="radio" name="category">Foods</label>
-                
-                <label><input type="radio" name="category">Transport</label>
+      $isItFirstCategory = true;
+
+      // Below variable variables mechanism!
+      foreach ($$type as $category) {
+
+        $checked_or_not = '';
+        
+        if (isset($_SESSION['given_category'])) {
+
+          if ($_SESSION['given_category'] == $category['id']) {
+
+            $checked_or_not = 'checked';
+        
+          }
+    
+        } else {
+
+          if ($isItFirstCategory) {
+            $checked_or_not = 'checked';
+            $isItFirstCategory = false;
+          }
+        }
+
+        echo '<label class="me-3"><input type="radio" name="'.$type.'" value="'.$category['id'].'" '.$checked_or_not.'>'.$category['name'].'</label>';
+
+      } 
+    
+      if (isset($_SESSION['given_category'])) {
+        unset($_SESSION['given_category']);
+      }
+
+      echo '</fieldset>';
+    }
           
-                <label><input type="radio" name="category">Telecommunication</label>
-
-                <label><input type="radio" name="category">Healthcare</label>
-
-                <label><input type="radio" name="category">Clothes</label>
+?>
           
-                <label><input type="radio" name="category">Hygiene</label>
-
-                <label><input type="radio" name="category">Children</label>
-
-                <label><input type="radio" name="category">Enterteiment</label>
-                
-                <label><input type="radio" name="category">Journey</label>
-          
-                <label><input type="radio" name="category">Training</label>
-
-                <label><input type="radio" name="category">Books</label>
-
-                <label><input type="radio" name="category">Savings</label>
-          
-                <label><input type="radio" name="category">Pension</label>
-
-                <label><input type="radio" name="category">Repayment of debts</label>
-
-                <label><input type="radio" name="category">Donation</label>
-          
-                <label><input type="radio" name="category">Other</label>
-
-              </fieldset>
-
             </div>
-
             <div class="field-expense d-flex flex-sm-row flex-column align-items-start">
               <label for="comment" class="pe-md-2">Add comment:</label>
               <textarea id="comment" name="comment" rows="2" cols="30" maxlength="45">

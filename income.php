@@ -2,6 +2,8 @@
 
   session_start();
 
+  $_SESSION['transaction'] = 'incomes';
+
   $user_id = $_SESSION['logged_user_id'];
   require_once 'database.php';
 
