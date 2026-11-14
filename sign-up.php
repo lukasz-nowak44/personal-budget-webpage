@@ -133,11 +133,25 @@
     $what_id->execute();
     $user = $what_id->fetch();
 
-    $sql_categories = "INSERT INTO incomes_category_assigned_to_users (name, user_id) SELECT incomes_category_default.name, :user_id FROM incomes_category_default";
-    $copy_categories = $db->prepare($sql_categories);
-    $copy_categories->bindValue(":user_id", $user['id'], PDO::PARAM_INT);
-    $copy_categories->execute();
+    $transactions = ['incomes', 'expenses'];
 
+    foreach ($transactions as $transaction) {
+
+      $sql_categories = "INSERT INTO ".$transaction."_category_assigned_to_users (name, user_id) SELECT ".$transaction."_category_default.name, :user_id FROM ".$transaction."_category_default";
+      $copy_categories = $db->prepare($sql_categories);
+      $copy_categories->bindValue(":user_id", $user['id'], PDO::PARAM_INT);
+      $copy_categories->execute();
+
+      if ($transaction === 'expenses') {
+
+        $sql_payments = "INSERT INTO payment_methods_assigned_to_users (name, user_id) SELECT name, :user_id FROM payment_methods_default";
+        $copy_payments = $db->prepare($sql_payments);
+        $copy_payments->bindValue(":user_id", $user['id'], PDO::PARAM_STR);
+        $copy_payments->execute();
+        
+      }
+    }
+    
   } else {
 
     header('location: registration.php');

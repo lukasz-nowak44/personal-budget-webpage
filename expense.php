@@ -18,7 +18,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark py-0">
 
-      <a class="navbar-brand" href="home.html"><img src="./assets/images/logo-light-removebg-preview.png" class="logo" alt=""></a>
+      <a class="navbar-brand" href="home.php"><img src="./assets/images/logo-light-removebg-preview.png" class="logo" alt=""></a>
 
       <button class="navbar-toggler me-3" type="button"        data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 
@@ -30,13 +30,13 @@
 
       <ul class="navbar-nav mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="home.html">Home</a>
+          <a class="nav-link" aria-current="page" href="home.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="income.html">Add income</a>
+          <a class="nav-link" href="income.php">Add income</a>
         </li> 
         <li class="nav-item">
-          <a class="nav-link active" href="expense.html">Add expense</a>
+          <a class="nav-link active" href="expense.php">Add expense</a>
         </li> 
         <li class="nav-item dropdown">
 
@@ -44,19 +44,19 @@
             Display balance
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="balance.html">Current month</a></li>
-            <li><a class="dropdown-item" href="balance.html">Previous month</a></li>
-            <li><a class="dropdown-item" href="balance.html">Current year</a></li>
+            <li><a class="dropdown-item" href="balance.php">Current month</a></li>
+            <li><a class="dropdown-item" href="balance.php">Previous month</a></li>
+            <li><a class="dropdown-item" href="balance.php">Current year</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="balance.html">non-standard</a></li>
+            <li><a class="dropdown-item" href="balance.php">non-standard</a></li>
           </ul>
 
         </li> 
         <li class="nav-item">
-          <a class="nav-link" href="settings.html">Settings</a>
+          <a class="nav-link" href="settings.php">Settings</a>
         </li> 
         <li class="nav-item">
-          <a class="nav-link" href="index.html">Logout</a>
+          <a class="nav-link" href="index.php">Logout</a>
         </li>
       </ul>
 
@@ -152,7 +152,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body d-flex justify-content-between">
-                    <a href="home.html" class="btn btn-primary cancel">Yes</a>
+                    <a href="home.php" class="btn btn-primary cancel">Yes</a>
                     <button type="button" class="btn btn-secondary add" data-bs-dismiss="modal">No</button>   
                   </div>
                 </div>

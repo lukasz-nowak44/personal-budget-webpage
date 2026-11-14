@@ -58,7 +58,7 @@
           <div class="field">
             <label for="email" class="visually-hidden">Email</label>
             <img src="assets/icons/at.svg" alt="">
-            <input id="email" type="email" name="email" <?= isset($_SESSION['given_email']) ? 'value="'.html($_SESSION['given_email']).'"' : '' ?> placeholder="email"
+            <input id="email" type="email" name="email" <?= isset($_SESSION['given_email']) ? 'value="'.htmlspecialchars($_SESSION['given_email']).'"' : '' ?> placeholder="email"
               autocomplete="email" required aria-describedby="email-error">            
           </div>
           <!-- <p id="email-error" class="error" aria-live="polite"></p> -->
