@@ -167,7 +167,7 @@
 
             <div class="field-income d-flex flex-sm-row flex-column align-items-start">
               <label for="comment" class="pe-md-2">Add comment:</label>
-              <textarea id="comment" name="comment" rows="2" cols="30" maxlength="45"><?= isset($_SESSION['given_comment']) ? $_SESSION['given_comment'] : '' ?></textarea>
+              <textarea id="comment" name="comment" rows="2" cols="30" maxlength="45"><?= isset($_SESSION['given_comment']) ? htmlspecialchars($_SESSION['given_comment']) : '' ?></textarea>
             </div>
 
 <?php

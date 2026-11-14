@@ -78,7 +78,7 @@
             <div class="field">
               <label for="login" class="visually-hidden">Username</label>
               <img src="assets/icons/user.svg" alt="">
-              <input id="login" type="text" name="username" <?= isset($_SESSION['given_signin_username']) ? 'value="'.$_SESSION['given_signin_username'].'"' : '' ?> placeholder="username"
+              <input id="login" type="text" name="username" <?= isset($_SESSION['given_signin_username']) ? 'value="'.htmlspecialchars($_SESSION['given_signin_username']).'"' : '' ?> placeholder="username"
                       autocomplete="username" required aria-describedby="username-error">             
             </div>
             <!-- <p id="username-error" class="error" aria-live="polite"></p> -->
@@ -95,7 +95,7 @@
             <div class="field">
               <label for="password" class="visually-hidden">Password</label>
               <img src="assets/icons/lock-password.svg" alt="">
-               <input id="password" type="password" name="password" <?= isset($_SESSION['given_signin_password']) ? 'value="'.$_SESSION['given_signin_password'].'"' : '' ?>  placeholder="password"
+               <input id="password" type="password" name="password" <?= isset($_SESSION['given_signin_password']) ? 'value="'.htmlspecialchars($_SESSION['given_signin_password']).'"' : '' ?>  placeholder="password"
                       autocomplete="current-password" required aria-describedby="password-error">             
             </div>
             <!-- <p id="password-error" class="error" aria-live="polite"></p> -->
