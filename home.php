@@ -10,7 +10,9 @@ if (isset($_SESSION['given_signin_password'])) {
     unset($_SESSION['given_signin_password']);
   }
 
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

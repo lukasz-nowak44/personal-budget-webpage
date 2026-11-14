@@ -12,41 +12,6 @@
 
   $user_categories = $load_categories->fetchAll();
 
-  $isEverythingGood = true;
-
-  if (empty($_POST['amount'])) {
-
-    $_SESSION['amount_error'] = 'The amount cannot be empty';
-    $isEverythingGood = false;
-
-  } else if (!(filter_var($_POST['amount'], FILTER_VALIDATE_FLOAT))) {
-
-      $_SESSION['amount_error'] = 'This field must be in correct format';
-      $isEverythingGood = false;
-
-  }
-
-
-  if ($isEverythingGood) {
-
-    $amount = round($_POST['amount'],2);
-    $date = $_POST['date'];
-    $id_category = $_POST['category'];
-    $comment = $_POST['comment'];
-    
-    $sql_add = "INSERT INTO incomes (user_id, income_category_assigned_to_user_id, amount, date_of_income, income_comment) VALUES (:user_id, :id_category, :amount, :date, :comment)";
-    $add_income = $db->prepare($sql_add);
-    $add_income->bindValue(":user_id", $user_id, PDO::PARAM_INT);
-    $add_income->bindValue(":id_category", $id_category, PDO::PARAM_INT);
-    $add_income->bindValue(":amount", $amount, PDO::PARAM_STR);
-    $add_income->bindValue(":date", $date, PDO::PARAM_STR);
-    $add_income->bindValue(":comment", $comment, PDO::PARAM_STR);
-    $add_income->execute();
-
-    $_SESSION['income_added'] = true;
-
-  }
-
 ?>
 
 <!DOCTYPE html>
@@ -69,7 +34,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark py-0">
 
-      <a class="navbar-brand" href="home.html"><img src="./assets/images/logo-light-removebg-preview.png" class="logo" alt=""></a>
+      <a class="navbar-brand" href="home.php"><img src="./assets/images/logo-light-removebg-preview.png" class="logo" alt=""></a>
 
       <button class="navbar-toggler me-3" type="button"        data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 
@@ -81,13 +46,13 @@
 
       <ul class="navbar-nav mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="home.html">Home</a>
+          <a class="nav-link" aria-current="page" href="home.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="income.html">Add income</a>
+          <a class="nav-link active" href="income.php">Add income</a>
         </li> 
         <li class="nav-item">
-          <a class="nav-link" href="expense.html">Add expense</a>
+          <a class="nav-link" href="expense.php">Add expense</a>
         </li> 
         <li class="nav-item dropdown">
 
@@ -95,19 +60,19 @@
             Display balance
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="balance.html">Current month</a></li>
-            <li><a class="dropdown-item" href="balance.html">Previous month</a></li>
-            <li><a class="dropdown-item" href="balance.html">Current year</a></li>
+            <li><a class="dropdown-item" href="balance.php">Current month</a></li>
+            <li><a class="dropdown-item" href="balance.php">Previous month</a></li>
+            <li><a class="dropdown-item" href="balance.php">Current year</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="balance.html">non-standard</a></li>
+            <li><a class="dropdown-item" href="balance.php">non-standard</a></li>
           </ul>
 
         </li> 
         <li class="nav-item">
-          <a class="nav-link" href="settings.html">Settings</a>
+          <a class="nav-link" href="settings.php">Settings</a>
         </li> 
         <li class="nav-item">
-          <a class="nav-link" href="index.html">Logout</a>
+          <a class="nav-link" href="index.php">Logout</a>
         </li>
       </ul>
 
@@ -127,7 +92,7 @@
             <h1 class="text-center text-md-start">Add new income:</h1>
           </header>
 
-          <form id="income" method="post" novalidate>
+          <form id="income" action="add-income.php" method="post" novalidate>
 
             <div class="field-income">
               <label for="amount">Amount:</label>
@@ -187,7 +152,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body d-flex justify-content-between">
-                    <a href="home.html" class="btn btn-primary cancel">Yes</a>
+                    <a href="home.php" class="btn btn-primary cancel">Yes</a>
                     <button type="button" class="btn btn-secondary add" data-bs-dismiss="modal">No</button>   
                   </div>
                 </div>
