@@ -96,14 +96,30 @@
 
             <div class="field-income">
               <label for="amount">Amount:</label>
-              <input id="amount" type="number" name="amount" required>
+              <input id="amount" type="number" name="amount" <?= isset($_SESSION['given_amount']) ? 'value="'.$_SESSION['given_amount'].'"' : '' ?> required>
             </div>
+
+<?php
+
+            if (isset($_SESSION['given_amount'])) {
+              unset($_SESSION['given_amount']);
+            }
+
+?>
 
             <div class="field-income">
               <label for="date">Date:</label>
-              <input id="date" type="date" name="date" value=""
+              <input id="date" type="date" name="date" <?= isset($_SESSION['given_date']) ? 'value="'.$_SESSION['given_date'].'"' : '' ?>
                 required>
             </div>
+
+<?php
+          
+            if (isset($_SESSION['given_date'])) {
+              unset($_SESSION['given_date']);
+            }
+
+?>
 
             <div class="field-income">
               
@@ -116,17 +132,33 @@
     $isItFirstCategory = true;
 
     foreach ($user_categories as $category) {
- 
-        if ($isItFirstCategory) {
-          echo '<label><input type="radio" name="category" value="'.$category['id'].'" checked>'.$category['name'].'</label>';
-          $isItFirstCategory = false;
 
-        } else {
-          echo '<label><input type="radio" name="category" value="'.$category['id'].'">'.$category['name'].'</label>';
+      $checked_or_not = '';
+      
+      if (isset($_SESSION['given_category'])) {
+
+        if ($_SESSION['given_category'] == $category['id']) {
+
+          $checked_or_not = 'checked';
+      
         }
+   
+      } else {
 
+        if ($isItFirstCategory) {
+          $checked_or_not = 'checked';
+          $isItFirstCategory = false;
+        }
+      }
+      
+      echo '<label><input type="radio" name="category" value="'.$category['id'].'" '.$checked_or_not.'>'.$category['name'].'</label>';
+
+    } 
+    
+    if (isset($_SESSION['given_category'])) {
+      unset($_SESSION['given_category']);
     }
-
+    
 ?>
 
               </fieldset>
@@ -135,10 +167,16 @@
 
             <div class="field-income d-flex flex-sm-row flex-column align-items-start">
               <label for="comment" class="pe-md-2">Add comment:</label>
-              <textarea id="comment" name="comment" rows="2" cols="30" maxlength="45">
-              </textarea>
+              <textarea id="comment" name="comment" rows="2" cols="30" maxlength="45"><?= isset($_SESSION['given_comment']) ? $_SESSION['given_comment'] : '' ?></textarea>
             </div>
 
+<?php
+
+            if (isset($_SESSION['given_comment'])) {
+              unset($_SESSION['given_comment']);
+            }
+
+?>
             <div class="d-flex flex-column gap-3 flex-md-row justify-content-between">
               <button class="btn btn-primary cancel order-1 order-md-0" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button">Cancel</button>
               <button class="btn btn-primary add"  type="submit">Add</button>
@@ -191,7 +229,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
-  <script src="navbar.js" defer></script>
+  <script src="navbar.js"></script>
 
 </body>
 </html>

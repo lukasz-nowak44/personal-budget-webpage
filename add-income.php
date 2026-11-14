@@ -4,7 +4,12 @@
 
   $user_id = $_SESSION['logged_user_id'];
   require_once 'database.php';
-  
+
+  $_SESSION['given_amount'] = $_POST['amount'];
+  $_SESSION['given_date'] = $_POST['date'];
+  $_SESSION['given_category'] = $_POST['category'];
+  $_SESSION['given_comment'] = $_POST['comment'];
+
   $isEverythingGood = true;
 
   if (empty($_POST['amount'])) {
@@ -40,8 +45,13 @@
     $add_income->execute();
 
     $_SESSION['income_added'] = true;  
+    unset($_SESSION['given_amount']);
+    unset($_SESSION['given_date']);
+    unset($_SESSION['given_category']);
+    unset($_SESSION['given_comment']);
 
     header('location: income.php');
+
   }
 
   
