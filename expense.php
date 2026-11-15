@@ -110,14 +110,30 @@
 
             <div class="field-expense">
               <label for="amount">Amount:</label>
-              <input id="amount" type="number" name="amount" required>
+              <input id="amount" type="number" name="amount" <?= isset($_SESSION['given_amount']) ? 'value="'.$_SESSION['given_amount'].'"' : '' ?> required>
             </div>
+
+<?php
+
+            if (isset($_SESSION['given_amount'])) {
+              unset($_SESSION['given_amount']);
+            }
+
+?>
 
             <div class="field-expense">
               <label for="date">Date:</label>
-              <input id="date" type="date" name="date" value=""
+              <input id="date" type="date" name="date" <?= isset($_SESSION['given_date']) ? 'value="'.$_SESSION['given_date'].'"' : '' ?>
                 required>
             </div>
+
+<?php
+
+            if (isset($_SESSION['given_date'])) {
+              unset($_SESSION['given_date']);
+            }
+
+?>
 
             <div class="field-expense">
 
@@ -132,15 +148,16 @@
       }
 
       $isItFirstCategory = true;
+      $given_type_name = 'given_'.$type.'';
 
       // Below variable variables mechanism!
       foreach ($$type as $category) {
 
         $checked_or_not = '';
         
-        if (isset($_SESSION['given_category'])) {
+        if (isset($_SESSION[$given_type_name])) {
 
-          if ($_SESSION['given_category'] == $category['id']) {
+          if ($_SESSION[$given_type_name] == $category['id']) {
 
             $checked_or_not = 'checked';
         
@@ -158,8 +175,8 @@
 
       } 
     
-      if (isset($_SESSION['given_category'])) {
-        unset($_SESSION['given_category']);
+      if (isset($_SESSION[$given_type_name])) {
+        unset($_SESSION[$given_type_name]);
       }
 
       echo '</fieldset>';
@@ -170,9 +187,16 @@
             </div>
             <div class="field-expense d-flex flex-sm-row flex-column align-items-start">
               <label for="comment" class="pe-md-2">Add comment:</label>
-              <textarea id="comment" name="comment" rows="2" cols="30" maxlength="45">
-              </textarea>
+              <textarea id="comment" name="comment" rows="2" cols="30" maxlength="45"><?= isset($_SESSION['given_comment']) ? htmlspecialchars($_SESSION['given_comment']) : '' ?></textarea>
             </div>
+
+<?php
+
+            if (isset($_SESSION['given_comment'])) {
+              unset($_SESSION['given_comment']);
+            }
+
+?>
 
             <div class="d-flex flex-column gap-3 flex-md-row justify-content-between">
               <button class="btn btn-primary cancel order-1 order-md-0" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button">Cancel</button>
@@ -195,6 +219,22 @@
             </div>
 
           </form>
+
+<?php
+
+      if (isset($_SESSION['expense_added'])) {
+
+        echo '<p class="username mt-3" style="color: var(--accent);">Expense added successfully!</p>';
+        unset($_SESSION['expense_added']);
+
+      } else if (isset($_SESSION['amount_error'])) {
+
+        echo '<p class="username mt-3" style="color: var(--button);">'.$_SESSION['amount_error'].'</p>';
+        unset($_SESSION['amount_error']);
+
+      }
+
+?>
 
         </main>
 
