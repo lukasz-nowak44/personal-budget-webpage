@@ -187,17 +187,22 @@ echo<<<END
 END;
 
       $counter = 0;
-      $percent = 2;
+      $percent = 40;
 
       foreach($$transaction as $category){
 
         $counter += 1;
+        $class_percent = '';
+
+        if ($transaction === 'expense') {
+          $class_percent = ' class="percent"';
+        }
 
         echo '<tr>';
         echo '<td>'.$counter.'</td>';
         echo '<td class="category-'.$transaction.'">'.$category['category_name'].'</td>';
         echo '<td>'.$category['total_amount'].'</td>';
-        echo '<td>'.$percent.'</td>';
+        echo '<td'.$class_percent.'>'.$percent.'</td>';
         echo '<td><button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#details"><img src="./assets/icons/info-square.svg" alt="check details"></button></td>';
         echo '</tr>'; 
 

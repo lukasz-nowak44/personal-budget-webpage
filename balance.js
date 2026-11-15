@@ -8,7 +8,7 @@ const xValues = [];
 const yValues = [];
 const barColors = ["red", "green","blue","orange","brown", "yellow", "lavender"];
 
-const numberOfElement = document.querySelectorAll(".category").length;
+const numberOfElement = document.querySelectorAll(".category-expense").length;
 let fontLegend = 12;
 
 if (period) {
@@ -33,11 +33,13 @@ if (handle) {
 document.getElementById("start-date").value = "2000-01-01";
 document.getElementById("end-date").valueAsDate = new Date();
 
-for (let i=0; i < 6; i++){
 
-  xValues.push(document.querySelectorAll(".category")[i].innerHTML);
+
+for (let i=0; i < numberOfElement; i++){
+
+  xValues.push(document.querySelectorAll(".category-expense")[i].innerHTML);
   yValues.push(document.querySelectorAll(".percent")[i].innerHTML);
-
+  
 }
 
 if (numberOfElement > 6) {
