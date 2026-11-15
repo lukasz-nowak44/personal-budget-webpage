@@ -3,6 +3,11 @@
   session_start();
 
   if (isset($_SESSION['logged_user_id'])) {
+    header('location: home.php');
+    exit();
+  }
+
+  if (isset($_SESSION['logged_user_id'])) {
     unset($_SESSION['logged_user_id']);
     unset($_SESSION['logged_user_username']);
   }

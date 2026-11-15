@@ -2,6 +2,11 @@
 
   session_start();
 
+  if (!(isset($_SESSION['logged_user_id']))) {
+    header('location: index.php');
+    exit();
+  }
+
   $_SESSION['transaction'] = 'expense';
 
   $user_id = $_SESSION['logged_user_id'];
@@ -86,7 +91,7 @@
           <a class="nav-link" href="settings.php">Settings</a>
         </li> 
         <li class="nav-item">
-          <a class="nav-link" href="index.php">Logout</a>
+          <a class="nav-link" href="logout.php">Logout</a>
         </li>
       </ul>
 

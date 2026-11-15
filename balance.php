@@ -1,3 +1,13 @@
+<?php
+
+  session_start();
+
+  if (!(isset($_SESSION['logged_user_id']))) {
+    header('location: index.php');
+    exit();
+  }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +28,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark py-0">
 
-      <a class="navbar-brand" href="home.html"><img src="./assets/images/logo-light-removebg-preview.png" class="logo" alt=""></a>
+      <a class="navbar-brand" href="home.php"><img src="./assets/images/logo-light-removebg-preview.png" class="logo" alt=""></a>
 
       <button class="navbar-toggler me-3" type="button"        data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 
@@ -30,13 +40,13 @@
 
       <ul class="navbar-nav mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="home.html">Home</a>
+          <a class="nav-link" aria-current="page" href="home.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="income.html">Add income</a>
+          <a class="nav-link" href="income.php">Add income</a>
         </li> 
         <li class="nav-item">
-          <a class="nav-link" href="expense.html">Add expense</a>
+          <a class="nav-link" href="expense.php">Add expense</a>
         </li> 
         <li class="nav-item dropdown">
 
@@ -44,19 +54,19 @@
             Display balance
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="balance.html">Current month</a></li>
-            <li><a class="dropdown-item" href="balance.html">Previous month</a></li>
-            <li><a class="dropdown-item" href="balance.html">Current year</a></li>
+            <li><a class="dropdown-item" href="balance.php">Current month</a></li>
+            <li><a class="dropdown-item" href="balance.php">Previous month</a></li>
+            <li><a class="dropdown-item" href="balance.php">Current year</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="balance.html">non-standard</a></li>
+            <li><a class="dropdown-item" href="balance.php">non-standard</a></li>
           </ul>
 
         </li> 
         <li class="nav-item">
-          <a class="nav-link" href="settings.html">Settings</a>
+          <a class="nav-link" href="settings.php">Settings</a>
         </li> 
         <li class="nav-item">
-          <a class="nav-link" href="index.html">Logout</a>
+          <a class="nav-link" href="logout.php">Logout</a>
         </li>
       </ul>
 
@@ -493,7 +503,7 @@
                       </div>
                       <div class="modal-footer">
 
-                        <a class="btn btn-primary close" href="settings.html" >Edit</a>
+                        <a class="btn btn-primary close" href="settings.php" >Edit</a>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         
                       </div>

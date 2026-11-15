@@ -2,6 +2,11 @@
 
 session_start();
 
+if (!(isset($_SESSION['logged_user_id']))) {
+  header('location: index.php');
+  exit();
+}
+
 if (isset($_SESSION['given_signin_username'])) {
     unset($_SESSION['given_signin_username']);
   }
@@ -71,7 +76,7 @@ if (isset($_SESSION['given_signin_password'])) {
           <a class="nav-link" href="settings.html">Settings</a>
         </li> 
         <li class="nav-item">
-          <a class="nav-link" href="index.php">Logout</a>
+          <a class="nav-link" href="logout.php">Logout</a>
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" href="">Logged as <?php  echo htmlspecialchars($_SESSION['logged_user_username']) ?></a>
@@ -144,14 +149,14 @@ if (isset($_SESSION['given_signin_password'])) {
             </div>
           </div>
           
-          <a class="card" href="settings.html">
+          <a class="card" href="settings.php">
             <img src="./assets/icons/settings-cog.png" class="card-img-top" alt="">
             <div class="card-body">
               <p class="card-text">Change settings</p>
             </div>
           </a>
 
-          <a class="card" href="index.php">
+          <a class="card" href="logout.php">
             <img src="./assets/icons/logout.png" class="card-img-top" alt="">
             <div class="card-body">
               <p class="card-text">Logout</p>
