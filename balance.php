@@ -195,12 +195,20 @@ echo<<<END
 END;
       
       $counter = 0;
-      $percent = 40;
+      $percent = 0;
 
       foreach($$transaction as $category){
 
         $counter += 1;
         $class_percent = '';
+
+        if ($transaction === 'income') {
+          $percent = ($category['total_amount']*100)/$sum_of_incomes;
+        } else {
+          $percent = ($category['total_amount']*100)/$sum_of_expenses;
+        }
+
+        $percent = round($percent, 1);
 
         if ($transaction === 'expense') {
           $class_percent = ' class="percent"';
