@@ -133,10 +133,7 @@
   </div>
 
   <footer>
-
-    <!-- Opakowane w "a" na czas testów wersji z samym Frontend'em -->
-
-    <a href="./home.html"><small>® Personal Budget 2026.</small></a>
+    <small>® Personal Budget 2026.</small>
   </footer>
 
   <script src="./errors-display.js"></script>

@@ -7,6 +7,32 @@
     exit();
   }
 
+  $user_id = $_SESSION['logged_user_id'];
+  $transactions = ["income", "expense"];
+  $income = [];
+  $expense = [];
+  $start_date = '2026-01-01';
+  $end_date = '2026-11-15';
+
+  require_once 'database.php';
+
+  foreach ($transactions as $transaction) {
+
+    $sql = "SELECT ".$transaction."s_category_assigned_to_users.name AS category_name, SUM(".$transaction."s.amount) AS total_amount FROM ".$transaction."s LEFT JOIN ".$transaction."s_category_assigned_to_users ON ".$transaction."s.".$transaction."_category_assigned_to_user_id=".$transaction."s_category_assigned_to_users.id WHERE ".$transaction."s.date_of_".$transaction." BETWEEN :start_date AND :end_date AND ".$transaction."s.user_id=:user_id
+    GROUP BY category_name
+    ORDER BY total_amount DESC";
+
+    $load_category_summaries = $db->prepare($sql);
+    $load_category_summaries->bindValue(":start_date", $start_date, PDO::PARAM_STR);
+    $load_category_summaries->bindValue(":end_date", $end_date, PDO::PARAM_STR);
+    $load_category_summaries->bindValue(":user_id", $user_id, PDO::PARAM_INT);
+    $load_category_summaries->execute();
+
+    $$transaction = $load_category_summaries->fetchAll();
+
+  }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -142,7 +168,48 @@
 
                 <h3 class="table-title">The summary of your incomes:</h3>
 
-                <table class="mb-4">
+<?php
+
+    foreach ($transactions as $transaction) {
+echo<<<END
+<table class="mb-4">
+<thead>
+<thead>
+<tr>
+<th>nr</th>
+<th>category</th>
+<th>amount [PLN]</th>
+<th>percent [%]</th>
+<th>details</th>
+</tr>
+</thead>
+<tbody>
+END;
+
+      $counter = 0;
+      $percent = 2;
+
+      foreach($$transaction as $category){
+
+        $counter += 1;
+
+        echo '<tr>';
+        echo '<td>'.$counter.'</td>';
+        echo '<td class="category-'.$transaction.'">'.$category['category_name'].'</td>';
+        echo '<td>'.$category['total_amount'].'</td>';
+        echo '<td>'.$percent.'</td>';
+        echo '<td><button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#details"><img src="./assets/icons/info-square.svg" alt="check details"></button></td>';
+        echo '</tr>'; 
+
+      }
+
+      echo '</tbody>';
+      echo '</table>';
+                
+    }
+?>
+
+                <!-- <table class="mb-4">
 
                   <thead>
 
@@ -437,7 +504,7 @@
 
                   </tbody>
 
-                </table>
+                </table> -->
 
                 <div class="modal fade" id="details" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
                   <div class="modal-dialog">
