@@ -13,6 +13,8 @@
   $expense = [];
   $start_date = '2026-01-01';
   $end_date = '2026-11-15';
+  $sum_of_incomes = 0;
+  $sum_of_expenses = 0;
 
   require_once 'database.php';
 
@@ -32,6 +34,12 @@
 
   }
 
+  foreach ($income as $income_amount) {
+    $sum_of_incomes += $income_amount['total_amount'];
+  }
+  foreach ($expense as $expense_amount) {
+    $sum_of_expenses += $expense_amount['total_amount'];
+  }
 
 ?>
 <!DOCTYPE html>
@@ -166,11 +174,11 @@
 
               <section class="col-lg-6 d-flex flex-column tables">
 
-                <h3 class="table-title">The summary of your incomes:</h3>
-
 <?php
 
     foreach ($transactions as $transaction) {
+
+      echo '<h3 class="table-title">The summary of your '.$transaction.'s:</h3>';
 echo<<<END
 <table class="mb-4">
 <thead>
@@ -185,7 +193,7 @@ echo<<<END
 </thead>
 <tbody>
 END;
-
+      
       $counter = 0;
       $percent = 40;
 
@@ -213,303 +221,6 @@ END;
                 
     }
 ?>
-
-                <!-- <table class="mb-4">
-
-                  <thead>
-
-                    <tr>
-
-                      <th>nr</th>
-                      <th>category</th>
-                      <th>amount [PLN]</th>
-                      <th>percent [%]</th>
-                      <th>details</th>
-
-                    </tr>
-
-                  </thead>
-
-                  <tbody>
-
-                    <tr>
-
-                      <td>1</td>
-                      <td class="category-income">Salary</td>
-                      <td>16000</td>
-                      <td>70</td>
-                      <td>
-                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#details"><img src="./assets/icons/info-square.svg" alt="check details"></button> 
-                      </td>
-
-                    </tr>
-
-                    <tr>
-
-                      <td>2</td>
-                      <td class="category-income">Selling on Allegro</td>
-                      <td>500</td>
-                      <td>7</td>
-                      <td>
-                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#details"><img src="./assets/icons/info-square.svg" alt="check details"></button> 
-                      </td>
-
-                    </tr>
-
-                    <tr>
-
-                      <td>3</td>
-                      <td class="category-income">Interest savings</td>
-                      <td>200</td>
-                      <td>3</td>
-                      <td>
-                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#details"><img src="./assets/icons/info-square.svg" alt="check details"></button> 
-                      </td>
-
-                    </tr>
-
-                    <tr>
-
-                      <td>4</td>
-                      <td class="category-income">Other</td>
-                      <td>100</td>
-                      <td>1</td>
-                      <td>
-                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#details"><img src="./assets/icons/info-square.svg" alt="check details"></button> 
-                      </td>
-
-                    </tr>
-
-                  </tbody>
-
-                </table>
-
-                <h3 class="table-title">The summary of your expenses:</h3>
-
-                <table>
-
-                  <thead>
-
-                    <tr>
-
-                      <th>nr</th>
-                      <th>category</th>
-                      <th>amount [PLN]</th>
-                      <th>percent [%]</th>
-                      <th>details</th>
-
-                    </tr>
-
-                  </thead>
-
-                  <tbody>
-
-                    <tr>
-
-                      <td>1</td>
-                      <td class="category">Flat</td>
-                      <td>1000</td>
-                      <td class="percent">20</td>
-                      <td>
-                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#details"><img src="./assets/icons/info-square.svg" alt="check details"></button> 
-                      </td>
-
-                    </tr>
-
-                    <tr>
-
-                      <td>2</td>
-                      <td class="category">Foods</td>
-                      <td>900</td>
-                      <td class="percent">19</td>
-                      <td>
-                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#details"><img src="./assets/icons/info-square.svg" alt="check details"></button> 
-                      </td>
-
-                    </tr>
-
-                    <tr>
-
-                      <td>3</td>
-                      <td class="category">Transport</td>
-                      <td>200</td>
-                      <td class="percent">10</td>
-                      <td>
-                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#details"><img src="./assets/icons/info-square.svg" alt="check details"></button> 
-                      </td>
-
-                    </tr>
-
-                    <tr>
-
-                      <td>4</td>
-                      <td class="category">Telecommunication</td>
-                      <td>50</td>
-                      <td class="percent">5</td>
-                      <td>
-                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#details"><img src="./assets/icons/info-square.svg" alt="check details"></button> 
-                      </td>
-
-                    </tr>
-
-                    <tr>
-
-                      <td>5</td>
-                      <td class="category">Healthcare</td>
-                      <td>50</td>
-                      <td class="percent">5</td>
-                      <td>
-                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#details"><img src="./assets/icons/info-square.svg" alt="check details"></button> 
-                      </td>
-
-                    </tr>
-
-                    <tr>
-
-                      <td>6</td>
-                      <td class="category">Clothes</td>
-                      <td>50</td>
-                      <td class="percent">5</td>
-                      <td>
-                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#details"><img src="./assets/icons/info-square.svg" alt="check details"></button> 
-                      </td>
-                      
-                    </tr>
-
-                    <tr>
-
-                      <td>7</td>
-                      <td class="category">Hygiene</td>
-                      <td>50</td>
-                      <td class="percent">5</td>
-                      <td>
-                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#details"><img src="./assets/icons/info-square.svg" alt="check details"></button> 
-                      </td>
-                      
-                    </tr>
-
-                    <tr>
-
-                      <td>8</td>
-                      <td class="category">Children</td>
-                      <td>50</td>
-                      <td class="percent">5</td>
-                      <td>
-                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#details"><img src="./assets/icons/info-square.svg" alt="check details"></button> 
-                      </td>
-                      
-                    </tr>
-
-                    <tr>
-
-                      <td>9</td>
-                      <td class="category">Entertanment</td>
-                      <td>50</td>
-                      <td class="percent">5</td>
-                      <td>
-                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#details"><img src="./assets/icons/info-square.svg" alt="check details"></button> 
-                      </td>
-                      
-                    </tr>
-
-                    <tr>
-
-                      <td>10</td>
-                      <td class="category">Journey</td>
-                      <td>50</td>
-                      <td class="percent">5</td>
-                      <td>
-                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#details"><img src="./assets/icons/info-square.svg" alt="check details"></button> 
-                      </td>
-                      
-                    </tr>
-
-                    <tr>
-
-                      <td>11</td>
-                      <td class="category">Training</td>
-                      <td>50</td>
-                      <td class="percent">5</td>
-                      <td>
-                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#details"><img src="./assets/icons/info-square.svg" alt="check details"></button> 
-                      </td>
-                      
-                    </tr>
-
-                    <tr>
-
-                      <td>12</td>
-                      <td class="category">Books</td>
-                      <td>50</td>
-                      <td class="percent">5</td>
-                      <td>
-                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#details"><img src="./assets/icons/info-square.svg" alt="check details"></button> 
-                      </td>
-                      
-                    </tr>
-
-                    <tr>
-
-                      <td>13</td>
-                      <td class="category">Savings</td>
-                      <td>50</td>
-                      <td class="percent">5</td>
-                      <td>
-                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#details"><img src="./assets/icons/info-square.svg" alt="check details"></button> 
-                      </td>
-                      
-                    </tr>
-
-                    <tr>
-
-                      <td>14</td>
-                      <td class="category">Pension</td>
-                      <td>50</td>
-                      <td class="percent">5</td>
-                      <td>
-                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#details"><img src="./assets/icons/info-square.svg" alt="check details"></button> 
-                      </td>
-                      
-                    </tr>
-                    <tr>
-
-                      <td>15</td>
-                      <td class="category">Repayment of debts</td>
-                      <td>50</td>
-                      <td class="percent">5</td>
-                      <td>
-                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#details"><img src="./assets/icons/info-square.svg" alt="check details"></button> 
-                      </td>
-                      
-                    </tr>
-
-                    <tr>
-
-                      <td>16</td>
-                      <td class="category">Donation</td>
-                      <td>50</td>
-                      <td class="percent">5</td>
-                      <td>
-                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#details"><img src="./assets/icons/info-square.svg" alt="check details"></button> 
-                      </td>
-                      
-                    </tr>
-
-                    <tr>
-
-                      <td>17</td>
-                      <td class="category">Other</td>
-                      <td>50</td>
-                      <td class="percent">5</td>
-                      <td>
-                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#details"><img src="./assets/icons/info-square.svg" alt="check details"></button> 
-                      </td>
-                      
-                    </tr>
-
-                  </tbody>
-
-                </table> -->
 
                 <div class="modal fade" id="details" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
                   <div class="modal-dialog">
@@ -589,11 +300,13 @@ END;
 
                 <section class="verdict">
 
-                  <h3>Your balance is equal: <strong class="result">-1</strong> PLN.</h3>
+                  <h3>Your balance is equal: <strong class="result"><?php echo ($sum_of_incomes-$sum_of_expenses) ?></strong> PLN.</h3>
                   <p class="surplus">Congratulations. You manage your finances brilliantly!</p>
                   <p class="deficit">Watch out—you’re falling into debt!</p>
 
                 </section>
+
+                <h3 class="chart-header">Check what you spend the most on:</h3>
 
                 <canvas id="expensesChart"></canvas>
 
