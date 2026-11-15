@@ -20,7 +20,7 @@
 
   foreach ($transactions as $transaction) {
 
-    $sql = "SELECT ".$transaction."s_category_assigned_to_users.name AS category_name, SUM(".$transaction."s.amount) AS total_amount FROM ".$transaction."s LEFT JOIN ".$transaction."s_category_assigned_to_users ON ".$transaction."s.".$transaction."_category_assigned_to_user_id=".$transaction."s_category_assigned_to_users.id WHERE ".$transaction."s.date_of_".$transaction." BETWEEN :start_date AND :end_date AND ".$transaction."s.user_id=:user_id
+    $sql = "SELECT ".$transaction."s_category_assigned_to_users.name AS category_name, ".$transaction."s_category_assigned_to_users.id AS category_id,"." SUM(".$transaction."s.amount) AS total_amount FROM ".$transaction."s LEFT JOIN ".$transaction."s_category_assigned_to_users ON ".$transaction."s.".$transaction."_category_assigned_to_user_id=".$transaction."s_category_assigned_to_users.id WHERE ".$transaction."s.date_of_".$transaction." BETWEEN :start_date AND :end_date AND ".$transaction."s.user_id=:user_id
     GROUP BY category_name
     ORDER BY total_amount DESC";
 
@@ -176,19 +176,17 @@
 
 <?php
 
+    $counter_modal_id = 0;  
+     $counter_modal_id_2 = 0;  
+
     foreach ($transactions as $transaction) {
 
       echo '<h3 class="table-title">The summary of your '.$transaction.'s:</h3>';
 echo<<<END
 <table class="mb-4">
 <thead>
-<thead>
 <tr>
-<th>nr</th>
-<th>category</th>
-<th>amount [PLN]</th>
-<th>percent [%]</th>
-<th>details</th>
+<th>nr</th><th>category</th><th>amount [PLN]</th><th>percent [%]</th><th>details</th>
 </tr>
 </thead>
 <tbody>
@@ -214,93 +212,95 @@ END;
           $class_percent = ' class="percent"';
         }
 
+        
+
+        $counter_modal_id++;
+
+        
         echo '<tr>';
         echo '<td>'.$counter.'</td>';
-        echo '<td class="category-'.$transaction.'">'.$category['category_name'].'</td>';
+        echo '<td class="category-'.$transaction.'">'.htmlspecialchars($category['category_name']).'</td>';
         echo '<td>'.$category['total_amount'].'</td>';
         echo '<td'.$class_percent.'>'.$percent.'</td>';
-        echo '<td><button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#details"><img src="./assets/icons/info-square.svg" alt="check details"></button></td>';
-        echo '</tr>'; 
+        echo '<td><button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#details-'.$counter_modal_id.'"><img src="./assets/icons/info-square.svg" alt="check details"></button></td>';
+        echo '</tr>';   
 
+    
+        
       }
 
       echo '</tbody>';
       echo '</table>';
-                
+
+     
+       
+      
+      
+      foreach($$transaction as $category) {
+
+      // Zapytanie
+        $select_payment_method = '';
+        $join_table_payments = '';
+
+        if ($transaction === 'expense') {
+          $select_payment_method = 'payment_methods_assigned_to_users.name AS payment, ';
+          $join_table_payments = 'LEFT JOIN payment_methods_assigned_to_users ON payment_methods_assigned_to_users.id=expenses.payment_method_assigned_to_user_id ';
+        }
+
+        $sql = "SELECT ".$transaction."s.date_of_".$transaction." AS date, ".$transaction."s.amount AS amount, ".$select_payment_method.$transaction."s.".$transaction."_comment AS comment
+        FROM ".$transaction."s ".$join_table_payments."WHERE ".$transaction."s.date_of_".$transaction." BETWEEN :start_date AND :end_date
+        AND ".$transaction."s.user_id=:user_id
+        AND ".$transaction."s.".$transaction."_category_assigned_to_user_id=:category_id ORDER BY date ASC";
+
+        $load_details = $db->prepare($sql);
+        $load_details->bindValue(":start_date", $start_date, PDO::PARAM_STR);
+        $load_details->bindValue(":end_date", $end_date, PDO::PARAM_STR);
+        $load_details->bindValue(":user_id", $user_id, PDO::PARAM_INT);
+        $load_details->bindValue(":category_id", $category['category_id'], PDO::PARAM_INT);
+        $load_details->execute();
+
+        $details = $load_details->fetchAll();
+
+        // koniec zapytania
+
+        $counter_modal_id_2++;
+
+        echo '<div class="modal fade" id="details-'.$counter_modal_id_2.'" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">'.htmlspecialchars($category['category_name']).'</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><div class="modal-body"><table class="details"><thead><tr>';
+
+        $payment_method_label = '';
+
+        if ($transaction === "expense") {
+          $payment_method_label = '<th>payment method</th>';
+        }
+
+        echo '<th>date</th><th>amount [PLN]</th>'.$payment_method_label.'<th>comment</th></tr>';
+        echo '</thead><tbody>';
+
+        
+        foreach ($details as $detail) {
+          $payment_method_field = '';
+
+          if ($transaction === "expense") {
+            $payment_method_field = '<td>'.$detail['payment'].'</td>';
+          }
+
+          echo '<tr><td>'.$detail['date'].'</td><td class="amount" >'.$detail['amount'].'</td>'.$payment_method_field.'<td>'.$detail['comment'].'</td></tr>';
+        }
+
+        echo '</tbody></table></div>';
+        echo '<div class="modal-footer"><a class="btn btn-primary close" href="settings.php">Edit</a><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div></div></div></div>';
+
+
+
+
+      }
+
+      
+      
     }
+     
 ?>
-
-                <div class="modal fade" id="details" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h4 class="modal-title">Category</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        
-                          <table class="details">
-
-                            <thead>
-
-                              <tr>
-
-                                <th>date</th>
-                                <th>amount [PLN]</th>
-                                <th>comment</th>
-
-                              </tr>
-
-                            </thead>
-
-                            <tbody>
-
-                              <tr>
-
-                                <td>2026-05-10</td>
-                                <td class="amount" >5100</td>
-                                <td>without bonus</td>
-
-                              </tr>
-
-                            </tbody>
-
-                            <tbody>
-
-                              <tr>
-
-                                <td>2026-06-10</td>
-                                <td class="amount">5500</td>
-                                <td></td>
-
-                              </tr>
-
-                            </tbody>
-
-                            <tbody>
-
-                              <tr>
-
-                                <td>2026-07-10</td>
-                                <td class="amount">5510</td>
-                                <td></td>
-
-                              </tr>
-
-                            </tbody>
-
-                          </table>
-
-                      </div>
-                      <div class="modal-footer">
-
-                        <a class="btn btn-primary close" href="settings.php" >Edit</a>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  
 
               </section>
 
