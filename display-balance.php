@@ -39,6 +39,8 @@
 
   header('location: balance.php');
 
-  // if (isset($_SESSION['end_date'])){
-  //   echo $_SESSION['start_date'].' -> '.$_SESSION['end_date'];
-  // }
+  if (isset($_SESSION['end_date'])){
+    echo $_SESSION['start_date'].' -> '.$_SESSION['end_date'].' jestem w display balance';
+  }
+
+  echo 'jestem w display balance';

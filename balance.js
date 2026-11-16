@@ -2,6 +2,8 @@ const modalWithDates = new bootstrap.Modal(document.getElementById ("modalWithDa
   keyboard: false
 });
 
+const isModalVisible = localStorage.getItem("isModalVisible");
+alert(isModalVisible);
 const period = localStorage.getItem("selectedPeriod");
 const handle = localStorage.getItem("handleForSelectedAttribute");
 const xValues = [];
@@ -17,7 +19,7 @@ if (period) {
 
     if (period === "non-standard"){
 
-      modalWithDates.show();
+      // modalWithDates.show();
       printRangeOfDates();
 
     }
@@ -78,6 +80,7 @@ let balanceResult = document.querySelector(".result").innerHTML;
  
 // });
 
+
 const optionsCollection = document.querySelectorAll("option");
 
 
@@ -93,12 +96,19 @@ for (let option of optionsCollection){
 
     if (option.getAttribute("class") === "non-standard") {
 
-      modalWithDates.show();
+      alert("cholerny modal");
+
+      if (!isModalVisible) {
+        modalWithDates.show();
+      }
+      localStorage.setItem("isModalVisible", "yes");
+      
       printRangeOfDates();
-  
+
     }
   }  
 }
+
 
 if (balanceResult >= 0) {
 
@@ -114,7 +124,9 @@ if (balanceResult >= 0) {
 
 function printRangeOfDates() {
 
-  let myModalEl = document.getElementById("modalWithDates");
+  document.querySelector('select').setAttribute("onchange", "");
+
+  let myModalEl = document.getElementById("modalWithDates"); 
 
   myModalEl.addEventListener("hide.bs.modal", function (event) {
 
@@ -125,7 +137,9 @@ function printRangeOfDates() {
 
   });
 
+
 }
+
 
 new Chart("expensesChart", {
   type: "pie",

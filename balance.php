@@ -159,9 +159,9 @@
 
 ?>
 
-              </select>
+            </select>
 
-              <div class="modal" id="modalWithDates" tabindex="-1">
+                      <div class="modal" id="modalWithDates" tabindex="-1">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -169,18 +169,18 @@
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                   <div class="modal-body">
-
                       <div class="date d-flex flex-column">
                         <label for="start-date">Start date:</label>
                           <input class="mb-3" id="start-date" type="date" name="start_date">
                         <label for="end-date">End date:</label>
-                          <input id="end-date" type="date" name="start_date">
+                          <input id="end-date" type="date" name="end_date">
                       </div>
 
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary save">Save changes</button>
+                        <button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary save">Save changes</button>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -188,9 +188,9 @@
 
             </div>
 
-
-
           </form>
+
+
 
         </header>
 
