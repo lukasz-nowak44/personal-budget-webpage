@@ -152,8 +152,7 @@
               }
               if(isset($_SESSION['current_year_selected'])) {
                 unset($_SESSION['current_year_selected']);
-              }
-             
+              }            
 
 ?>
 

@@ -16,23 +16,23 @@ if (period) {
 
     document.querySelector(".selected-period").innerHTML = period;
 
-    if (period === "non-standard"){
+    // if (period === "non-standard"){
 
-      printRangeOfDates();
+    //   printRangeOfDates();
 
-    }
+    // }
     
 }
 
 if (handle) {
 
   document.querySelector(handle).toggleAttribute("selected");
-
+  
 }
 
 localStorage.clear();
 
-document.getElementById("start-date").value = "2000-01-01";
+document.getElementById("start-date").value = "2020-01-01";
 document.getElementById("end-date").valueAsDate = new Date();
 
 
@@ -99,7 +99,7 @@ for (let option of optionsCollection){
       }
       localStorage.setItem("isModalVisible", "yes");
       
-      printRangeOfDates();
+      // printRangeOfDates();
 
     } 
 
@@ -121,21 +121,21 @@ if (balanceResult >= 0) {
   
 }
 
-function printRangeOfDates() {
+// function printRangeOfDates() {
 
-  let myModalEl = document.getElementById("modalWithDates"); 
+//   let myModalEl = document.getElementById("modalWithDates"); 
 
-  myModalEl.addEventListener("hide.bs.modal", function (event) {
+//   myModalEl.addEventListener("hide.bs.modal", function (event) {
 
-    let startDate = document.querySelector("#start-date").value;
-    let endDate = document.querySelector("#end-date").value;
+//     let startDate = document.querySelector("#start-date").value;
+//     let endDate = document.querySelector("#end-date").value;
 
-    document.querySelector(".selected-period").innerHTML = "from " +    startDate + " to " + endDate;
+//     document.querySelector(".selected-period").innerHTML = "from " +    startDate + " to " + endDate;
 
-  });
+//   });
 
 
-}
+// }
 
 
 new Chart("expensesChart", {

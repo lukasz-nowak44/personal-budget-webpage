@@ -64,9 +64,9 @@ if (isset($_SESSION['given_signin_password'])) {
             Display balance
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="balance.php">Current month</a></li>
-            <li><a class="dropdown-item" href="balance.php">Previous month</a></li>
-            <li><a class="dropdown-item" href="balance.php">Current year</a></li>
+            <li><a class="dropdown-item" href="display-balance.php?period=current-month">Current month</a></li>
+            <li><a class="dropdown-item" href="display-balance.php?period=previous-month">Previous month</a></li>
+            <li><a class="dropdown-item" href="display-balance.php?period=current-year">Current year</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="balance.php">non-standard</a></li>
           </ul>
@@ -113,7 +113,7 @@ if (isset($_SESSION['given_signin_password'])) {
             </div>
           </a>
 
-          <a class="card current-month" href="balance.php">
+          <a class="card current-month" href="display-balance.php?period=current-month">
             <img src="./assets/icons/calendar-month.png" class="card-img-top" alt="">
             <div class="card-body">
               <p class="card-text">Balance from current month</p>
@@ -136,9 +136,9 @@ if (isset($_SESSION['given_signin_password'])) {
                 </div>
                 <div class="modal-body">
                   <ul class="periods">
-                    <li><a class="dropdown-item" href="balance.php">Current month</a></li>
-                    <li><a class="dropdown-item" href="balance.php">Previous month</a></li>
-                    <li><a class="dropdown-item" href="balance.php">Current year</a></li>
+                    <li><a class="dropdown-item" href="display-balance.php?period=current-month">Current month</a></li>
+                    <li><a class="dropdown-item" href="display-balance.php?period=previous-month">Previous month</a></li>
+                    <li><a class="dropdown-item" href="display-balance.php?period=current-year">Current year</a></li>
                     <li><a class="dropdown-item" href="balance.php">non-standard</a></li>
                   </ul>
                 </div>
