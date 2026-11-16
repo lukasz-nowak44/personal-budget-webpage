@@ -18,7 +18,6 @@ if (period) {
 
     if (period === "non-standard"){
 
-      // modalWithDates.show();
       printRangeOfDates();
 
     }
@@ -93,6 +92,8 @@ for (let option of optionsCollection){
 
     if (option.getAttribute("class") === "non-standard") {
 
+      // document.querySelector('select').setAttribute("onchange", "");
+
       if (!isModalVisible) {
         modalWithDates.show();
       }
@@ -100,7 +101,10 @@ for (let option of optionsCollection){
       
       printRangeOfDates();
 
-    }
+    } 
+
+      // document.querySelector('select').setAttribute("onchange", "this.form.submit()");
+
   }  
 }
 
@@ -118,8 +122,6 @@ if (balanceResult >= 0) {
 }
 
 function printRangeOfDates() {
-
-  document.querySelector('select').setAttribute("onchange", "");
 
   let myModalEl = document.getElementById("modalWithDates"); 
 
