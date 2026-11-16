@@ -200,7 +200,7 @@
 
             <div class="row">
 
-              <h2 class="pb-4">It's summary for <strong class="selected-period">Current month</strong>:</h2>
+              <h2 class="pb-4">It's summary for <strong class="selected-period"></strong>:</h2>
 
               <section class="col-lg-6 d-flex flex-column tables">
 

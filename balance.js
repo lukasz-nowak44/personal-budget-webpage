@@ -11,8 +11,6 @@ const barColors = ["red", "green","blue","orange","brown", "yellow", "lavender"]
 const numberOfElement = document.querySelectorAll(".category-expense").length;
 let fontLegend = 12;
 
-
-
 if (period) {
 
     document.querySelector(".selected-period").innerHTML = period;
@@ -32,6 +30,7 @@ if (handle) {
 
 }
 
+localStorage.clear();
 
 document.getElementById("start-date").value = "2000-01-01";
 document.getElementById("end-date").valueAsDate = new Date();
@@ -63,21 +62,33 @@ if (numberOfElement > 6) {
 let periods = document.querySelector("#periods");
 let balanceResult = document.querySelector(".result").innerHTML;
 
-periods.addEventListener("change", function (event) {
+// periods.addEventListener("change", function (event) {
 
-  let selectedPeriod = event.target.value;
+//   let selectedPeriod = event.target.value;
 
-  document.querySelector(".selected-period").innerHTML = selectedPeriod;
+//   document.querySelector(".selected-period").innerHTML = selectedPeriod;
 
-  if (selectedPeriod === "non-standard") {
+//   if (selectedPeriod === "non-standard") {
 
-    modalWithDates.show();
+//     modalWithDates.show();
 
-    printRangeOfDates();
+//     printRangeOfDates();
   
-  }
+//   }
  
-});
+// });
+
+const optionsCollection = document.querySelectorAll("option");
+
+
+for (let option of optionsCollection){
+  
+  if (option.hasAttribute("selected")){
+    let nameOfPeriod = option.innerHTML;
+
+    document.querySelector(".selected-period").innerHTML = nameOfPeriod;
+  }
+}
 
 if (balanceResult >= 0) {
 
