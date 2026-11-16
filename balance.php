@@ -11,10 +11,22 @@
   $transactions = ["income", "expense"];
   $income = [];
   $expense = [];
-  $start_date = '2026-01-01';
-  $end_date = '2026-11-15';
   $sum_of_incomes = 0;
   $sum_of_expenses = 0;
+
+  if (isset($_SESSION['start_date'])) {
+    $start_date = $_SESSION['start_date'];
+    unset($_SESSION['start_date']);
+  } else {
+    $start_date = date('Y-m-01');
+  }
+
+  if (isset($_SESSION['end_date'])) {
+    $end_date = $_SESSION['end_date'];
+    unset($_SESSION['end_date']);
+  } else {
+    $end_date = date('Y-m-d');
+  }
 
   require_once 'database.php';
 
@@ -120,16 +132,32 @@
 
           <h1>Check balance</h1>
 
-          <form action="balance" id="balance" method="post" novalidate>
+          <form id="balance" action="display-balance.php" method="post" novalidate>
 
             <div class="field-balance">
               <label for="periods">For which period would you like to see the balance:</label>
-              <select id="periods">
+              <select id="periods" name="period" onchange="this.form.submit()">
 
-                <option class="current-month">Current month</option>
-                <option class="previous-month">Previous month</option>
-                <option class="current-year">Current year</option>
-                <option class="non-standard">non-standard</option>
+                <option class="current-month" value="current month" <?= isset($_SESSION['current_month_selected']) ? 'selected' : '' ?>>Current month</option>
+                <option class="previous-month" value="previous month" <?= isset($_SESSION['previous_month_selected']) ? 'selected' : '' ?>>Previous month</option>
+                <option class="current-year" value="current year" <?= isset($_SESSION['current_year_selected']) ? 'selected' : '' ?>>Current year</option>
+                <option class="non-standard" value="non standard" <?= isset($_SESSION['non_standard']) ? 'selected' : '' ?>>non-standard</option>
+<?php
+
+              if(isset($_SESSION['current_month_selected'])) {
+                unset($_SESSION['current_month_selected']);
+              }
+              if(isset($_SESSION['previous_month_selected'])) {
+                unset($_SESSION['previous_month_selected']);
+              }
+              if(isset($_SESSION['current_year_selected'])) {
+                unset($_SESSION['current_year_selected']);
+              }
+              if(isset($_SESSION['non_standard'])) {
+                unset($_SESSION['non_standard']);
+              }
+
+?>
 
               </select>
 
@@ -144,9 +172,9 @@
 
                       <div class="date d-flex flex-column">
                         <label for="start-date">Start date:</label>
-                          <input class="mb-3" id="start-date" type="date" name="start-date" value="">
+                          <input class="mb-3" id="start-date" type="date" name="start_date">
                         <label for="end-date">End date:</label>
-                          <input id="end-date" type="date" name="start-date" value="">
+                          <input id="end-date" type="date" name="start_date">
                       </div>
 
                     </div>
@@ -159,6 +187,8 @@
               </div>
 
             </div>
+
+
 
           </form>
 

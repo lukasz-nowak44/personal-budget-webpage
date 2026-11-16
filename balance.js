@@ -11,6 +11,8 @@ const barColors = ["red", "green","blue","orange","brown", "yellow", "lavender"]
 const numberOfElement = document.querySelectorAll(".category-expense").length;
 let fontLegend = 12;
 
+
+
 if (period) {
 
     document.querySelector(".selected-period").innerHTML = period;
@@ -29,6 +31,7 @@ if (handle) {
   document.querySelector(handle).toggleAttribute("selected");
 
 }
+
 
 document.getElementById("start-date").value = "2000-01-01";
 document.getElementById("end-date").valueAsDate = new Date();
