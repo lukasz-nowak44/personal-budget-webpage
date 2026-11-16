@@ -21,16 +21,17 @@ if (period) {
     //   printRangeOfDates();
 
     // }
-    
+    localStorage.removeItem("selectedPeriod");
 }
 
 if (handle) {
 
   document.querySelector(handle).toggleAttribute("selected");
-  
+  localStorage.removeItem("handleForSelectedAttribute");
+
 }
 
-localStorage.clear();
+// localStorage.clear();
 
 document.getElementById("start-date").value = "2020-01-01";
 document.getElementById("end-date").valueAsDate = new Date();
@@ -96,8 +97,11 @@ for (let option of optionsCollection){
 
       if (!isModalVisible) {
         modalWithDates.show();
+        localStorage.setItem("isModalVisible", "yes");
+      } else {
+        localStorage.removeItem("isModalVisible");
       }
-      localStorage.setItem("isModalVisible", "yes");
+      
       
       // printRangeOfDates();
 
