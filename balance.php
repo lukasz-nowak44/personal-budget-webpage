@@ -153,9 +153,7 @@
               if(isset($_SESSION['current_year_selected'])) {
                 unset($_SESSION['current_year_selected']);
               }
-              if(isset($_SESSION['non_standard_selected'])) {
-                unset($_SESSION['non_standard_selected']);
-              }
+             
 
 ?>
 
@@ -200,8 +198,14 @@
 
             <div class="row">
 
-              <h2 class="pb-4">It's summary for <strong class="selected-period"></strong>:</h2>
+              <h2 class="pb-4">It's summary for <strong class="selected-period"></strong><?= isset($_SESSION['non_standard_selected']) ? ' (from '.$start_date.' to '.$end_date.')' : '' ?>:</h2>
+<?php
 
+             if(isset($_SESSION['non_standard_selected'])) {
+                unset($_SESSION['non_standard_selected']);
+              }
+
+?>             
               <section class="col-lg-6 d-flex flex-column tables">
 
 <?php

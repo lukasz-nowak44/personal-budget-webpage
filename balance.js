@@ -3,7 +3,6 @@ const modalWithDates = new bootstrap.Modal(document.getElementById ("modalWithDa
 });
 
 const isModalVisible = localStorage.getItem("isModalVisible");
-alert(isModalVisible);
 const period = localStorage.getItem("selectedPeriod");
 const handle = localStorage.getItem("handleForSelectedAttribute");
 const xValues = [];
@@ -87,16 +86,12 @@ const optionsCollection = document.querySelectorAll("option");
 for (let option of optionsCollection){
 
   let nameOfPeriod = option.innerHTML;
-
-  // alert(option.hasAttribute("selected"));
   
   if (option.hasAttribute("selected")){
     
     document.querySelector(".selected-period").innerHTML = nameOfPeriod;
 
     if (option.getAttribute("class") === "non-standard") {
-
-      alert("cholerny modal");
 
       if (!isModalVisible) {
         modalWithDates.show();
