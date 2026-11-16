@@ -82,12 +82,22 @@ const optionsCollection = document.querySelectorAll("option");
 
 
 for (let option of optionsCollection){
+
+  let nameOfPeriod = option.innerHTML;
+
+  // alert(option.hasAttribute("selected"));
   
   if (option.hasAttribute("selected")){
-    let nameOfPeriod = option.innerHTML;
-
+    
     document.querySelector(".selected-period").innerHTML = nameOfPeriod;
-  }
+
+    if (option.getAttribute("class") === "non-standard") {
+
+      modalWithDates.show();
+      printRangeOfDates();
+  
+    }
+  }  
 }
 
 if (balanceResult >= 0) {

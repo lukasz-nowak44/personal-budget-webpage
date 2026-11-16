@@ -141,7 +141,7 @@
                 <option class="current-month" value="current month" <?= isset($_SESSION['current_month_selected']) ? 'selected' : '' ?>>Current month</option>
                 <option class="previous-month" value="previous month" <?= isset($_SESSION['previous_month_selected']) ? 'selected' : '' ?>>Previous month</option>
                 <option class="current-year" value="current year" <?= isset($_SESSION['current_year_selected']) ? 'selected' : '' ?>>Current year</option>
-                <option class="non-standard" value="non standard" <?= isset($_SESSION['non_standard']) ? 'selected' : '' ?>>non-standard</option>
+                <option class="non-standard" value="non standard" <?= isset($_SESSION['non_standard_selected']) ? 'selected' : '' ?>>non-standard</option>
 <?php
 
               if(isset($_SESSION['current_month_selected'])) {
@@ -153,8 +153,8 @@
               if(isset($_SESSION['current_year_selected'])) {
                 unset($_SESSION['current_year_selected']);
               }
-              if(isset($_SESSION['non_standard'])) {
-                unset($_SESSION['non_standard']);
+              if(isset($_SESSION['non_standard_selected'])) {
+                unset($_SESSION['non_standard_selected']);
               }
 
 ?>
