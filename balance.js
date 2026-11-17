@@ -98,6 +98,16 @@ if (balanceResult >= 0) {
   
 }
 
+if (numberOfElement > 0) {
+
+  document.querySelector(".no-data").classList.add("visually-hidden");
+
+} else {
+
+  document.querySelector(".no-data").classList.remove("visually-hidden");
+
+}
+
 new Chart("expensesChart", {
   type: "pie",
   data: {

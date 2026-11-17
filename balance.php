@@ -298,6 +298,8 @@
 
                 <h3 class="chart-header">Check what you spend the most on:</h3>
 
+                <p class="no-data">You have not registered any expenses...</p>
+
                 <canvas id="expensesChart"></canvas>
 
               </div>

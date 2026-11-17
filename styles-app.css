@@ -196,6 +196,11 @@ td .btn {
   box-shadow: var(--shadow-button);
 }
 
+.no-data {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
 footer {
   display: flex;
   justify-content: center;
