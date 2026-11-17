@@ -68,7 +68,7 @@ if (isset($_SESSION['given_signin_password'])) {
             <li><a class="dropdown-item" href="display-balance.php?period=previous-month">Previous month</a></li>
             <li><a class="dropdown-item" href="display-balance.php?period=current-year">Current year</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="balance.php">non-standard</a></li>
+            <li><a class="dropdown-item" href="display-balance.php?period=non-standard">non-standard</a></li>
           </ul>
 
         </li> 
@@ -139,7 +139,7 @@ if (isset($_SESSION['given_signin_password'])) {
                     <li><a class="dropdown-item" href="display-balance.php?period=current-month">Current month</a></li>
                     <li><a class="dropdown-item" href="display-balance.php?period=previous-month">Previous month</a></li>
                     <li><a class="dropdown-item" href="display-balance.php?period=current-year">Current year</a></li>
-                    <li><a class="dropdown-item" href="balance.php">non-standard</a></li>
+                    <li><a class="dropdown-item" href="display-balance.php?period=non-standard">non-standard</a></li>
                   </ul>
                 </div>
                 <div class="modal-footer">
