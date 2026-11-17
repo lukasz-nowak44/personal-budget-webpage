@@ -49,7 +49,7 @@ if (numberOfElement <= 6) {
 
 } else {
 
-  for (let i=0; i <=6; i++){
+  for (let i=0; i < 6; i++){
     
     xValues.push(document.querySelectorAll(".category-expense")[i].innerHTML);
     yValues.push(document.querySelectorAll(".percent")[i].innerHTML);
