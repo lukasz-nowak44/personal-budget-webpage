@@ -51,7 +51,7 @@ echo<<<END
     </li>
     <li class="nav-item">
 END;
-    echo '<a class="nav-link disabled" href="">Logged as'. htmlspecialchars($_SESSION['logged_user_username']).'</a>';
+    echo '<a class="nav-link disabled username-navbar" href="">Logged as '. htmlspecialchars($_SESSION['logged_user_username']).'</a>';
        
     echo '</li></ul></div></nav>';
 
