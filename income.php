@@ -202,5 +202,7 @@
 
   <script src="navbar.js"></script>
 
+  <script src="added-sound.js" defer></script>
+
 </body>
 </html>
