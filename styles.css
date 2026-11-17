@@ -64,7 +64,7 @@ input::placeholder {
 
 .field {
   display: flex;
-  margin-bottom: 1.1rem;
+  margin-bottom: 0.2rem;
   border: 1px solid var(--text);
   border-radius: var(--border-radius);
 }
@@ -95,12 +95,16 @@ input::placeholder {
   font-style: italic;
   font-weight: 600;
   text-align: right;
+  margin: 0;
 }
 
 input[aria-invalid="true"].form-check-input {
   border: 2px solid var(--button); 
 }
 
+.wrapper {
+  margin-bottom: 1.1rem;
+}
 
 .btn {
   box-shadow: var(--shadow-button);

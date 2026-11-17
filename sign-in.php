@@ -37,7 +37,7 @@ if (empty($_POST['username'])) {
 
  if (empty($_POST['password'])) {
 
-   $_SESSION['password_signin_error'] = '<p class="error password">Password cannot be empty!</p>';
+   $_SESSION['password_signin_error'] = '<p class="error password>Password cannot be empty!</p>';
    $isEverythingGood = false;
    header('location: index.php');
    exit();

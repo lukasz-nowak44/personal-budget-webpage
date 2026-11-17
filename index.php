@@ -76,19 +76,22 @@
 
           <img src="./assets/images/printablue-piggy-bank-10016128_1920.jpg" class="img-fluid  order-md-1 order-lg-0 col-lg-6 pt-md-5 pt-lg-0" alt="">
 
-          <section class="card col-md-7 col-lg-5 d-flex justify-content-evenly p-4 mt-3 mt-md-0">
+          <section class="card col-md-7 col-lg-5 d-flex justify-content-evenly p-4 mt-3 mt-md-0 position-relative">
 
             <h2>Do you already have an account?</h2>
 
             <form class="pb-3" action="sign-in.php" method="post" novalidate>
 
-            <div class="field">
-              <label for="login" class="visually-hidden">Username</label>
-              <img src="assets/icons/user.svg" alt="">
-              <input id="login" type="text" name="username" <?= isset($_SESSION['given_signin_username']) ? 'value="'.htmlspecialchars($_SESSION['given_signin_username']).'"' : '' ?> placeholder="username"
-                      autocomplete="username" required aria-describedby="username-error">             
-            </div>
-            <!-- <p id="username-error" class="error" aria-live="polite"></p> -->
+            <div class="wrapper">
+
+              <div class="field">
+                <label for="login" class="visually-hidden">Username</label>
+                <img src="assets/icons/user.svg" alt="">
+                <input id="login" type="text" name="username" <?= isset($_SESSION['given_signin_username']) ? 'value="'.htmlspecialchars($_SESSION['given_signin_username']).'"' : '' ?> <?= isset($_SESSION['username_signin_error']) ? 'aria-invalid="true"' : '' ?> placeholder="username"
+                        autocomplete="username" required aria-describedby="username-error">             
+              </div>
+
+              <p id="username-error" class="error" aria-live="polite"></p>
 
 <?php
           if(isset($_SESSION['username_signin_error'])){
@@ -97,24 +100,30 @@
           } else if (isset($_SESSION['given_signin_username'])) {
             unset($_SESSION['given_signin_username']);
           }
-?>
+?>         
+
+          </div>
+
+          <div class="wrapper">
 
             <div class="field">
               <label for="password" class="visually-hidden">Password</label>
               <img src="assets/icons/lock-password.svg" alt="">
-               <input id="password" type="password" name="password" <?= isset($_SESSION['given_signin_password']) ? 'value="'.htmlspecialchars($_SESSION['given_signin_password']).'"' : '' ?>  placeholder="password"
+               <input id="password" type="password" name="password" <?= isset($_SESSION['given_signin_password']) ? 'value="'.htmlspecialchars($_SESSION['given_signin_password']).'"' : '' ?><?= isset($_SESSION['password_signin_error']) ? 'aria-invalid="true"' : '' ?> placeholder="password"
                       autocomplete="current-password" required aria-describedby="password-error">             
             </div>
-            <!-- <p id="password-error" class="error" aria-live="polite"></p> -->
 
+            <p id="password-error" class="error" aria-live="polite"></p>
+            
 <?php
-          if(isset($_SESSION['password_signin_error'])){
-            echo $_SESSION['password_signin_error'];
-            unset($_SESSION['password_signin_error']);
-          } else if (isset($_SESSION['given_signin_password'])) {
-            unset($_SESSION['given_signin_password']);
-          }
+            if(isset($_SESSION['password_signin_error'])){
+              echo $_SESSION['password_signin_error'];
+              unset($_SESSION['password_signin_error']);
+            } else if (isset($_SESSION['given_signin_password'])) {
+             unset($_SESSION['given_signin_password']);
+            }
 ?>
+          </div>            
 
             <button type="submit" class="btn btn-lg btn-primary mt-2">Sign in</button>
 
@@ -140,8 +149,7 @@
 
   <script src="./errors-display.js"></script>
 
-  <!-- Zastanowić się, czy potrzebna jest ta prewalidacja -->
-  <!-- <script src="index.js"></script> -->
+  <script src="index.js"></script>
   
 </body>
 </html>
