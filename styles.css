@@ -1,22 +1,3 @@
-:root {
-  --primary: #EBF4DD;
-  --lighter-primary: #F2F8E8;
-  --secondary: #90AB8B;
-  --accent: #5A7863;
-  --text: #3B4953;
-  --button: #A75B35;
-  --shadow-button: inset 0px -1px 9px -2px #5A7863;
-  --border-radius: 5px;
-}
-
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-input, button, textarea, select { 
-  font: inherit; 
-}
-
 a {
   text-decoration: none;
 }
