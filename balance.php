@@ -120,7 +120,7 @@
 
             </select>
 
-                      <div class="modal" id="modalWithDates" tabindex="-1">
+              <div class="modal" id="modalWithDates" tabindex="-1">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -149,8 +149,6 @@
 
           </form>
 
-
-
         </header>
 
         <article class="summary" >
@@ -171,21 +169,25 @@
 
 <?php
 
-    $counter_modal_id = 0;  
-     $counter_modal_id_2 = 0;  
+    $target_id = 0;  
+    $modal_id = 0;  
 
     foreach ($transactions as $transaction) {
 
       echo '<h3 class="table-title">The summary of your '.$transaction.'s:</h3>';
-echo<<<END
-<table class="mb-4">
-<thead>
-<tr>
-<th>nr</th><th>category</th><th>amount [PLN]</th><th>percent [%]</th><th>details</th>
-</tr>
-</thead>
-<tbody>
-END;
+      echo<<<END
+      <table class="mb-4">
+        <thead>
+          <tr>
+            <th>nr</th>
+            <th>category</th>
+            <th>amount [PLN]</th>
+            <th>percent [%]</th>
+            <th>details</th>
+          </tr>
+        </thead>
+        <tbody>
+      END;
       
       $counter = 0;
       $percent = 0;
@@ -205,35 +207,27 @@ END;
 
         if ($transaction === 'expense') {
           $class_percent = ' class="percent"';
-        }
+        }    
 
-        
-
-        $counter_modal_id++;
-
-        
+        $target_id++;
+      
         echo '<tr>';
         echo '<td>'.$counter.'</td>';
         echo '<td class="category-'.$transaction.'">'.htmlspecialchars($category['category_name']).'</td>';
         echo '<td>'.$category['total_amount'].'</td>';
         echo '<td'.$class_percent.'>'.$percent.'</td>';
-        echo '<td><button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#details-'.$counter_modal_id.'"><img src="./assets/icons/info-square.svg" alt="check details"></button></td>';
+        echo '<td><button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#details-'.$target_id.'"><img src="./assets/icons/info-square.svg" alt="check details"></button></td>';
         echo '</tr>';   
 
-    
-        
       }
 
       echo '</tbody>';
       echo '</table>';
-
-     
-       
-      
       
       foreach($$transaction as $category) {
 
-      // Zapytanie
+        // Zapytanie
+
         $select_payment_method = '';
         $join_table_payments = '';
 
@@ -258,9 +252,9 @@ END;
 
         // koniec zapytania
 
-        $counter_modal_id_2++;
+        $modal_id++;
 
-        echo '<div class="modal fade" id="details-'.$counter_modal_id_2.'" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">'.htmlspecialchars($category['category_name']).'</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><div class="modal-body"><table class="details"><thead><tr>';
+        echo '<div class="modal fade" id="details-'.$modal_id.'" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">'.htmlspecialchars($category['category_name']).'</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><div class="modal-body"><table class="details"><thead><tr>';
 
         $payment_method_label = '';
 
@@ -270,8 +264,7 @@ END;
 
         echo '<th>date</th><th>amount [PLN]</th>'.$payment_method_label.'<th>comment</th></tr>';
         echo '</thead><tbody>';
-
-        
+    
         foreach ($details as $detail) {
           $payment_method_field = '';
 
@@ -285,17 +278,11 @@ END;
         echo '</tbody></table></div>';
         echo '<div class="modal-footer"><a class="btn btn-primary close" href="settings.php">Edit</a><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div></div></div></div>';
 
-
-
-
       }
-
-      
-      
+  
     }
      
 ?>
-                  
 
               </section>
 

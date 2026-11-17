@@ -12,29 +12,6 @@ const barColors = ["red", "green","blue","orange","brown", "yellow", "lavender",
 const numberOfElement = document.querySelectorAll(".category-expense").length;
 let fontLegend = 12;
 
-// if (period) {
-
-//     document.querySelector(".selected-period").innerHTML = period;
-
-//     // if (period === "non-standard"){
-
-//     //   printRangeOfDates();
-
-//     // }
-//     localStorage.removeItem("selectedPeriod");
-// }
-
-// if (handle) {
-
-//   document.querySelector(handle).toggleAttribute("selected");
-//   localStorage.removeItem("handleForSelectedAttribute");
-
-// }
-
-
-
-// localStorage.clear();
-
 document.getElementById("start-date").value = "2020-01-01";
 document.getElementById("end-date").valueAsDate = new Date();
 
@@ -72,23 +49,6 @@ if (numberOfElement <= 6) {
 let periods = document.querySelector("#periods");
 let balanceResult = document.querySelector(".result").innerHTML;
 
-// periods.addEventListener("change", function (event) {
-
-//   let selectedPeriod = event.target.value;
-
-//   document.querySelector(".selected-period").innerHTML = selectedPeriod;
-
-//   if (selectedPeriod === "non-standard") {
-
-//     modalWithDates.show();
-
-//     printRangeOfDates();
-  
-//   }
- 
-// });
-
-
 const optionsCollection = document.querySelectorAll("option");
 
 
@@ -102,21 +62,14 @@ for (let option of optionsCollection){
 
     if (option.getAttribute("class") === "non-standard") {
 
-      // document.querySelector('select').setAttribute("onchange", "");
-
       if (!isModalVisible) {
         modalWithDates.show();
         localStorage.setItem("isModalVisible", "yes");
       } else {
         localStorage.removeItem("isModalVisible");
       }
-      
-      
-      // printRangeOfDates();
 
     } 
-
-      // document.querySelector('select').setAttribute("onchange", "this.form.submit()");
 
   }  
 }
@@ -144,23 +97,6 @@ if (balanceResult >= 0) {
   document.querySelector(".verdict").style.backgroundColor = "var(--button)";
   
 }
-
-// function printRangeOfDates() {
-
-//   let myModalEl = document.getElementById("modalWithDates"); 
-
-//   myModalEl.addEventListener("hide.bs.modal", function (event) {
-
-//     let startDate = document.querySelector("#start-date").value;
-//     let endDate = document.querySelector("#end-date").value;
-
-//     document.querySelector(".selected-period").innerHTML = "from " +    startDate + " to " + endDate;
-
-//   });
-
-
-// }
-
 
 new Chart("expensesChart", {
   type: "pie",
