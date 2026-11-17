@@ -172,12 +172,12 @@
 
       if (isset($_SESSION['income_added'])) {
 
-        echo '<p class="username mt-3" style="color: var(--accent);">Income added successfully!</p>';
+        echo '<p class="transaction-added mt-3">Income added successfully!</p>';
         unset($_SESSION['income_added']);
 
       } else if (isset($_SESSION['amount_error'])) {
 
-        echo '<p class="username mt-3" style="color: var(--button);">'.$_SESSION['amount_error'].'</p>';
+        echo '<p class="transaction-error mt-3">'.$_SESSION['amount_error'].'</p>';
         unset($_SESSION['amount_error']);
 
       }

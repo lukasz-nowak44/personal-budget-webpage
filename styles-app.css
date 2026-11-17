@@ -110,6 +110,14 @@ h1 {
   margin: calc(1rem + 2dvh) 0;
 }
 
+.transaction-added {
+  color: var(--accent);
+}
+
+.transaction-error {
+  color: var(--button);
+}
+
 label:has(input[name="category"]) {
   margin-right: 1rem;
 }

@@ -1,13 +1,8 @@
 const transactionAdded = new Audio("./assets/cash.mp3");
 
-document.querySelector("form").addEventListener("submit", function(event) {
+if (document.querySelector(".transaction-added")) {
 
-  event.preventDefault();
   transactionAdded.play();
 
-  transactionAdded.onended = function() {
-    event.target.submit();
-  };
-    
-});
+}
 
