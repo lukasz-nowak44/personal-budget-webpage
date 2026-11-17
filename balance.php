@@ -197,7 +197,7 @@
 
             <div class="row">
 
-              <h2 class="pb-4">It's summary for <strong class="selected-period"></strong><?= isset($_SESSION['non_standard_selected']) ? ' (from '.$start_date.' to '.$end_date.')' : '' ?>:</h2>
+              <h2 class="pb-4">It's summary for <strong class="selected-period"></strong><?= isset($_SESSION['non_standard_selected']) ? ' (from '.$start_date.' to '.$end_date.'<button type="button" class="btn btn-secondary close change-range">change range</button>)' : '' ?>:</h2>
 <?php
 
              if(isset($_SESSION['non_standard_selected'])) {
@@ -373,7 +373,7 @@ END;
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <script src="balance.js"></script>
+  <script src="balance.js" defer></script>
 
   <script src="navbar.js"></script>
 

@@ -114,6 +114,17 @@ for (let option of optionsCollection){
   }  
 }
 
+if (document.querySelector(".change-range")) {
+
+  document.querySelector(".change-range").addEventListener("click", function () {
+
+        modalWithDates.show();
+        localStorage.setItem("isModalVisible", "yes");  
+
+  });
+
+}
+
 
 if (balanceResult >= 0) {
 
