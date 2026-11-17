@@ -72,53 +72,13 @@
 
   <header>
 
-    <nav class="navbar navbar-expand-lg navbar-dark py-0">
+<?php
 
-      <a class="navbar-brand" href="home.php"><img src="./assets/images/logo-light-removebg-preview.png" class="logo" alt=""></a>
+  $_SESSION['balance_active'] = true;
 
-      <button class="navbar-toggler me-3" type="button"        data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  require_once 'navbar.php';
 
-        <span class="navbar-toggler-icon"></span>
-
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-      <ul class="navbar-nav mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="home.php">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="income.php">Add income</a>
-        </li> 
-        <li class="nav-item">
-          <a class="nav-link" href="expense.php">Add expense</a>
-        </li> 
-        <li class="nav-item dropdown">
-
-          <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Display balance
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="balance.php">Current month</a></li>
-            <li><a class="dropdown-item" href="balance.php">Previous month</a></li>
-            <li><a class="dropdown-item" href="balance.php">Current year</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="balance.php">non-standard</a></li>
-          </ul>
-
-        </li> 
-        <li class="nav-item">
-          <a class="nav-link" href="settings.php">Settings</a>
-        </li> 
-        <li class="nav-item">
-          <a class="nav-link" href="logout.php">Logout</a>
-        </li>
-      </ul>
-
-      </div>
-      
-    </nav>
+?>
 
   </header>
 
@@ -365,9 +325,11 @@ END;
 
   </main>
 
-  <footer>
-    <small>® Personal Budget 2026.</small>
-  </footer>
+<?php
+
+  require_once 'footer.php';
+
+?>
  
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
