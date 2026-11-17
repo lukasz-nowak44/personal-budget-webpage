@@ -15,7 +15,6 @@ if (isset($_SESSION['given_signin_password'])) {
     unset($_SESSION['given_signin_password']);
   }
 
-
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +50,7 @@ if (isset($_SESSION['given_signin_password'])) {
       <img src="assets/images/alexanderstein-house-167734_1920.jpg" class="img-fluid photo" alt="">
 
       <header>
-        <h1>Hello <?php echo '<span class="username" style="color: var(--button);">'.htmlspecialchars($_SESSION['logged_user_username']).'</span>' ?>! What do we do?</h1>
+        <h1>Hello <?php echo '<span class="username">'.htmlspecialchars($_SESSION['logged_user_username']).'</span>' ?>! What do we do?</h1>
       </header>
 
       <section class="options">
