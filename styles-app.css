@@ -198,6 +198,13 @@ td .btn {
   text-align: right;
 } 
 
+.change-range {
+  font-size: 0.8rem;
+  padding: 0.2rem !important;
+  background-color: var(--accent);
+  box-shadow: var(--shadow-button);
+}
+
 footer {
   display: flex;
   justify-content: center;
