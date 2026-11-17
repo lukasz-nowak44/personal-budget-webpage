@@ -298,7 +298,10 @@
 
                 <h3 class="chart-header">Check what you spend the most on:</h3>
 
-                <p class="no-data">You have not registered any expenses...</p>
+                <p class="no-data">You have not registered any expenses... 
+                  <br>Add something: 
+                  <a href="./expense.php" class="btn btn-primary close mt-2 fw-bolder" alt="">ADD EXPENSE</a>
+                </p>
 
                 <canvas id="expensesChart"></canvas>
 
