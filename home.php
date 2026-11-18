@@ -108,7 +108,7 @@ if (isset($_SESSION['given_signin_password'])) {
           </div>
           
           <a class="card" href="settings.php">
-            <img src="./assets/icons/settings-cog.png" class="card-img-top" alt="">
+            <img src="./assets/icons/settings.png" class="card-img-top" alt="">
             <div class="card-body">
               <p class="card-text">Change settings</p>
             </div>

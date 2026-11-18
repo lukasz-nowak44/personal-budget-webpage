@@ -62,7 +62,7 @@
     }
     
     $sql_add = "INSERT INTO ".$transaction."s (user_id, ".$transaction."_category_assigned_to_user_id, amount, date_of_".$transaction.", ".$transaction."_comment".$payment_column_name.") VALUES (:user_id, :id_category, :amount, :date, :comment".$payment_variable_name.")";
-    echo $sql_add;
+    
     $add_transaction = $db->prepare($sql_add);
     $add_transaction->bindValue(":user_id", $user_id, PDO::PARAM_INT);
     $add_transaction->bindValue(":id_category", $id_category, PDO::PARAM_INT);

@@ -205,7 +205,7 @@
 
         </main>
 
-        <img src="assets/images/expense.jpg.png" class="img-fluid illustration col-12 col-md-5 my-5"  alt="">
+        <img src="assets/images/expense.png" class="img-fluid illustration col-12 col-md-5 my-5"  alt="">
 
       </div>
 

@@ -150,6 +150,7 @@
         $copy_payments->execute();
         
       }
+      
     }
     
   } else {

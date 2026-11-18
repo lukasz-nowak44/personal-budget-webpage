@@ -36,8 +36,8 @@
       break;
 
     case 'non standard':
-      $_SESSION['start_date'] = $_POST['start_date']; 
-      $_SESSION['end_date'] = $_POST['end_date'];
+      $_SESSION['start_date'] = $_POST['start_date'] ?? null; 
+      $_SESSION['end_date'] = $_POST['end_date'] ?? null;
       $_SESSION['non_standard_selected'] = true;
       break;
   }
