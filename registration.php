@@ -12,20 +12,13 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Personal Budget app</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<?php
 
-  <link rel="stylesheet" href="styles-root.css"> 
-  <link rel="stylesheet" href="styles.css"> 
-  
-</head>
+  require_once 'head-welcome-page.php';
+
+?>
+
 <body>
 
   <div class="container external-box p-4">
@@ -130,7 +123,7 @@
 
             <div class="form-check">
               <label class="form-check-label pb-3" for="agreement"><input class="form-check-input me-2" type="checkbox" name="agreement" <?= isset($_SESSION['agreement']) ? 'checked' : '' ?><?= isset($_SESSION['agreement_error']) ? 'aria-invalid="true"' : '' ?> id="agreement" aria-describedby="agreement-error" required>
-                <small>If you want to use our application you need to approve our <a href="./terms.html">terms and conditions</a></small>
+                <small>If you want to use our application you need to approve our <a href="./terms.php">terms and conditions</a></small>
               </label>
             </div>
 

@@ -7,50 +7,23 @@
     exit();
   }
 
-  if (isset($_SESSION['logged_user_id'])) {
-    unset($_SESSION['logged_user_id']);
-    unset($_SESSION['logged_user_username']);
-  }
-
-  if (isset($_SESSION['given_username'])) {
-    unset($_SESSION['given_username']);
-  }
-
-  if (isset($_SESSION['given_email'])) {
-    unset($_SESSION['given_email']);
-  }
-
-  if (isset($_SESSION['given_password'])) {
-    unset($_SESSION['given_password']);
-  }
-
-  if (isset($_SESSION['given_repeat_password'])) {
-    unset($_SESSION['given_repeat_password']);
-  }
-
-  if (isset($_SESSION['agreement'])) {
-    unset($_SESSION['agreement']);
-  }
-
+  unset(
+    $_SESSION['given_username'],
+    $_SESSION['given_email'],
+    $_SESSION['agreement']
+  );
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Personal Budget app</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<?php
 
-  <link rel="stylesheet" href="styles-root.css"> 
-  <link rel="stylesheet" href="styles.css"> 
-  
-</head>
+  require_once 'head-welcome-page.php';
+
+?>
+
 <body>
 
   <div class="external-box container">
