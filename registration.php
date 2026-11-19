@@ -92,7 +92,7 @@
             <div class="field">
               <label for="password" class="visually-hidden">Password</label>
               <img src="assets/icons/lock-password.svg" alt="">
-              <input id="password" type="password" name="password" <?= isset($_SESSION['given_password']) ? 'value="'.htmlspecialchars($_SESSION['given_password']).'"' : '' ?><?= isset($_SESSION['password_error']) ? 'aria-invalid="true"' : '' ?> placeholder="password" required aria-describedby="password-error">            
+              <input id="password" type="password" name="password" <?= isset($_SESSION['password_error']) ? 'aria-invalid="true"' : '' ?> placeholder="password" required aria-describedby="password-error">            
             </div>
 
             <p id="password-error" class="error" aria-live="polite"></p>
@@ -101,9 +101,7 @@
           if(isset($_SESSION['password_error'])){
             echo $_SESSION['password_error'];
             unset($_SESSION['password_error']);
-          } else if (isset($_SESSION['given_password'])) {
-            unset($_SESSION['given_password']);
-          }
+          } 
 ?>
 
           </div>
@@ -113,7 +111,7 @@
             <div class="field">
               <label for="repeat-password" class="visually-hidden">Repeat Password</label>
               <img src="assets/icons/lock-plus.svg" alt="">
-              <input id="repeat-password" type="password" name="repeat_password" <?= isset($_SESSION['given_repeat_password']) ? 'value="'.htmlspecialchars($_SESSION['given_repeat_password']).'"' : '' ?><?= isset($_SESSION['repeat_password_error']) ? 'aria-invalid="true"' : '' ?> placeholder="repeat password" required aria-describedby="repeat-password-error">           
+              <input id="repeat-password" type="password" name="repeat_password" <?= isset($_SESSION['repeat_password_error']) ? 'aria-invalid="true"' : '' ?> placeholder="repeat password" required aria-describedby="repeat-password-error">           
             </div>
 
             <p id="repeat-password-error" class="error" aria-live="polite"></p>
@@ -122,9 +120,7 @@
           if(isset($_SESSION['repeat_password_error'])){
             echo $_SESSION['repeat_password_error'];
             unset($_SESSION['repeat_password_error']);
-          } else if (isset($_SESSION['given_repeat_password'])) {
-            unset($_SESSION['given_repeat_password']);
-          } 
+          }
           
 ?>
 

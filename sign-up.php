@@ -4,8 +4,6 @@
 
   $_SESSION['given_username'] = $_POST['username'];
   $_SESSION['given_email'] = $_POST['email'];
-  $_SESSION['given_password'] = $_POST['password'];
-  $_SESSION['given_repeat_password'] = $_POST['repeat_password'];
 
   if (isset($_POST['agreement'])) {
 
