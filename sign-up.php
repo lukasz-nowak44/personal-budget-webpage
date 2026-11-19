@@ -34,7 +34,7 @@
       $_SESSION['username_error'] = '<p class="error login">This username exists in our database! Please set another name.</p>';
       $isEverythingGood = false;
 
-    } else if ((strlen($username) < 5 ) || (strlen($username) > 50)) {
+    } else if ((mb_strlen($username) < 5 ) || (mb_strlen($username) > 50)) {
 
       $_SESSION['username_error'] = '<p class="error login">Username must have between 5 and 50 characters!</p>';
       $isEverythingGood = false;
@@ -42,7 +42,6 @@
 
   } 
 
-  
   if (empty($_POST['email'])) {
 
     $_SESSION['email_error'] = '<p class="error email">Email cannot be empty!</p>';
@@ -98,7 +97,7 @@
       $_SESSION['repeat_password_error'] = '<p class="error repeat_password">Password and repeat password must be the same!</p>';
       $isEverythingGood = false;
 
-    } else if ((strlen($password) < 5) || (strlen($password) > 50)){
+    } else if ((mb_strlen($password) < 5) || (mb_strlen($password) > 50)){
 
       $_SESSION['password_error'] = '<p class="error password">Password must have between 5 and 50 characters!</p>';
       $isEverythingGood = false;
@@ -118,40 +117,31 @@
 
     $password_hashed = password_hash($password, PASSWORD_DEFAULT);
 
-    $sql = 'INSERT INTO users (username, password, email) VALUES (:username, :password, :email)';
-   
-    $query = $db->prepare($sql);
-    $query->bindValue(':username', $username, PDO::PARAM_STR);
-    $query->bindValue(':password', $password_hashed, PDO::PARAM_STR);
-    $query->bindValue(':email', $email, PDO::PARAM_STR);
-    $query->execute();
+    try {
+      $db->beginTransaction();
 
-    $sql_what_id = "SELECT id FROM users WHERE username=:username";
-    $what_id = $db->prepare($sql_what_id);
-    $what_id->bindValue(":username", $username, PDO::PARAM_STR);
-    $what_id->execute();
-    $user = $what_id->fetch();
+      $query = $db->prepare('INSERT INTO users (username, password, email) VALUES (:username, :password, :email)');
+      $query->execute([':username' => $username, ':password' => $password_hashed, ':email' => $email]);
+      $userId = (int) $db->lastInsertId();
 
-    $transactions = ['incomes', 'expenses'];
-
-    foreach ($transactions as $transaction) {
-
-      $sql_categories = "INSERT INTO ".$transaction."_category_assigned_to_users (name, user_id) SELECT ".$transaction."_category_default.name, :user_id FROM ".$transaction."_category_default";
-      $copy_categories = $db->prepare($sql_categories);
-      $copy_categories->bindValue(":user_id", $user['id'], PDO::PARAM_INT);
-      $copy_categories->execute();
-
-      if ($transaction === 'expenses') {
-
-        $sql_payments = "INSERT INTO payment_methods_assigned_to_users (name, user_id) SELECT name, :user_id FROM payment_methods_default";
-        $copy_payments = $db->prepare($sql_payments);
-        $copy_payments->bindValue(":user_id", $user['id'], PDO::PARAM_STR);
-        $copy_payments->execute();
-        
+      foreach (['incomes', 'expenses'] as $t) {
+          $db->prepare("INSERT INTO {$t}_category_assigned_to_users (name, user_id)
+                        SELECT name, :user_id FROM {$t}_category_default")
+            ->execute([':user_id' => $userId]);
       }
+
+      $db->prepare('INSERT INTO payment_methods_assigned_to_users (name, user_id)
+                    SELECT name, :user_id FROM payment_methods_default')
+        ->execute([':user_id' => $userId]);
+
+      $db->commit();
+
+    } catch (PDOException $e) {
+            $db->rollBack();
+            error_log($e->getMessage());
+            exit('Registration failed, try again later.');
+          }
       
-    }
-    
   } else {
 
     header('location: registration.php');
