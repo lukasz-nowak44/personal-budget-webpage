@@ -5,6 +5,7 @@
   $_SESSION['given_username'] = $_POST['username'];
   $_SESSION['given_email'] = $_POST['email'];
 
+
   if (isset($_POST['agreement'])) {
 
     $_SESSION['agreement'] = true;
