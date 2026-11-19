@@ -60,17 +60,14 @@
               <div class="field">
                 <label for="login" class="visually-hidden">Username</label>
                 <img src="assets/icons/user.svg" alt="">
-                <input id="login" type="text" name="username" <?= isset($_SESSION['given_signin_username']) ? 'value="'.htmlspecialchars($_SESSION['given_signin_username']).'"' : '' ?> <?= isset($_SESSION['username_signin_error']) ? 'aria-invalid="true"' : '' ?> placeholder="username"
+                <input id="login" type="text" name="username" <?= isset($_SESSION['given_signin_username']) ? 'value="'.htmlspecialchars($_SESSION['given_signin_username']).'"' : '' ?> placeholder="username"
                         autocomplete="username" required aria-describedby="username-error">             
               </div>
 
               <p id="username-error" class="error" aria-live="polite"></p>
 
 <?php
-          if(isset($_SESSION['username_signin_error'])){
-            echo $_SESSION['username_signin_error'];
-            unset($_SESSION['username_signin_error']);
-          } else if (isset($_SESSION['given_signin_username'])) {
+          if (isset($_SESSION['given_signin_username'])) {
             unset($_SESSION['given_signin_username']);
           }
 ?>         
@@ -82,20 +79,21 @@
             <div class="field">
               <label for="password" class="visually-hidden">Password</label>
               <img src="assets/icons/lock-password.svg" alt="">
-               <input id="password" type="password" name="password" <?= isset($_SESSION['given_signin_password']) ? 'value="'.htmlspecialchars($_SESSION['given_signin_password']).'"' : '' ?><?= isset($_SESSION['password_signin_error']) ? 'aria-invalid="true"' : '' ?> placeholder="password"
+               <input id="password" type="password" name="password" <?= isset($_SESSION['signin_error']) ? 'aria-invalid="true"' : '' ?> placeholder="password"
                       autocomplete="current-password" required aria-describedby="password-error">             
             </div>
 
-            <p id="password-error" class="error" aria-live="polite"></p>
+            <p id="password-error" class="error" aria-live="polite">
             
 <?php
-            if(isset($_SESSION['password_signin_error'])){
-              echo $_SESSION['password_signin_error'];
-              unset($_SESSION['password_signin_error']);
-            } else if (isset($_SESSION['given_signin_password'])) {
-             unset($_SESSION['given_signin_password']);
+            if(isset($_SESSION['signin_error'])){
+              echo $_SESSION['signin_error'];
+              unset($_SESSION['signin_error']);
             }
 ?>
+
+            </p>
+            
           </div>            
 
             <button type="submit" class="btn btn-lg btn-primary mt-2">Sign in</button>
