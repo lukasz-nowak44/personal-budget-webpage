@@ -15,39 +15,20 @@ let fontLegend = 12;
 document.getElementById("start-date").value = "2020-01-01";
 document.getElementById("end-date").valueAsDate = new Date();
 
-if (numberOfElement <= 6) {
+const categories = [...document.querySelectorAll(".category-expense")].map(el => el.textContent);
+const percents   = [...document.querySelectorAll(".percent")].map(el => Number(el.textContent));
 
-  for (let i=0; i < numberOfElement; i++){
-    
-    xValues.push(document.querySelectorAll(".category-expense")[i].innerHTML);
-    yValues.push(document.querySelectorAll(".percent")[i].innerHTML);
-    
-  }
+const TOP = 6;
+const xValues = categories.slice(0, TOP);
+const yValues = percents.slice(0, TOP);
 
-} else {
-
-  for (let i=0; i < 6; i++){
-    
-    xValues.push(document.querySelectorAll(".category-expense")[i].innerHTML);
-    yValues.push(document.querySelectorAll(".percent")[i].innerHTML);
-    
-  }
-
-  let sumOfOther = 0;
-  xValues.push("other");
-
-  for (let i=6; i < numberOfElement; i++) {
-
-    sumOfOther += Number(document.querySelectorAll(".percent")[i].innerHTML);
-
-  }
-
-  yValues.push(sumOfOther);
-
+if (categories.length > TOP) {
+    xValues.push("other");
+    yValues.push(percents.slice(TOP).reduce((sum, p) => sum + p, 0));
 }
 
 let periods = document.querySelector("#periods");
-let balanceResult = document.querySelector(".result").innerHTML;
+const balanceResult = Number(document.querySelector(".result").textContent);
 
 const optionsCollection = document.querySelectorAll("option");
 
@@ -84,7 +65,6 @@ if (document.querySelector(".change-range")) {
   });
 
 }
-
 
 if (balanceResult >= 0) {
 

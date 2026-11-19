@@ -15,8 +15,7 @@ for (let i=0; i < periodsCollection.length; i++) {
 
 }
 
-if (document.getElementById("date").value === '') {
-
-  document.getElementById("date").valueAsDate = new Date();
-
+const dateInput = document.getElementById("date");
+if (dateInput && dateInput.value === "") {
+  dateInput.valueAsDate = new Date();
 }
