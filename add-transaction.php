@@ -2,11 +2,19 @@
 
   session_start();
 
-  $transaction = $_SESSION['transaction'];
-  unset($_SESSION['transaction']);
-  $name_for_header = 'location: '.$transaction.'.php';
+  if (!isset($_SESSION['logged_user_id'])) {
+    header('Location: index.php');
+    exit();
+  }
 
-  $user_id = $_SESSION['logged_user_id'];
+  $transaction = $_SESSION['transaction'] ?? '';
+  if (!in_array($transaction, ['income', 'expense'], true)) {
+      header('Location: home.php');
+      exit();
+  }
+  $redirect = 'Location: ' . $transaction . '.php';
+  $user_id  = (int) $_SESSION['logged_user_id'];
+
   require_once 'database.php';
 
   $_SESSION['given_amount'] = $_POST['amount'];
@@ -27,17 +35,48 @@
 
     $_SESSION['amount_error'] = 'The amount cannot be empty';
     $isEverythingGood = false;
-    header($name_for_header);
+    header($redirect);
     exit();
 
   } else if (!(filter_var($_POST['amount'], FILTER_VALIDATE_FLOAT))) {
 
       $_SESSION['amount_error'] = 'This field must be in correct format';
       $isEverythingGood = false;
-      header($name_for_header);
+      header($redirect);
       exit();
   }
 
+  $date = DateTime::createFromFormat('Y-m-d', $_POST['date'] ?? '');
+  if (!$date || $date->format('Y-m-d') !== $_POST['date']) {
+      $_SESSION['amount_error'] = 'Incorrect date';
+      $isEverythingGood = false;
+      header($redirect);
+      exit();
+  }
+
+  $categoryId = (int) ($transaction === 'income' ? $_POST['category'] : $_POST['expenses_category']);
+  $check = $db->prepare("SELECT 1 FROM {$transaction}s_category_assigned_to_users WHERE id = :id AND user_id = :user_id");
+  $check->execute([':id' => $categoryId, ':user_id' => $user_id]);
+
+  if (!$check->fetchColumn()) {
+      $isEverythingGood = false;
+      header($redirect);
+      exit();
+  }
+
+  if ($transaction === 'expense') {
+    $payment_method_id = $_POST['payment_methods'];
+
+    $check_payment = $db->prepare("SELECT 1 FROM payment_methods_assigned_to_users WHERE id = :id AND user_id = :user_id");
+    $check_payment->execute([':id' => $payment_method_id, ':user_id' => $user_id]);
+
+    if (!$check_payment->fetchColumn()) {
+      $isEverythingGood = false;
+      header($redirect);
+      exit();
+    }
+
+  }
 
   if ($isEverythingGood) {
 
@@ -89,7 +128,7 @@
     unset($_SESSION['given_date']);
     unset($_SESSION['given_comment']);
 
-    header($name_for_header);
+    header($redirect);
 
   }
 
