@@ -2,12 +2,12 @@
 
   session_start();
 
-  if (isset($_POST['period'])){
-    $period = $_POST['period'];
-  } else if (isset($_GET['period'])){
-    $period = $_GET['period'];
-    $period = str_replace('-', ' ', $period);
+  if (!isset($_SESSION['logged_user_id'])) { 
+    header('Location: index.php'); 
+    exit(); 
   }
+
+  $period = $_POST['period'] ?? str_replace('-', ' ', $_GET['period'] ?? 'current month');
 
   switch ($period) {
     case 'current month':
@@ -16,19 +16,10 @@
       break;
 
     case 'previous month':
-      $previous_month = date('m')-1;
-      $year_of_previous_month = date('Y');
-      if ($previous_month < 1) {
-        $previous_month === 12;
-        $year_of_previous_month -= 1;
-      }
-
-      $start_date = $year_of_previous_month.'-'.$previous_month.'-01';
-
-      $_SESSION['start_date'] = date($start_date);
-      $_SESSION['end_date'] = date('Y-m-d',strtotime('last day of this month', mktime(0, 0, 0, $previous_month, 1, $year_of_previous_month))); 
+      $_SESSION['start_date'] = (new DateTime('first day of last month'))->format('Y-m-d');
+      $_SESSION['end_date']   = (new DateTime('last day of last month'))->format('Y-m-d');
       $_SESSION['previous_month_selected'] = true;
-      break;
+    break;
 
     case 'current year':
       $_SESSION['start_date'] = date('Y-01-01'); 
