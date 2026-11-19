@@ -2,6 +2,8 @@
 
   session_start();
 
+  require_once 'helpers.php';
+
   if (!(isset($_SESSION['logged_user_id']))) {
     header('location: index.php');
     exit();
@@ -272,7 +274,9 @@
             $payment_method_field = '<td>'.$detail['payment'].'</td>';
           }
 
-          echo '<tr><td>'.$detail['date'].'</td><td class="amount" >'.$detail['amount'].'</td>'.$payment_method_field.'<td>'.$detail['comment'].'</td></tr>';
+          echo '<tr><td>' . e($detail['date']) . '</td><td class="amount">' . e($detail['amount']) . '</td>'
+          . $payment_method_field . '<td>' . e($detail['comment']) . '</td></tr>';
+
         }
 
         echo '</tbody></table></div>';

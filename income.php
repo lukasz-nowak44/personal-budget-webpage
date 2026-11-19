@@ -2,6 +2,8 @@
 
   session_start();
 
+  require_once 'helpers.php';
+
   if (!(isset($_SESSION['logged_user_id']))) {
     header('location: index.php');
     exit();
@@ -65,7 +67,7 @@
 
             <div class="field-income">
               <label for="amount">Amount:</label>
-              <input id="amount" type="number" name="amount" <?= isset($_SESSION['given_amount']) ? 'value="'.$_SESSION['given_amount'].'"' : '' ?> required>
+              <input id="amount" type="number" name="amount" <?= isset($_SESSION['given_amount']) ? 'value="'.e($_SESSION['given_amount']).'"' : '' ?> required>
             </div>
 
 <?php
@@ -78,7 +80,7 @@
 
             <div class="field-income">
               <label for="date">Date:</label>
-              <input id="date" type="date" name="date" <?= isset($_SESSION['given_date']) ? 'value="'.$_SESSION['given_date'].'"' : '' ?>
+              <input id="date" type="date" name="date" <?= isset($_SESSION['given_date']) ? 'value="'.e($_SESSION['given_date']).'"' : '' ?>
                 required>
             </div>
 
