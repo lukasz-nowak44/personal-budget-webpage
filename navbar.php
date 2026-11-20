@@ -22,10 +22,10 @@ END;
 
   echo '</li>';
   echo '<li class="nav-item">';
-  echo '<a class="nav-link'.(isset($_SESSION['income_active']) ? ' active' : '').'" href="income.php">Add income</a>';
+  echo '<a class="nav-link'.(isset($_SESSION['income_active']) ? ' active' : '').'" href="transaction.php?transaction=income">Add income</a>';
   echo '</li>'; 
   echo '<li class="nav-item">';
-  echo '<a class="nav-link'.(isset($_SESSION['expense_active']) ? ' active' : '').'" href="expense.php">Add expense</a>';
+  echo '<a class="nav-link'.(isset($_SESSION['expense_active']) ? ' active' : '').'" href="transaction.php?transaction=expense">Add expense</a>';
   echo '</li>'; 
   echo '<li class="nav-item dropdown">';
 

@@ -50,14 +50,14 @@ if (isset($_SESSION['given_signin_password'])) {
 
       <section class="options">
 
-          <a class="card" href="income.php">
+          <a class="card" href="transaction.php?transaction=income">
             <img src="./assets/icons/moneybag-plus.png" class="card-img-top" alt="">
             <div class="card-body">
               <p class="card-text">Add income</p>
             </div>
           </a>
 
-          <a class="card" href="expense.php">
+          <a class="card" href="transaction.php?transaction=expense">
             <img src="./assets/icons/moneybag-minus.png" class="card-img-top" alt="">
             <div class="card-body">
               <p class="card-text">Add expense</p>

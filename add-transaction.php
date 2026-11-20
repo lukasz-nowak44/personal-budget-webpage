@@ -8,12 +8,14 @@
   }
 
   $transaction = $_SESSION['transaction'] ?? '';
+  unset($_SESSION['transaction']);
+  
   if (!in_array($transaction, ['income', 'expense'], true)) {
-      header('Location: home.php');
-      exit();
-  }
+    header('Location: home.php');
+    exit();
+  } 
 
-  $redirect = 'Location: ' . $transaction . '.php';
+  $redirect = 'Location: transaction.php?transaction='.$transaction;
   $max_amount = 999999.99;
   $max_comment_length = 100;
   
