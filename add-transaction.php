@@ -16,6 +16,7 @@
   $redirect = 'Location: ' . $transaction . '.php';
   $max_amount = 999999.99;
   $max_comment_length = 100;
+  
   $user_id  = (int) $_SESSION['logged_user_id'];
 
   require_once 'database.php';
@@ -67,12 +68,25 @@
 
   }
 
-  $date = DateTime::createFromFormat('Y-m-d', $_POST['date'] ?? '');
+  $the_oldest_date = DateTime::createFromFormat('!Y-m-d', '2020-01-01');
+
+  $today = new DateTime();
+
+  $date = DateTime::createFromFormat('!Y-m-d', $_POST['date'] ?? '');
+
   if (!$date || $date->format('Y-m-d') !== $_POST['date']) {
-      $_SESSION['amount_error'] = 'Incorrect date';
-      $isEverythingGood = false;
-      header($redirect);
-      exit();
+    $_SESSION['amount_error'] = 'Incorrect date';
+    $isEverythingGood = false;
+    header($redirect);
+    exit();
+
+  } else if (($date < $the_oldest_date) || ($date > $today)) {
+
+    $_SESSION['amount_error'] = 'Date is out of range.';
+    $isEverythingGood = false;
+    header($redirect);
+    exit();
+
   }
 
   $categoryId = (int) ($transaction === 'income' ? $_POST['category'] : $_POST['expenses_category']);
