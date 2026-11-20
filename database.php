@@ -11,5 +11,6 @@ try {
 
 } catch (PDOException $error) {
 
+  error_log($error->getMessage());
   exit("Database error");
 }

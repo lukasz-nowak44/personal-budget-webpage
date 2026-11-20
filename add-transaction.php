@@ -17,7 +17,7 @@
 
   require_once 'database.php';
 
-  $_SESSION['given_amount'] = $_POST['amount'];
+  $_SESSION['given_amount'] = $_POST['amount'] ?? '';
   $_SESSION['given_date'] = $_POST['date'];
 
   if ($transaction === 'income') {
@@ -31,19 +31,39 @@
 
   $isEverythingGood = true;
 
-  if (empty($_POST['amount'])) {
+  $amount = str_replace(',', '.', trim($_POST['amount'] ?? ''));
 
-    $_SESSION['amount_error'] = 'The amount cannot be empty';
+  if ($amount === '') {
+
+    $_SESSION['amount_error'] = 'Amount cannot be empty';
     $isEverythingGood = false;
     header($redirect);
     exit();
 
-  } else if (!(filter_var($_POST['amount'], FILTER_VALIDATE_FLOAT))) {
+  }
 
-      $_SESSION['amount_error'] = 'This field must be in correct format';
-      $isEverythingGood = false;
-      header($redirect);
-      exit();
+  if (($amount = filter_var($amount, FILTER_VALIDATE_FLOAT)) !== false) {
+
+    $amount = (float) bcdiv((string)$amount, '1', 2);
+
+  } else {
+
+    $_SESSION['amount_error'] = 'Incorrect amount format';
+    $isEverythingGood = false;
+    header($redirect);
+    exit();
+
+  }
+
+  $max_amount = 999999.99;
+
+  if (($amount > $max_amount) || ($amount <= 0)) {
+
+    $_SESSION['amount_error'] = 'Amount out of range';
+    $isEverythingGood = false;
+    header($redirect);
+    exit();
+
   }
 
   $date = DateTime::createFromFormat('Y-m-d', $_POST['date'] ?? '');
@@ -80,7 +100,6 @@
 
   if ($isEverythingGood) {
 
-    $amount = round($_POST['amount'],2);
     $date = $_POST['date'];
 
     if ($transaction === 'income') {
