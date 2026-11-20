@@ -39,7 +39,7 @@
 
   if ($amount === '') {
 
-    $_SESSION['amount_error'] = 'Amount cannot be empty';
+    $_SESSION['transaction_error'] = 'Amount cannot be empty';
     $isEverythingGood = false;
     header($redirect);
     exit();
@@ -52,7 +52,7 @@
 
   } else {
 
-    $_SESSION['amount_error'] = 'Incorrect amount format';
+    $_SESSION['transaction_error'] = 'Incorrect amount format';
     $isEverythingGood = false;
     header($redirect);
     exit();
@@ -61,7 +61,7 @@
 
   if (($amount > $max_amount) || ($amount <= 0)) {
 
-    $_SESSION['amount_error'] = 'Amount out of range';
+    $_SESSION['transaction_error'] = 'Amount out of range';
     $isEverythingGood = false;
     header($redirect);
     exit();
@@ -75,14 +75,14 @@
   $date = DateTime::createFromFormat('!Y-m-d', $_POST['date'] ?? '');
 
   if (!$date || $date->format('Y-m-d') !== $_POST['date']) {
-    $_SESSION['amount_error'] = 'Incorrect date';
+    $_SESSION['transaction_error'] = 'Incorrect date';
     $isEverythingGood = false;
     header($redirect);
     exit();
 
   } else if (($date < $the_oldest_date) || ($date > $today)) {
 
-    $_SESSION['amount_error'] = 'Date is out of range.';
+    $_SESSION['transaction_error'] = 'Date is out of range.';
     $isEverythingGood = false;
     header($redirect);
     exit();
@@ -117,7 +117,7 @@
 
   if (mb_strlen($comment) > $max_comment_length) {
 
-    $_SESSION['amount_error'] = 'The comment is too long';
+    $_SESSION['transaction_error'] = 'The comment is too long';
     $isEverythingGood = false;
     header($redirect);
     exit();

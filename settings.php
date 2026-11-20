@@ -32,6 +32,17 @@
     
   </header>
 
+<?php
+
+  if (isset($_SESSION['categories_error'])) {
+
+    echo '<p class="transaction-error m-3">'.$_SESSION['categories_error'].'</p>';
+    unset ($_SESSION['categories_error']);
+
+  }
+
+?>
+
   <h1 class="ms-5">This page is under construction... </h1>
 
   <img src="./assets/icons/backhoe.svg" class="img-fluid construction" alt="">

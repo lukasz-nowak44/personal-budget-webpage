@@ -189,10 +189,10 @@
         echo '<p class="transaction-added mt-3">Expense added successfully!</p>';
         unset($_SESSION['expense_added']);
 
-      } else if (isset($_SESSION['amount_error'])) {
+      } else if (isset($_SESSION['transaction_error'])) {
 
-        echo '<p class="transaction-error mt-3">'.$_SESSION['amount_error'].'</p>';
-        unset($_SESSION['amount_error']);
+        echo '<p class="transaction-error mt-3">'.$_SESSION['transaction_error'].'</p>';
+        unset($_SESSION['transaction_error']);
 
       }
 

@@ -5,7 +5,7 @@
   require_once 'helpers.php';
 
   if (!(isset($_SESSION['logged_user_id']))) {
-    header('location: index.php');
+    header('Location: index.php');
     exit();
   }
 
@@ -20,6 +20,12 @@
   $load_categories->execute();
 
   $user_categories = $load_categories->fetchAll();
+
+  if (empty($user_categories)) {
+    $_SESSION['categories_error'] = "You don't have any income categories. Add at least one.";
+    header('Location: settings.php');
+    exit();
+  } 
 
 ?>
 
@@ -170,10 +176,10 @@
         echo '<p class="transaction-added mt-3">Income added successfully!</p>';
         unset($_SESSION['income_added']);
 
-      } else if (isset($_SESSION['amount_error'])) {
+      } else if (isset($_SESSION['transaction_error'])) {
 
-        echo '<p class="transaction-error mt-3">'.$_SESSION['amount_error'].'</p>';
-        unset($_SESSION['amount_error']);
+        echo '<p class="transaction-error mt-3">'.$_SESSION['transaction_error'].'</p>';
+        unset($_SESSION['transaction_error']);
 
       }
 
