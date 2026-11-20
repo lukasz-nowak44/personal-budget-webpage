@@ -28,7 +28,7 @@
       <header>
         <div class="d-flex align-items-center">
           <img src="assets/images/logo.png" class="logo" alt="">
-          <h1 class="registration">Sign up! 🡇</h1>
+          <h1 class="registration">Sign up! <span class="arrow">🡇</span></h1>
         </div>
       </header>
 

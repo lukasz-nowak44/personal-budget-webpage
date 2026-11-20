@@ -289,7 +289,7 @@ table .btn:focus-visible {
 
 @media (max-width: 31.75rem) {
 
-  .category-income, .category, tr:last-child {
+  .category-income, .category-expense {
     word-break: break-all;
   } 
 

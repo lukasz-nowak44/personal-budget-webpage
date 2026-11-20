@@ -19,6 +19,10 @@ body {
   margin-top: auto;
 }
 
+.arrow {
+  font-family: 'Noto Sans Symbols 2', sans-serif;
+}
+
 .logo {
   float: left;
   padding-right: 1.5rem;
