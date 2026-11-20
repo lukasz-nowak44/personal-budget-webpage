@@ -12,7 +12,10 @@
       header('Location: home.php');
       exit();
   }
+
   $redirect = 'Location: ' . $transaction . '.php';
+  $max_amount = 999999.99;
+  $max_comment_length = 100;
   $user_id  = (int) $_SESSION['logged_user_id'];
 
   require_once 'database.php';
@@ -55,8 +58,6 @@
 
   }
 
-  $max_amount = 999999.99;
-
   if (($amount > $max_amount) || ($amount <= 0)) {
 
     $_SESSION['amount_error'] = 'Amount out of range';
@@ -98,6 +99,17 @@
 
   }
 
+  $comment = trim($_POST['comment'] ?? '');
+
+  if (mb_strlen($comment) > $max_comment_length) {
+
+    $_SESSION['amount_error'] = 'The comment is too long';
+    $isEverythingGood = false;
+    header($redirect);
+    exit();
+
+  }
+
   if ($isEverythingGood) {
 
     $date = $_POST['date'];
@@ -108,8 +120,7 @@
       $id_category = $_POST['expenses_category'];
       $id_payment_method = $_POST['payment_methods'];
     }
-    
-    $comment = $_POST['comment'];
+
 
     $payment_column_name = '';
     $payment_variable_name = '';
