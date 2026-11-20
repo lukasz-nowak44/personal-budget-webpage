@@ -10,9 +10,8 @@
   }
 
   $user_id = $_SESSION['logged_user_id'];
-  $transactions = ["income", "expense"];
-  $income = [];
-  $expense = [];
+  $summaries = ['income' => [], 'expense' => []];
+  $details   = ['income' => [], 'expense' => []];
   $sum_of_incomes = 0;
   $sum_of_expenses = 0;
 
@@ -32,7 +31,7 @@
 
   require_once 'database.php';
 
-  foreach ($transactions as $transaction) {
+  foreach (array_keys($summaries) as $transaction) {
 
     $sql = "SELECT ".$transaction."s_category_assigned_to_users.name AS category_name, ".$transaction."s_category_assigned_to_users.id AS category_id,"." SUM(".$transaction."s.amount) AS total_amount FROM ".$transaction."s LEFT JOIN ".$transaction."s_category_assigned_to_users ON ".$transaction."s.".$transaction."_category_assigned_to_user_id=".$transaction."s_category_assigned_to_users.id WHERE ".$transaction."s.date_of_".$transaction." BETWEEN :start_date AND :end_date AND ".$transaction."s.user_id=:user_id
     GROUP BY category_name
@@ -44,16 +43,11 @@
     $load_category_summaries->bindValue(":user_id", $user_id, PDO::PARAM_INT);
     $load_category_summaries->execute();
 
-    $$transaction = $load_category_summaries->fetchAll();
-
+    $summaries[$transaction] = $load_category_summaries->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  foreach ($income as $income_amount) {
-    $sum_of_incomes += $income_amount['total_amount'];
-  }
-  foreach ($expense as $expense_amount) {
-    $sum_of_expenses += $expense_amount['total_amount'];
-  }
+  $sum_of_incomes = array_sum(array_column($summaries['income'], 'total_amount'));
+  $sum_of_expenses = array_sum(array_column($summaries['expense'], 'total_amount'));
 
 ?>
 <!DOCTYPE html>
@@ -167,7 +161,7 @@
     $target_id = 0;  
     $modal_id = 0;  
 
-    foreach ($transactions as $transaction) {
+    foreach (array_keys($summaries) as $transaction) {
 
       echo '<h3 class="table-title">The summary of your '.$transaction.'s:</h3>';
       echo<<<END
@@ -186,8 +180,25 @@
       
       $counter = 0;
       $percent = 0;
+      $payment_method_name = '';
+      $payment_methods_joined = '';
 
-      foreach($$transaction as $category){
+      if ($transaction === 'expense') {
+        $payment_method_name = 'payment_methods_assigned_to_users.name AS payment,';
+        $payment_methods_joined = 'INNER JOIN payment_methods_assigned_to_users ON expenses.payment_method_assigned_to_user_id=payment_methods_assigned_to_users.id';
+      }
+
+      $stmt = $db->prepare("SELECT {$transaction}_category_assigned_to_user_id AS category_id,
+      date_of_{$transaction} AS date, amount, {$payment_method_name} {$transaction}_comment AS comment FROM {$transaction}s {$payment_methods_joined}
+      WHERE {$transaction}s.user_id = :user_id AND date_of_{$transaction} BETWEEN :start AND :end
+      ORDER BY date_of_{$transaction}");
+      $stmt->execute([':user_id' => $user_id, ':start' => $start_date, ':end' => $end_date]);
+
+      foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $row) {
+        $details[$transaction][$row['category_id']][] = $row;
+      }    
+
+      foreach($summaries[$transaction] as $category){
 
         $counter += 1;
         $class_percent = '';
@@ -219,33 +230,7 @@
       echo '</tbody>';
       echo '</table>';
       
-      foreach($$transaction as $category) {
-
-        // Zapytanie
-
-        $select_payment_method = '';
-        $join_table_payments = '';
-
-        if ($transaction === 'expense') {
-          $select_payment_method = 'payment_methods_assigned_to_users.name AS payment, ';
-          $join_table_payments = 'LEFT JOIN payment_methods_assigned_to_users ON payment_methods_assigned_to_users.id=expenses.payment_method_assigned_to_user_id ';
-        }
-
-        $sql = "SELECT ".$transaction."s.date_of_".$transaction." AS date, ".$transaction."s.amount AS amount, ".$select_payment_method.$transaction."s.".$transaction."_comment AS comment
-        FROM ".$transaction."s ".$join_table_payments."WHERE ".$transaction."s.date_of_".$transaction." BETWEEN :start_date AND :end_date
-        AND ".$transaction."s.user_id=:user_id
-        AND ".$transaction."s.".$transaction."_category_assigned_to_user_id=:category_id ORDER BY date ASC";
-
-        $load_details = $db->prepare($sql);
-        $load_details->bindValue(":start_date", $start_date, PDO::PARAM_STR);
-        $load_details->bindValue(":end_date", $end_date, PDO::PARAM_STR);
-        $load_details->bindValue(":user_id", $user_id, PDO::PARAM_INT);
-        $load_details->bindValue(":category_id", $category['category_id'], PDO::PARAM_INT);
-        $load_details->execute();
-
-        $details = $load_details->fetchAll();
-
-        // koniec zapytania
+      foreach($summaries[$transaction] as $category) {
 
         $modal_id++;
 
@@ -260,7 +245,7 @@
         echo '<th>date</th><th>amount [PLN]</th>'.$payment_method_label.'<th>comment</th></tr>';
         echo '</thead><tbody>';
     
-        foreach ($details as $detail) {
+        foreach ($details[$transaction][$category['category_id']] ?? [] as $detail) {
           $payment_method_field = '';
 
           if ($transaction === "expense") {
@@ -277,8 +262,8 @@
 
       }
   
-    }
-     
+    
+    } 
 ?>
 
               </section>

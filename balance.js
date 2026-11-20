@@ -5,8 +5,7 @@ const modalWithDates = new bootstrap.Modal(document.getElementById ("modalWithDa
 const isModalVisible = localStorage.getItem("isModalVisible");
 const period = localStorage.getItem("selectedPeriod");
 const handle = localStorage.getItem("handleForSelectedAttribute");
-const xValues = [];
-const yValues = [];
+
 const barColors = ["red", "green","blue","orange","brown", "yellow", "lavender", "purple"];
 
 const numberOfElement = document.querySelectorAll(".category-expense").length;
